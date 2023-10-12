@@ -28,7 +28,7 @@ String today = sdf.format(date);
 メモ<br>
 <input type="text" neme="memo"><br>
 
-<input type="submit" value="記録確認・登録画面へ">
+<input type="submit" onclick="location.href='./recordcheck.jsp'"value="記録確認・登録画面へ">
 <div>
 <h2><a href="top.jsp">TOP画面へ</a></h2>
 </div>
