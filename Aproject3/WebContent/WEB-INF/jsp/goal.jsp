@@ -8,15 +8,15 @@
 	</head>
 	<body>
 		<h1>目標設定</h1>
-		<form action="/Aproject3/GoalServret" method="post">
+		<form action="/Sakaguchi/GoalServret" method="post">
 			<select name="goal">
 				<option value="">▼選択してください</option>
 				<option>運動</option>
 				<option>食事</option>
 				<option>睡眠</option>
 			</select>
-			<input type="button"  value="確認する">
+			<input type="button" onclick="location.href='/Sakaguchi/GoalconfirmSevlet'"  value="送信">
 		</form>
-		<a href="/Aproject3/TopServlet">TOPへ</a>
+		<a href="/Sakaguchi/TopServlet">TOPへ</a>
 	</body>
 </html>
