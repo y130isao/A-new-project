@@ -34,7 +34,7 @@ public class AccountCheck extends HttpServlet {
 
         // セッションからログイン情報を取得
         HttpSession session = request.getSession();
-        AccountBeans ab = (AccountBeans) session.getAttribute("/WEB-INF/jsp/account");
+        AccountBeans ab = (AccountBeans) session.getAttribute("account");
 
         // ロールでフォワード先を振り分ける
         if(ab.getRole() == 1) {

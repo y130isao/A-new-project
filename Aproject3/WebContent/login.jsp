@@ -7,7 +7,7 @@
 <title>ログイン画面</title>
 </head>
 <body>
-<form action="/sample/AccountSearch" method="post">
+<form action="/Aproject3/AccountSearch" method="post">
 ユーザーID：<input type="text" name="loginId" required><br>
 パスワード：<input type="password" name="pass" required><br>
 <input type="submit" value="ログイン"><br>

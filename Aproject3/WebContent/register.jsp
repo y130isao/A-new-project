@@ -7,7 +7,7 @@
 <title>新規登録</title>
 </head>
 <body>
-<form action="/sample/AccountRegister" method="post">
+<form action="/Aprojct3/AccountRegister" method="post">
 <p>すべて入力してください</p>
 <p>
 <input type="radio" name="role" value="1">管理者で登録する
