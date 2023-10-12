@@ -23,4 +23,4 @@ public class GoalconfirmServlet extends HttpServlet {
 	        "/WEB-INF/jsp/goalconfirm.jsp");
 	    dispatcher.forward(request, response);
 	  }
-	}
+}
