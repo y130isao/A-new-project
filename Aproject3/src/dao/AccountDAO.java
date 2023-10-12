@@ -37,7 +37,7 @@ public class AccountDAO {
                 returnAb.setLoginId(rs.getString("loginId"));
                 returnAb.setPass(rs.getString("pass"));
                 returnAb.setName(rs.getString("name"));
-                returnAb.setRole(rs.getInt("roleId"));
+                returnAb.setRoleId(rs.getInt("roleId"));
             } else {
                 // アカウントがなければnullを返す
                 return null;

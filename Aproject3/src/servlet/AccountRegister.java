@@ -2,7 +2,6 @@ package servlet;
 
 import java.io.IOException;
 
-import dao.AccountRegisterDAO;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -11,6 +10,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import model.AccountBeans;
+import model.AccountRegisterLogic;
 
 /**
  * Servlet implementation class AccountRegister
@@ -41,23 +41,26 @@ public class AccountRegister extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		String name = request.getParameter("name");
 		String loginId = request.getParameter("loginId");
 		String pass = request.getParameter("pass");
-		int role = Integer.parseInt(request.getParameter("role"));
+		int roleId = Integer.parseInt(request.getParameter("roleId"));
 
 		// register.jspから受け取った値をビーンズにセット
 		AccountBeans ab = new AccountBeans();
 		ab.setName(name);
 		ab.setLoginId(loginId);
 		ab.setPass(pass);
-		ab.setRole(role);
+		ab.setRoleId(roleId);
 
-		// アカウントをDBに登録
-		AccountRegisterDAO ard = new AccountRegisterDAO(ab);
+		
 		// セッションにアカウント情報を保存
 		HttpSession session = request.getSession();
-		session.setAttribute("account", ab);
+		session.setAttribute("ab", ab);
+		
+		AccountRegisterLogic arl = new AccountRegisterLogic();
+		arl.execute(ab);
 
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/registerSuccess.jsp");
 		rd.forward(request, response);

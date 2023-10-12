@@ -7,11 +7,11 @@
 <title>新規登録</title>
 </head>
 <body>
-<form action="/Aprojct3/AccountRegister" method="post">
+<form action="/Aproject3/AccountRegister" method="post">
 <p>すべて入力してください</p>
 <p>
-<input type="radio" name="role" value="1">管理者で登録する
-<input type="radio" name="role" value="2" checked>ユーザーで登録する
+<input type="radio" name="roleId" value="1">管理者で登録
+<input type="radio" name="roleId" value="2" checked>ユーザーで登録
 </p>
 　　　名前：<input type="text" name="name" required><br>
 ユーザーID：<input type="text" name="loginId" required><br>

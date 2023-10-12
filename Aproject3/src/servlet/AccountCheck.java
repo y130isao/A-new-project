@@ -37,10 +37,10 @@ public class AccountCheck extends HttpServlet {
         AccountBeans ab = (AccountBeans) session.getAttribute("account");
 
         // ロールでフォワード先を振り分ける
-        if(ab.getRole() == 1) {
+        if(ab.getRoleId() == 1) {
             RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/admin.jsp");
             rd.forward(request, response);
-        } else if(ab.getRole() == 2) {
+        } else if(ab.getRoleId() == 2) {
             RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/user.jsp");
             rd.forward(request, response);
         } else {

@@ -10,8 +10,8 @@
 <body>
 ここはユーザーページです。<br>
 <c:choose>
-<c:when test="${account.role == 2 }">
-登録内容の確認。
+<c:when test="${account.roleId == 2 }">
+登録内容の確認
 <p>ログインID：<c:out value="${account.loginId }"></c:out></p>
 <p>パスワード：<c:out value="${account.pass }"></c:out></p>
 <p>　　　名前：<c:out value="${account.name }"></c:out></p>
@@ -19,11 +19,11 @@
 <p><a href="/Aproject3/Logout"><button type="button" >ログアウト</button></a></p>
 <a href="admin.jsp"><button type="button" >管理者ページへ</button></a>
 </c:when>
-<c:when test="${account.role == 1 }">
-<a href="admin.jsp">管理者ページへ</a>
+<c:when test="${account.roleId == 1 }">
+<a href="/Aproject3/AccountSearch">管理者ページへ</a>
 </c:when>
 <c:otherwise>
-<a href="login.jsp">ログインページへ</a>
+<a href="/Aproject3/AccountSearch">ログインページへ</a>
 </c:otherwise>
 </c:choose>
 
