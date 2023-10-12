@@ -11,8 +11,8 @@
 		
 		<p><c:out ></p>
 		
-		<input type="submit" onclick="location.href='/Sakaguchi/GoalServlet'"  value="再選択">
-		<input type="submit" onclick="location.href='/Sakaguchi/GoalServlet'"  value="OK">
-		<a href="/Sakaguchi/TopServlet">TOPへ</a>
+		<input type="submit" onclick="location.href='/Aproject3/GoalServlet'"  value="再選択">
+		<input type="submit" onclick="location.href='/Aproject3/GoalServlet'"  value="OK">
+		<a href="/Aproject3/TopServlet">TOPへ</a>
 	</body>
 </html>
