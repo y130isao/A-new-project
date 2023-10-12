@@ -24,19 +24,19 @@ public class TopServlet extends HttpServlet {
 		RequestDispatcher dispatcher1 = request.getRequestDispatcher(jspPage);
         dispatcher1.forward(request, response);
         
-        RequestDispatcher dispatcher2 = request.getRequestDispatcher("PastdataServlet");
+        RequestDispatcher dispatcher2 = request.getRequestDispatcher("/Aproject3/PastdataServlet");
         dispatcher2.forward(request, response);
         
-        RequestDispatcher dispatcher3 = request.getRequestDispatcher("GoalServlet");
+        RequestDispatcher dispatcher3 = request.getRequestDispatcher("/Aproject3/GoalServlet");
         dispatcher3.forward(request, response);
         
-        RequestDispatcher dispatcher4 = request.getRequestDispatcher("AccountServlet");
+        RequestDispatcher dispatcher4 = request.getRequestDispatcher("/Aproject3/AccountServlet");
         dispatcher4.forward(request, response);
         
-        RequestDispatcher dispatcher5 = request.getRequestDispatcher("RecordServlet");
+        RequestDispatcher dispatcher5 = request.getRequestDispatcher("/Aproject3/RecordServlet");
         dispatcher5.forward(request, response);
         
-        RequestDispatcher dispatcher6 = request.getRequestDispatcher("RoomServlet");
+        RequestDispatcher dispatcher6 = request.getRequestDispatcher("/Aproject3/RoomServlet");
         dispatcher6.forward(request, response);
 	}
 }
