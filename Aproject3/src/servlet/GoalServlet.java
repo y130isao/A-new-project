@@ -17,6 +17,8 @@ public class GoalServlet extends HttpServlet {
 	  protected void doGet(HttpServletRequest request,
 	      HttpServletResponse response)
 	      throws ServletException, IOException {
+		
+		//フォワード
 	    RequestDispatcher dispatcher = request.getRequestDispatcher(
 	        "/WEB-INF/jsp/goal.jsp");
 	    dispatcher.forward(request, response);
