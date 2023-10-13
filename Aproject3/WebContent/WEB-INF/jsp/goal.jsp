@@ -17,6 +17,7 @@ String sleep=content==null? "":content.getSleep();
 	</head>
 	<body>
 		<h1>目標設定</h1>
+    
 		<form action="/Aproject3/GoalconfirmServlet" method="post">
 			<div class="contact-formbox">
 				<dt>
@@ -46,7 +47,8 @@ String sleep=content==null? "":content.getSleep();
 				</dd>
 			</div>
 			<input type="submit" class="button"  value="確認">
+
 		</form>
-		<a href="/Aproject3/TopServlet">TOPへ</a>
+		<a href="/Sakaguchi/TopServlet">TOPへ</a>
 	</body>
 </html>

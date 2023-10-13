@@ -14,7 +14,7 @@ Content content=(Content)session.getAttribute("content");
 	</head>
 	<body>
 		<h1>以下の内容で目標を設定しますか？</h1>
-		
+	
 		<div class="contact-formbox">
 				<dt>
 					<p>運動</p>
