@@ -23,7 +23,7 @@ public class AccountDAO {
 		// データベースへ接続
 		try (Connection con = DriverManager.getConnection(jdbcUrl, jdbcId, jdbcPass)) {
 
-			String sql = "SELECT loginId, pass, name, roleId FROM account WHERE loginId = ? AND pass = ?";
+			String sql = "SELECT loginId, pass, name, roleId, genId FROM account WHERE loginId = ? AND pass = ?";
 			PreparedStatement ps = con.prepareStatement(sql);
 
 			ps.setString(1, ab.getLoginId());
@@ -37,6 +37,7 @@ public class AccountDAO {
 				returnAb.setPass(rs.getString("pass"));
 				returnAb.setName(rs.getString("name"));
 				returnAb.setRoleId(rs.getInt("roleId"));
+				returnAb.setGenId(rs.getInt("genId"));
 			} else {
 				// アカウントがなければnullを返す
 				return null;
