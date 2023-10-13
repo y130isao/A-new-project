@@ -12,36 +12,12 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import model.AccountBeans;
 
-/**
- * Servlet implementation class AccountDAO2
- */
 @WebServlet("/AccountSearch")
 public class AccountSearch extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
-	public AccountSearch() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		String loginId = request.getParameter("loginId");
 		String pass = request.getParameter("pass");
 
@@ -60,7 +36,7 @@ public class AccountSearch extends HttpServlet {
 			HttpSession session = request.getSession();
 			session.setAttribute("account", returnAb);
 
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/loginSuccess.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/top.jsp");
 			rd.forward(request, response);
 
 		} else {

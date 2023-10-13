@@ -12,9 +12,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import model.AccountBeans;
 
-/**
- * Servlet implementation class AccountRegister
- */
 @WebServlet("/AccountRegister")
 public class AccountRegister extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -27,21 +24,6 @@ public class AccountRegister extends HttpServlet {
 		dispatcher.forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
-	public AccountRegister() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String name = request.getParameter("name");
