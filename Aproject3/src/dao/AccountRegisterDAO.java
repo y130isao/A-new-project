@@ -8,33 +8,36 @@ import java.sql.SQLException;
 import model.AccountBeans;
 
 public class AccountRegisterDAO {
-    // データベース接続に使用する情報
-        final String jdbcId = "root";
-        final String jdbcPass = "adminadmin";
-        final String jdbcUrl = "jdbc:mysql://localhost:3306/testdb";
+	// データベース接続に使用する情報
+	final String jdbcId = "root";
+	final String jdbcPass = "adminadmin";
+	final String jdbcUrl = "jdbc:mysql://localhost:3306/testdb";
 
-        public  AccountRegisterDAO(AccountBeans ab) {
+	public boolean create(AccountBeans ab) {
 
-        try (Connection con = DriverManager.getConnection(jdbcUrl, jdbcId, jdbcPass)) {
+		try (Connection con = DriverManager.getConnection(jdbcUrl, jdbcId, jdbcPass)) {
 
-            String sql = "INSERT INTO account (loginId, pass, name, roleId) VALUES (?, ?, ?, ?)";
-            PreparedStatement ps= con.prepareStatement(sql);
+			String sql = "INSERT INTO account(loginId, pass, name, roleId, genId) VALUES(?, ?, ?, ?, ?)";
+			PreparedStatement ps = con.prepareStatement(sql);
 
-            ps.setString(1, ab.getLoginId());
-            ps.setString(2, ab.getPass());
-            ps.setString(3, ab.getName());
-            ps.setInt(4, ab.getRole());
+			ps.setString(1, ab.getLoginId());
+			ps.setString(2, ab.getPass());
+			ps.setString(3, ab.getName());
+			ps.setInt(4, ab.getRoleId());
+			ps.setInt(5, ab.getGenId());
 
-            int r = ps.executeUpdate();
+			int r = ps.executeUpdate();
 
-            if(r != 0) {
-                System.out.println("新規登録成功！");
-            } else {
-                System.out.println("新規登録失敗");
-            }
+			if (r != 0) {
+				System.out.println("新規登録成功！");
+			} else {
+				System.out.println("新規登録失敗");
+			}
 
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
 }
