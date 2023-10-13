@@ -19,5 +19,11 @@
 <div>
 <h2><a href="${pageContext.request.contextPath}/RecordServlet">記録</a></h2>
 </div>
+
+<div>
+<p>現在のレベル: ${charaLevel}</p>
+<p>所有ポイント: ${charaPoint} point</p>
+<p>次のレベルアップまで: ${nextLevelUpPoints} point</p>
+</div>
 </body>
 </html>

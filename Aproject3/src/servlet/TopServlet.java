@@ -19,10 +19,8 @@ public class TopServlet extends HttpServlet {
 		HttpServletResponse response)
 		throws ServletException, IOException {
 		
-		String jspPage = "top.jsp";
-		
-		RequestDispatcher dispatcher1 = request.getRequestDispatcher(jspPage);
-        dispatcher1.forward(request, response);
+		RequestDispatcher rd=request.getRequestDispatcher("/WEB-INF/jsp/top.jsp");
+		rd.forward(request, response);
         
         RequestDispatcher dispatcher2 = request.getRequestDispatcher("/Aproject3/PastdataServlet");
         dispatcher2.forward(request, response);
