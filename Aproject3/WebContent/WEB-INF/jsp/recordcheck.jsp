@@ -12,7 +12,7 @@ RecordBeans rb = (RecordBeans) request.getAttribute("recordbeans");
 <title>本日の記録確認</title>
 </head>
 <body>
-<h1>下記の記録で登録します。</h1>
+<h1>下記の内容で登録します。</h1>
 <h2>
 あなたの選択項目<br>
 【<%= rb.getExample_list() %>】</br>
@@ -23,6 +23,9 @@ RecordBeans rb = (RecordBeans) request.getAttribute("recordbeans");
 メモ<br>
 【<%= rb.getMemo_list() %>】</br>
 </h2>
+<form action="/Aproject3/RecordComplete" method="post">
+<input type="submit" value="登録する"><br>
+</form>
 <a href="/WEB-INF/jsp/record.jsp" >前の画面に戻る</a></p>
 
 </body>

@@ -20,7 +20,7 @@ String today = sdf.format(date);
 <form action="/Aproject3/RecordServlet" method="post">
 <%-- プルダウンの値を渡す --%>
 選択項目
-<select id="example" name="example_list">
+<select id="example" name="example_list" >
 <option>あ</option>
 <option>い</option>
 <option>う</option>
@@ -31,7 +31,7 @@ String today = sdf.format(date);
 
 <%-- textboxの値を渡す --%>
 メモ<br>
-<input id="memo"type="text" neme="memo_list"><br>
+<input type="text" neme="memo_list" required><br>
 
 <input type="submit" value="記録確認・登録画面へ"/>
 
