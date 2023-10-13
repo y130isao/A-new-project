@@ -32,10 +32,7 @@ String today = sdf.format(date);
 <%-- textboxの値を渡す --%>
 メモ<br>
 <input type="text" neme="memo_list" required><br>
-
-<input type="submit" value="記録確認・登録画面へ"/>
-
-<div>
-<h2><a href="top.jsp">TOP画面へ</a></h2>
+<input type="submit" value="記録確認・登録画面へ"/><br>
+<a href="/Aproject3/TopServlet">TOPへ</a>
 </body>
 </html>

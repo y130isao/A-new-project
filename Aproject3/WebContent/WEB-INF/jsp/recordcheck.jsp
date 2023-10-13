@@ -26,7 +26,7 @@ RecordBeans rb = (RecordBeans) request.getAttribute("recordbeans");
 <form action="/Aproject3/RecordComplete" method="post">
 <input type="submit" value="登録する"><br>
 </form>
-<a href="/WEB-INF/jsp/record.jsp" >前の画面に戻る</a></p>
+<a href="/Aproject3/RecordServlet" >前の画面に戻る</a>
 
 </body>
 </html>

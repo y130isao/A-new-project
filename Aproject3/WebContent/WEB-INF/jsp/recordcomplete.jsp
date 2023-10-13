@@ -8,6 +8,6 @@
 </head>
 <body>
 <h1>登録が完了しました</h1>
-<a href="/WEB-INF/jsp/top.jsp" >TOP画面へ</a></p>
+<a href="/Aproject3/TopServlet">TOPへ</a>
 </body>
 </html>
