@@ -2,12 +2,14 @@ package servlet;
 
 import java.io.IOException;
 
+import dao.RecordDAO;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import model.RecordBeans;
 
 
@@ -39,14 +41,14 @@ public class RecordServlet extends HttpServlet {
 	    rb.setExample_list(example_list);
 	    rb.setDo_result(do_result);
 	    rb.setMemo_list(memo_list);
-	    // 健康診断を実行し結果を設定
-
-	    // リクエストスコープに保存
-	    request.setAttribute("recordbeans", rb);
 	    
-	    System.out.println(example_list);
-	    System.out.println(do_result);
-	    System.out.println(memo_list);
+	    //セッションスコープに保存
+		HttpSession session = request.getSession();
+	    session.setAttribute("recordbeans", rb);
+	    
+		// アカウントをDBに登録
+		RecordDAO rd = new RecordDAO();
+		rd.create(rb);
 
 		    // フォワード
 	RequestDispatcher dispatcher =

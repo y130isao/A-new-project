@@ -2,9 +2,10 @@
 pageEncoding="UTF-8"%>
 <%@ page import="model.RecordBeans" %>
 <%
-// リクエストスコープに保存されたHealthを取得
-RecordBeans rb = (RecordBeans) request.getAttribute("recordbeans");
+// セッションスコープに保存されたHealthを取得
+RecordBeans rb = (RecordBeans) session.getAttribute("recordbeans");
 %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,6 +28,5 @@ RecordBeans rb = (RecordBeans) request.getAttribute("recordbeans");
 <input type="submit" value="登録する"><br>
 </form>
 <a href="/Aproject3/RecordServlet" >前の画面に戻る</a>
-
 </body>
 </html>
