@@ -19,20 +19,21 @@ String today = sdf.format(date);
 
 <form action="/Aproject3/RecordServlet" method="post">
 <%-- プルダウンの値を渡す --%>
-選択項目
+選択項目<br>
 <select id="example" name="example_list" >
 <option>あ</option>
 <option>い</option>
 <option>う</option>
 </select><br>
 <%-- radioの値を渡す --%>
-<input type="radio" name="do_result" value="出来た">出来た<br>
-<input type="radio" name="do_result" value="出来なかった">出来なかった<br>
+<input type="radio" name="do_result" value="出来た" required>出来た<br>
+<input type="radio" name="do_result" value="出来なかった" required>出来なかった<br>
 
 <%-- textboxの値を渡す --%>
 メモ<br>
-<input type="text" neme="memo_list" required><br>
+<input type="text" name="memo_list" value="" required><br>
 <input type="submit" value="記録確認・登録画面へ"/><br>
+</form>
 <a href="/Aproject3/TopServlet">TOPへ</a>
 </body>
 </html>
