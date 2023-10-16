@@ -13,8 +13,9 @@
     <p>過去の記録を確認したい日付をクリックしてください。</p>
 
     <p>
-        <a href="?year=<c:out value="${mc.year}"/>&month=<c:out value="${mc.month-1}">前月</c:out></a>
-        <a href="?year=<c:out value="${mc.year}"/>&month=<c:out value="${mc.month+1}">翌月</c:out></a>
+        <a href="?year=<c:out value="${mc.year}"/>&amp;month=<c:out value="${mc.month - 1}">前月</c:out>">前月</a>
+		<a href="?year=<c:out value="${mc.year}"/>&amp;month=<c:out value="${mc.month + 1}">翌月</c:out>">翌月</a>
+
     </p>
     <table border="1">
       <tr>
