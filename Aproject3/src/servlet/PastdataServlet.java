@@ -30,6 +30,7 @@ public class PastdataServlet extends HttpServlet {
 					month=1;
 					year++;
 				}
+				
 				//年と月のクエリパラメーターが来ている場合にはその年月でカレンダーを生成する
 				mc=logic.createMyCalendar(year,month);
 			}else {
