@@ -2,6 +2,7 @@ package servlet;
 
 import java.io.IOException;
 
+import dao.RecordDAO;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -45,9 +46,9 @@ public class RecordServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 	    session.setAttribute("recordbeans", rb);
 	    
-//		// アカウントをDBに登録
-//		AccountRegisterDAO ard = new AccountRegisterDAO();
-//		ard.create(ab);
+		// アカウントをDBに登録
+		RecordDAO rd = new RecordDAO();
+		rd.create(rb);
 
 		    // フォワード
 	RequestDispatcher dispatcher =

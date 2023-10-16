@@ -28,6 +28,5 @@ RecordBeans rb = (RecordBeans) session.getAttribute("recordbeans");
 <input type="submit" value="登録する"><br>
 </form>
 <a href="/Aproject3/RecordServlet" >前の画面に戻る</a>
-
 </body>
 </html>
