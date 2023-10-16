@@ -9,7 +9,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import model.Content;
+import model.Goal;
 
 @WebServlet("/GoalconfirmServlet")
 
@@ -35,9 +35,9 @@ public class GoalconfirmServlet extends HttpServlet {
 			String exercise=request.getParameter("exercise");
 			String meal=request.getParameter("meal");
 			String sleep=request.getParameter("sleep");
-			Content content=new Content(exercise,meal,sleep);
+			Goal goal=new Goal(exercise,meal,sleep);
 			HttpSession session=request.getSession();
-			session.setAttribute("content", content);
+			session.setAttribute("goal", goal);
 			RequestDispatcher rd=request.getRequestDispatcher("/WEB-INF/jsp/goalconfirm.jsp");
 			rd.forward(request, response);
 		}

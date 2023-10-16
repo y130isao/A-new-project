@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
-import="model.Content" %>
+import="model.Goal" %>
 
 <%
-Content content=(Content)session.getAttribute("content");
-String exercise=content==null? "":content.getExercise();
-String meal=content==null? "":content.getMeal();
-String sleep=content==null? "":content.getSleep();
+Goal goal=(Goal)session.getAttribute("goal");
+String exercise=goal==null? "":goal.getExercise();
+String meal=goal==null? "":goal.getMeal();
+String sleep=goal==null? "":goal.getSleep();
 %>
 
 <!DOCTYPE html>

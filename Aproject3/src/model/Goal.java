@@ -2,12 +2,12 @@ package model;
 
 import java.io.Serializable;
 
-public class Content implements Serializable{
+public class Goal implements Serializable{
 	private String exercise;
 	private String meal;
 	private String sleep;
-	public Content(){}
-	public Content(String exercise,String meal,String sleep){
+	public Goal(){}
+	public Goal(String exercise,String meal,String sleep){
 		this.exercise=exercise;
 		this.meal=meal;
 		this.sleep=sleep;
