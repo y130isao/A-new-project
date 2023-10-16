@@ -8,12 +8,14 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+
 import model.MyCalendar;
 import model.MyCalendarLogic;
 
 @WebServlet("/PastdataServlet")
 
 public class PastdataServlet extends HttpServlet {
+
 	  protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		  String s_year=request.getParameter("year");
 		  String s_month=request.getParameter("month");
@@ -43,4 +45,14 @@ public class PastdataServlet extends HttpServlet {
 			RequestDispatcher rd=request.getRequestDispatcher("/WEB-INF/jsp/pastdata.jsp");
 			rd.forward(request, response);
 		}
+
+	  private static final long serialVersionUID = 1L;
+
+	  protected void doGet(HttpServletRequest request,
+	      HttpServletResponse response)
+	      throws ServletException, IOException {
+	    RequestDispatcher dispatcher = request.getRequestDispatcher(
+	        "/WEB-INF/jsp/pastdata.jsp");
+	    dispatcher.forward(request, response);
+	  }
 	}
