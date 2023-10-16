@@ -9,13 +9,13 @@ import model.AccountBeans;
 
 public class AccountRegisterDAO {
 	// データベース接続に使用する情報
-	final String jdbcId = "root";
-	final String jdbcPass = "adminadmin";
-	final String jdbcUrl = "jdbc:mysql://localhost:3306/testdb";
+	private final String JDBC_URL = "jdbc:mysql://172.16.0.218:3306/health_management";
+	private final String DB_USER = "sample_user";
+	private final String DB_PASS = "";
 
 	public boolean create(AccountBeans ab) {
 
-		try (Connection con = DriverManager.getConnection(jdbcUrl, jdbcId, jdbcPass)) {
+		try (Connection con = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASS)) {
 
 			String sql = "INSERT INTO account(loginId, pass, name, roleId, genId) VALUES(?, ?, ?, ?, ?)";
 			PreparedStatement ps = con.prepareStatement(sql);
