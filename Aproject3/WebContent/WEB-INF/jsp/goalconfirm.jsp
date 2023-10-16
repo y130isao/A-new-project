@@ -28,7 +28,7 @@ Content content=(Content)session.getAttribute("content");
 					<p>食事</p>
 				</dt>
 				<dd class="contact-1">
-					<%=content.getEat() %>
+					<%=content.getMeal() %>
 				</dd>
 			</div>
 			<div class="contact-formbox">

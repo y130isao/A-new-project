@@ -4,7 +4,7 @@ import="model.Content" %>
 <%
 Content content=(Content)session.getAttribute("content");
 String exercise=content==null? "":content.getExercise();
-String eat=content==null? "":content.getEat();
+String meal=content==null? "":content.getMeal();
 String sleep=content==null? "":content.getSleep();
 %>
 

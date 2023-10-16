@@ -33,9 +33,9 @@ public class GoalconfirmServlet extends HttpServlet {
 		protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			request.setCharacterEncoding("UTF-8");
 			String exercise=request.getParameter("exercise");
-			String eat=request.getParameter("eat");
+			String meal=request.getParameter("meal");
 			String sleep=request.getParameter("sleep");
-			Content content=new Content(exercise,eat,sleep);
+			Content content=new Content(exercise,meal,sleep);
 			HttpSession session=request.getSession();
 			session.setAttribute("content", content);
 			RequestDispatcher rd=request.getRequestDispatcher("/WEB-INF/jsp/goalconfirm.jsp");
