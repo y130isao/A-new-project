@@ -2,9 +2,10 @@
 pageEncoding="UTF-8"%>
 <%@ page import="model.RecordBeans" %>
 <%
-// リクエストスコープに保存されたHealthを取得
-RecordBeans rb = (RecordBeans) request.getAttribute("recordbeans");
+// セッションスコープに保存されたHealthを取得
+RecordBeans rb = (RecordBeans) session.getAttribute("recordbeans");
 %>
+
 <!DOCTYPE html>
 <html>
 <head>
