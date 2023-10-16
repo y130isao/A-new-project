@@ -20,7 +20,7 @@ public class AccountDAO {
 		// 戻り値の用意
 		AccountBeans returnAb = new AccountBeans();
 
-		// データベースへ接続
+		
 		try (Connection con = DriverManager.getConnection(jdbcUrl, jdbcId, jdbcPass)) {
 
 			String sql = "SELECT loginId, pass, name, roleId, genId FROM account WHERE loginId = ? AND pass = ?";
