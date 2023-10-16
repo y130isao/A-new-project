@@ -17,7 +17,6 @@ String sleep=content==null? "":content.getSleep();
 	</head>
 	<body>
 		<h1>目標設定</h1>
-    
 		<form action="/Aproject3/GoalconfirmServlet" method="post">
 			<div class="contact-formbox">
 				<dt>
@@ -25,7 +24,8 @@ String sleep=content==null? "":content.getSleep();
 					<span>必須</span>
 				</dt>
 				<dd class="contact-1">
-					<input type="text" placeholder="目標を記入してください" name="exercise" value="<%=exercise%>">
+					<input type="text" placeholder="10文字以上" 
+					name="exercise" value="<%=exercise%>" minlength="10" required>
 				</dd>
 			</div>
 			<div class="contact-formbox">
@@ -34,7 +34,8 @@ String sleep=content==null? "":content.getSleep();
 					<span>必須</span>
 				</dt>
 				<dd class="contact-1">
-					<input type="text" placeholder="目標を記入してください" name="eat" value="<%=eat%>">
+					<input type="text" placeholder="10文字以上" 
+					name="meal" value="<%=meal%>" minlength="10" required>
 				</dd>
 			</div>
 			<div class="contact-formbox">
@@ -43,12 +44,12 @@ String sleep=content==null? "":content.getSleep();
 					<span>必須</span>
 				</dt>
 				<dd class="contact-1">
-					<input type="text" placeholder="目標を記入してください" name="sleep" value="<%=sleep%>">
+					<input type="text" placeholder="10文字以上" 
+					name="sleep" value="<%=sleep%>" minlength="10" required>
 				</dd>
 			</div>
 			<input type="submit" class="button"  value="確認">
-
 		</form>
-		<a href="/Sakaguchi/TopServlet">TOPへ</a>
+		<a href="/Aproject3/TopServlet">TOPへ</a>
 	</body>
 </html>
