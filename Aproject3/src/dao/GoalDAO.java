@@ -12,10 +12,9 @@ import model.Goal;
 
 public class GoalDAO {
   // データベース接続に使用する情報
-  private final String JDBC_URL =
-      "jdbc:mysql://localhost/Aproject3";
-  private final String DB_USER = "root";
-  private final String DB_PASS = "adminadmin";
+  private final String JDBC_URL ="jdbc:mysql://172.16.0.218:3306/health_management";
+  private final String DB_USER = "";
+  private final String DB_PASS = "";
 
   public List<Goal> findAll() {
     List<Goal> goalList = new ArrayList<Goal>();
@@ -26,7 +25,7 @@ public class GoalDAO {
 
       // SELECT文の準備
       String sql =
-          "SELECT EXERCISE,MEAL,SLEEP FROM GOAL ORDER BY ID DESC";
+          "SELECT GOAL1,GOAL2,GOAL3 FROM ACCOUNT ORDER BY ID DESC";
       PreparedStatement pStmt = conn.prepareStatement(sql);
 
       // SELECTを実行
@@ -34,10 +33,13 @@ public class GoalDAO {
 
       // SELECT文の結果をArrayListに格納
       while (rs.next()) {
-        String exercise = rs.getString("EXERCISE");
-        String meal = rs.getString("MEAL");
-        String sleep = rs.getString("SLEEP");
-        Goal goal = new Goal(exercise, meal, sleep);
+    	String goalgenre1 = rs.getString("GOALGENRE1");
+    	String goalgenre2 = rs.getString("GOALGENRE2");
+    	String goalgenre3 = rs.getString("GOALGENRE3");
+        String goal1 = rs.getString("GOAL1");
+        String goal2 = rs.getString("GOAL2");
+        String goal3 = rs.getString("GOAL3");
+        Goal goal = new Goal(goal1, goal2, goal3, goalgenre1, goalgenre2, goalgenre3);
         goalList.add(goal);
       }
     } catch (SQLException e) {
@@ -52,12 +54,15 @@ public class GoalDAO {
           JDBC_URL, DB_USER, DB_PASS)) {
 
       // INSERT文の準備(idは自動連番なので指定しなくてよい）
-      String sql = "INSERT INTO GOAL(EXERCISE, MEAL, SLEEP) VALUES(?, ?)";
+      String sql = "INSERT INTO ACCOUNT(GOAL1, GOAL2, GOAL3, GOALGENRE1, GOALGENRE2, GOALGENRE3) VALUES(?, ?, ?, ?, ?, ?)";
       PreparedStatement pStmt = conn.prepareStatement(sql);
       // INSERT文中の「?」に使用する値を設定しSQLを完成
-      pStmt.setString(1, goal.getExercise());
-      pStmt.setString(2, goal.getMeal());
-      pStmt.setString(2, goal.getSleep());
+      pStmt.setString(1, goal.getGoalgenre1());
+      pStmt.setString(2, goal.getGoalgenre2());
+      pStmt.setString(3, goal.getGoalgenre3());
+      pStmt.setString(1, goal.getGoal1());
+      pStmt.setString(2, goal.getGoal2());
+      pStmt.setString(3, goal.getGoal3());
 
       // INSERT文を実行
       int result = pStmt.executeUpdate();

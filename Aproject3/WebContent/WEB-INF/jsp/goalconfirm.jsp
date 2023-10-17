@@ -17,26 +17,26 @@ Goal goal=(Goal)session.getAttribute("goal");
 	
 		<div class="contact-formbox">
 				<dt>
-					<p>運動</p>
+					<p><%=goal.getGoalgenre1()%></p>
 				</dt>
 				<dd class="contact-1">
-					<%=goal.getExercise() %>
+					<%=goal.getGoal1() %>
 				</dd>
 			</div>
 			<div class="contact-formbox">
 				<dt>
-					<p>食事</p>
+					<p><%=goal.getGoalgenre2()%></p>
 				</dt>
 				<dd class="contact-1">
-					<%=goal.getMeal() %>
+					<%=goal.getGoal2() %>
 				</dd>
 			</div>
 			<div class="contact-formbox">
 				<dt>
-					<p>睡眠</p>
+					<p><%=goal.getGoalgenre3()%></p>
 				</dt>
 				<dd class="contact-1">
-					<%=goal.getSleep() %>
+					<%=goal.getGoal3() %>
 				</dd>
 			</div>
 			<div id="btBox">
