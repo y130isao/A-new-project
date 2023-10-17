@@ -3,9 +3,12 @@ import="model.Goal" %>
 
 <%
 Goal goal=(Goal)session.getAttribute("goal");
-String exercise=goal==null? "":goal.getExercise();
-String meal=goal==null? "":goal.getMeal();
-String sleep=goal==null? "":goal.getSleep();
+String goalgenre1=goal==null? "":goal.getGoalgenre1();
+String goalgenre2=goal==null? "":goal.getGoalgenre2();
+String goalgenre3=goal==null? "":goal.getGoalgenre3();
+String goal1=goal==null? "":goal.getGoal1();
+String goal2=goal==null? "":goal.getGoal2();
+String goal3=goal==null? "":goal.getGoal3();
 %>
 
 <!DOCTYPE html>
@@ -19,33 +22,39 @@ String sleep=goal==null? "":goal.getSleep();
 		<h1>目標設定</h1>
 		<form action="/Aproject3/GoalconfirmServlet" method="post">
 			<div class="contact-formbox">
-				<dt>
-					<p>運動</p>
-					<span>必須</span>
-				</dt>
+				<select name="goalgenre1" value="<%=goalgenre1%>" required>
+					<option value="">選択してください</option>
+					<option value="運動">運動</option>
+					<option value="食事">食事</option>
+					<option value="睡眠">睡眠</option>
+				</select>
 				<dd class="contact-1">
-					<input type="text" placeholder="10文字以上" 
-					name="exercise" value="<%=exercise%>" minlength="10" required>
+					<input type="text" placeholder="必須" 
+					name="goal1" value="<%=goal1%>" required>
 				</dd>
 			</div>
 			<div class="contact-formbox">
-				<dt>
-					<p>食事</p>
-					<span>必須</span>
-				</dt>
+				<select name="goalgenre2" value="<%=goalgenre2%>" required>
+					<option value="">選択してください</option>
+					<option value="運動">運動</option>
+					<option value="食事">食事</option>
+					<option value="睡眠">睡眠</option>
+				</select>
 				<dd class="contact-1">
-					<input type="text" placeholder="10文字以上" 
-					name="meal" value="<%=meal%>" minlength="10" required>
+					<input type="text" placeholder="必須" 
+					name="goal2" value="<%=goal2%>" required>
 				</dd>
 			</div>
 			<div class="contact-formbox">
-				<dt>
-					<p>睡眠</p>
-					<span>必須</span>
-				</dt>
+				<select name="goalgenre3" value="<%=goalgenre3%>" required>
+					<option value="">選択してください</option>
+					<option value="運動">運動</option>
+					<option value="食事">食事</option>
+					<option value="睡眠">睡眠</option>
+				</select>
 				<dd class="contact-1">
-					<input type="text" placeholder="10文字以上" 
-					name="sleep" value="<%=sleep%>" minlength="10" required>
+					<input type="text" placeholder="必須" 
+					name="goal3" value="<%=goal3%>" required>
 				</dd>
 			</div>
 			<input type="submit" class="button"  value="確認">
