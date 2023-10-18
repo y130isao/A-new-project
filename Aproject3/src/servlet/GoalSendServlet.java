@@ -50,14 +50,14 @@ public class GoalSendServlet extends HttpServlet {
 
     // リクエストパラメータの取得
     request.setCharacterEncoding("UTF-8");
-    String goalgenre1=request.getParameter("goalgenre1");
-	String goalgenre2=request.getParameter("goalgenre2");
-	String goalgenre3=request.getParameter("goalgenre3");
-	String goal1=request.getParameter("goal1");
-	String goal2=request.getParameter("goal2");
-	String goal3=request.getParameter("goal3");
+//    String goalgenre1=request.getParameter("goalgenre1");
+//	String goalgenre2=request.getParameter("goalgenre2");
+//	String goalgenre3=request.getParameter("goalgenre3");
+//	String goal1=request.getParameter("goal1");
+//	String goal2=request.getParameter("goal2");
+//	String goal3=request.getParameter("goal3");
 
-     // つぶやきリストを取得して、リクエストスコープに保存
+     // 目標リストを取得して、リクエストスコープに保存
     GetGoalListLogic getGoalListLogic =
         new GetGoalListLogic();
     List<Goal> goalList = getGoalListLogic.execute();

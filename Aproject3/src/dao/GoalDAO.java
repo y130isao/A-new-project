@@ -13,7 +13,7 @@ import model.Goal;
 public class GoalDAO {
   // データベース接続に使用する情報
   private final String JDBC_URL ="jdbc:mysql://172.16.0.218:3306/health_management";
-  private final String DB_USER = "";
+  private final String DB_USER = "hinatsu";
   private final String DB_PASS = "";
 
   public List<Goal> findAll() {
