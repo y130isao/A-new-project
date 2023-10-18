@@ -20,6 +20,7 @@ public class RecordServlet extends HttpServlet {
 		    HttpServletResponse response)
 		    throws ServletException, IOException {
 			request.setCharacterEncoding("UTF-8");
+			
 		    
 			
 //		  //セッションスコープに保存された項目情報を取得

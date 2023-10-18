@@ -55,6 +55,7 @@ RecordBeans rb = (RecordBeans) session.getAttribute("recordbeans");
 <form action="/Aproject3/RecordComplete" method="post">
 <input type="submit" value="登録する"><br>
 </form>
+
 <a href="/Aproject3/RecordServlet" >前の画面に戻る</a>
 </body>
 </html>
