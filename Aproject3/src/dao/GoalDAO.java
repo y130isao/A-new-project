@@ -25,7 +25,7 @@ public class GoalDAO {
 
       // SELECT文の準備
       String sql =
-          "SELECT GOAL1,GOAL2,GOAL3 FROM ACCOUNT ORDER BY ID DESC";
+          "SELECT GOALGENRE1, GOALGENRE2, GOALGENRE3,GOAL1,GOAL2,GOAL3 FROM ACCOUNT ORDER BY ID DESC";
       PreparedStatement pStmt = conn.prepareStatement(sql);
 
       // SELECTを実行
@@ -60,14 +60,14 @@ public class GoalDAO {
       pStmt.setString(1, goal.getGoalgenre1());
       pStmt.setString(2, goal.getGoalgenre2());
       pStmt.setString(3, goal.getGoalgenre3());
-      pStmt.setString(1, goal.getGoal1());
-      pStmt.setString(2, goal.getGoal2());
-      pStmt.setString(3, goal.getGoal3());
+      pStmt.setString(4, goal.getGoal1());
+      pStmt.setString(5, goal.getGoal2());
+      pStmt.setString(6, goal.getGoal3());
 
       // INSERT文を実行
       int result = pStmt.executeUpdate();
 
-      if (result != 1) {
+      if (result != 0) {
         return false;
       }
     } catch (SQLException e) {
