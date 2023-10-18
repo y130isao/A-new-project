@@ -9,6 +9,7 @@ public class Goal implements Serializable{
 	private String goal1;
 	private String goal2;
 	private String goal3;
+	
 	public Goal(){}
 	public Goal(String goal1,String goal2,String goal3,String goalgenre1,String goalgenre2,String goalgenre3){
 		this.goalgenre1=goalgenre1;
