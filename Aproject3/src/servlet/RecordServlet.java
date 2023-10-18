@@ -63,5 +63,6 @@ public class RecordServlet extends HttpServlet {
 	RequestDispatcher dispatcher =
 		request.getRequestDispatcher("/WEB-INF/jsp/recordcheck.jsp");
 		dispatcher.forward(request, response);
+		
 		}
 }
