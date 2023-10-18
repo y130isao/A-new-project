@@ -49,6 +49,7 @@ public class RecordBeans implements Serializable {
     }
     public void setMemo_list3(String memo_list3) {
         this.memo_list3 = memo_list3;
+        
     }
 }
 

@@ -55,7 +55,6 @@ String today = sdf.format(date);
 </div>
 <input type="submit" value="記録確認・登録画面へ"/><br>
 </form>
-
 <a href="/Aproject3/TopServlet">TOPへ</a>
 </body>
 </html>
