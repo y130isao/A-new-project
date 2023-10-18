@@ -39,7 +39,7 @@ public class GoalDAO {
         String goal1 = rs.getString("GOAL1");
         String goal2 = rs.getString("GOAL2");
         String goal3 = rs.getString("GOAL3");
-        Goal goal = new Goal(goal1, goal2, goal3, goalgenre1, goalgenre2, goalgenre3);
+        Goal goal = new Goal(goalgenre1, goalgenre2, goalgenre3, goal1, goal2, goal3);
         goalList.add(goal);
       }
     } catch (SQLException e) {
@@ -54,7 +54,7 @@ public class GoalDAO {
           JDBC_URL, DB_USER, DB_PASS)) {
 
       // INSERT文の準備(idは自動連番なので指定しなくてよい）
-      String sql = "INSERT INTO ACCOUNT(GOAL1, GOAL2, GOAL3, GOALGENRE1, GOALGENRE2, GOALGENRE3) VALUES(?, ?, ?, ?, ?, ?)";
+      String sql = "INSERT INTO ACCOUNT(GOALGENRE1, GOALGENRE2, GOALGENRE3, GOAL1, GOAL2, GOAL3) VALUES(?, ?, ?, ?, ?, ?)";
       PreparedStatement pStmt = conn.prepareStatement(sql);
       // INSERT文中の「?」に使用する値を設定しSQLを完成
       pStmt.setString(1, goal.getGoalgenre1());
