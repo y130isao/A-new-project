@@ -4,28 +4,52 @@ import java.io.Serializable;
 
 public class RecordBeans implements Serializable {
 
-    private String example_list;
-    private String do_result;
-    private String memo_list;
+    private String do_result1;
+    private String do_result2;
+    private String do_result3;
+    private String memo_list1;
+    private String memo_list2;
+    private String memo_list3;
     
-    public String getExample_list() {
-        return example_list;
-    }
-    public void setExample_list(String example_list) {
-        this.example_list = example_list;
-    }
-    public String getDo_result() {
-        return do_result;
-    }
-    public void setDo_result(String do_result) {
-        this.do_result = do_result;
-    }
-    public String getMemo_list() {
-        return memo_list;
-    }
-    public void setMemo_list(String memo_list) {
-        this.memo_list = memo_list;
 
+    public String getDo_result1() {
+        return do_result1;
+    }
+    public void setDo_result1(String do_result1) {
+        this.do_result1 = do_result1;
+    }
+    public String getDo_result2() {
+        return do_result2;
+    }
+    public void setDo_result2(String do_result2) {
+        this.do_result2 = do_result2;
+    }
+    public String getDo_result3() {
+        return do_result3;
+    }
+    public void setDo_result3(String do_result3) {
+        this.do_result3 = do_result3;
+    }
+    public String getMemo_list1() {
+        return memo_list1;
+    }
+    public void setMemo_list1(String memo_list1) {
+        this.memo_list1 = memo_list1;
+
+    }
+    public String getMemo_list2() {
+        return memo_list2;
+    }
+    public void setMemo_list2(String memo_list2) {
+        this.memo_list2 = memo_list2;
+
+    }
+    public String getMemo_list3() {
+        return memo_list3;
+    }
+    public void setMemo_list3(String memo_list3) {
+        this.memo_list3 = memo_list3;
+        
     }
 }
 
