@@ -14,32 +14,25 @@ public class RoomDAO {
 	private final String DB_USER = "sample_user";
 	private final String DB_PASS = "";
 
-	public RoomBeans findRoom(RoomBeans rb) {
-		RoomBeans returnRb = new RoomBeans();
-
+	public RoomBeans findRoom() {
+		RoomBeans rb = new RoomBeans();
 		try (Connection con = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASS)) {
 
 			String sql = "SELECT id, chara_level, chara_point FROM chara WHERE id = 1";
 			PreparedStatement ps = con.prepareStatement(sql);
-
-			ps.setInt(1, rb.getId());
-			ps.setInt(2, rb.getChara_Level());
-			ps.setInt(3, rb.getChara_Point());
 			ResultSet rs = ps.executeQuery();
 
-			if (rs.next()) {
-				// 見つかったアカウント情報を戻り値にセット
-				returnRb.setId(rs.getInt("id"));
-				returnRb.setChara_Level(rs.getInt("chara_level"));
-				returnRb.setChara_Point(rs.getInt("chara_point"));
-			} else {
-				// アカウントがなければnullを返す
-				return null;
+			// 見つかったroom情報を戻り値にセット
+			// リストroom情報を追加
+			while (rs.next()) {
+				rb.setId(rs.getInt("id"));
+				rb.setId(rs.getInt("chara_level"));
+				rb.setId(rs.getInt("chara_point"));
 			}
+
 		} catch (SQLException e) {
 			e.printStackTrace();
-			return null;
 		}
-		return returnRb;
+		return rb;
 	}
 }
