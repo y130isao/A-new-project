@@ -52,4 +52,3 @@ public class RecordBeans implements Serializable {
         
     }
 }
-
