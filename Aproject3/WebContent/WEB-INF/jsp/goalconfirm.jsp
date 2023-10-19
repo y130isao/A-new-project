@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
-import="model.Content" %>
+import="model.Goal" %>
 
 <%
-Content content=(Content)session.getAttribute("content");
+Goal goal=(Goal)session.getAttribute("goal");
 %>
 
 <!DOCTYPE html>
@@ -17,26 +17,26 @@ Content content=(Content)session.getAttribute("content");
 	
 		<div class="contact-formbox">
 				<dt>
-					<p>運動</p>
+					<p><%=goal.getGoalgenre1()%></p>
 				</dt>
 				<dd class="contact-1">
-					<%=content.getExercise() %>
+					<%=goal.getGoal1() %>
 				</dd>
 			</div>
 			<div class="contact-formbox">
 				<dt>
-					<p>食事</p>
+					<p><%=goal.getGoalgenre2()%></p>
 				</dt>
 				<dd class="contact-1">
-					<%=content.getEat() %>
+					<%=goal.getGoal2() %>
 				</dd>
 			</div>
 			<div class="contact-formbox">
 				<dt>
-					<p>睡眠</p>
+					<p><%=goal.getGoalgenre3()%></p>
 				</dt>
 				<dd class="contact-1">
-					<%=content.getSleep() %>
+					<%=goal.getGoal3() %>
 				</dd>
 			</div>
 			<div id="btBox">

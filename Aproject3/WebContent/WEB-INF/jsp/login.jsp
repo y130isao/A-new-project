@@ -8,8 +8,8 @@
 </head>
 <body>
 <form action="/Aproject3/AccountSearch" method="post">
-ユーザーID：<input type="text" name="loginId" required><br>
-パスワード：<input type="password" name="pass" required><br>
+<input type="text" name="loginId" placeholder="ユーザーID" required><br>
+<input type="password" name="pass" placeholder="パスワード" required><br>
 <input type="submit" value="ログイン"><br>
 </form>
 <p>
