@@ -9,7 +9,6 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 import model.RoomBeans;
 
 @WebServlet("/RoomServlet")
@@ -21,17 +20,16 @@ public class RoomServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		//ルーム情報の取得
+		RoomBeans rb = new RoomBeans();
 		RoomDAO dao = new RoomDAO();
-		RoomBeans room = new RoomBeans();
-		room = dao.findRoom();
-		request.setAttribute("room", room);
-		System.out.println(room);
-
-		//セッションにルーム情報を登録
-		HttpSession session = request.getSession();
-		session.setAttribute("room", room);
+		rb = dao.findRoom();
+		String id = rb.getId();
+		String chara_level = rb.getChara_Level();
+		String chara_point = rb.getChara_Point();
+		System.out.println(id + chara_level + chara_point);
 		
 
+		request.setAttribute("roomlist", rb);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/room.jsp");
 		dispatcher.forward(request, response);
 
