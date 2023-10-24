@@ -4,26 +4,34 @@
 <html>
 <head>
 <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/Aproject3/css/top.css">
 <title>健康管理アプリ</title>
 </head>
 <body>
-<h1>健康管理アプリ</h1>
-<ul>
-	<li><a href="${pageContext.request.contextPath}/PastdataServlet">過去のデータ</a></li>
-	<li><a href="${pageContext.request.contextPath}/GoalServlet">目標設定</a></li>
-	<li><a href="${pageContext.request.contextPath}/AccountServlet">アカウント設定</a></li>
-</ul>
-<div>
-<h2><a href="${pageContext.request.contextPath}/RoomServlet">モブルームへ</a></h2>
-</div>
-<div>
-<h2><a href="${pageContext.request.contextPath}/RecordServlet">記録</a></h2>
-</div>
+    <h1>健康管理アプリ</h1>
 
-<div>
-<p>現在のレベル: ${charaLevel}</p>
-<p>所有ポイント: ${charaPoint} point</p>
-<p>次のレベルアップまで: ${nextLevelUpPoints} point</p>
-</div>
+    <nav>
+        <ul>
+            <li><a href="${pageContext.request.contextPath}/PastdataServlet">過去のデータ</a></li>
+            <li><a href="${pageContext.request.contextPath}/GoalServlet">目標設定</a></li>
+            <li><a href="${pageContext.request.contextPath}/AccountServlet">アカウント設定</a></li>
+            <li><a href="${pageContext.request.contextPath}/RecordServlet">記録</a></li>
+            <li class="slider"></li>
+        </ul>
+    </nav>
+
+
+
+
+    <div>
+        <h2><a href="${pageContext.request.contextPath}/RoomServlet">モブルームへ</a></h2>
+    </div>
+
+    <div>
+        <p>現在のレベル: ${charaLevel}</p>
+        <p>所有ポイント: ${charaPoint} point</p>
+        <p>次のレベルアップまで: ${nextLevelUpPoints} point</p>
+    </div>
 </body>
 </html>
