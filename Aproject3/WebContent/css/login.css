@@ -1,138 +1,142 @@
-  /* ---------- GENERAL ---------- */
-  * {
-      box-sizing: inherit;
-  }
-
-  html {
-      box-sizing: border-box;
-  }
-
-  body {
-      background-color: #c0c0c0;
-      font-family: 'Varela Round', sans-serif;
-      line-height: 1.5;
-      margin: 0;
-      min-block-size: 100vh;
-      padding: 5vmin;
-  }
-
-  h2 {
-      font-size: 1.75rem;
-  }
-
-  input {
-      background-image: none;
-      border: none;
-      font: inherit;
-      margin: 0;
-      padding: 0;
-      transition: all 0.3s;
-  }
-
-  svg {
-      height: auto;
-      max-width: 100%;
-      vertical-align: middle;
-  }
-
-  /* ---------- ALIGN ---------- */
-  .align {
-      display: grid;
-      place-items: center;
-  }
-
-  /* ---------- BUTTON ---------- */
-
-  .button {
-      background-color: #33cc77;
-      color: #fff;
-      padding: 0.25em 1.5em;
-  }
-
-  .button:focus,
-  .button:hover {
-      background-color: #28ad63;
-  }
-
-  /* ---------- ICONS ---------- */
-  .icons {
-      display: none;
-  }
-
-  .icon {
-      fill: currentcolor;
-      display: inline-block;
-      height: 1em;
-      width: 1em;
-  }
-
-  /* ---------- LOGIN ---------- */
-  .login {
-      width: 400px;
-  }
-
-  .login__header {
-      background-color: #f95252;
-      border-top-left-radius: 1.25em;
-      border-top-right-radius: 1.25em;
-      color: #fff;
-      padding: 1.25em 1.625em;
-  }
-
-  .login__header :first-child {
-      margin-top: 0;
-  }
-
-  .login__header :last-child {
-      margin-bottom: 0;
-  }
-
-  .login h2 .icon {
-      margin-right: 14px;
-  }
-
-  .login__form {
-      background-color: #fff;
-      border-bottom-left-radius: 1.25em;
-      border-bottom-right-radius: 1.25em;
-      color: #777;
-      display: grid;
-      gap: 0.875em;
-      padding: 1.25em 1.625em;
-  }
-
-  .login input {
-      border-radius: 0.1875em;
-  }
-
-  .login input[type="email"],
-  .login input[type="password"] {
-      background-color: #eee;
-      color: #777;
-      padding: 0.25em 0.625em;
-      width: 100%;
-  }
-
-  .login input[type="submit"] {
-      display: block;
-      margin: 0 auto;
-  }
-
-  h5 {
-    color: #ed2222;
-  }
-
-  button {
-    border-radius: 0.1875em;
-    
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+nav,
+section {
+  display: block;
 }
 
-label, 
-select, 
-button, 
-input[type="submit"], 
-input[type="radio"], 
-input[type="checkbox"] 
-input[type="button"] {
-    cursor: pointer;
+html {
+  font-size: 100%;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+}
+
+label,
+select,
+button,
+input[type="submit"],
+input[type="radio"],
+input[type="checkbox"] input[type="button"] {
+  cursor: pointer;
+}
+
+a,
+a:visited,
+a:active {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+::selection {
+  background: #ed327b;
+  color: #fff;
+}
+
+::-moz-selection {
+  background: #ed327b;
+  color: #fff;
+}
+
+* {
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  background: lightblue;
+}
+
+* {
+  font-family: "Helvetica Neue", Helvetica, Arial;
+}
+
+h5 {
+  text-align: center;
+  margin-top: 5px;
+  color: red;
+}
+
+h5>a,
+a:visited {
+  color: #fff;
+  text-decoration: underline;
+}
+
+h5>a:hover {
+  text-decoration: none;
+}
+
+form {
+  background: #fff;
+  border-radius: 6px;
+  padding: 20px;
+  padding-top: 30px;
+  width: 300px;
+  margin: 50px auto;
+  box-shadow: 15px 15px 0px rgba(0, 0, 0, .1);
+}
+
+h1 {
+  text-align: center;
+  font-size: 1.4em;
+  font-weight: 700;
+  color: #ccc;
+  margin-bottom: 24px;
+}
+
+input {
+  width: 100%;
+  background: #f5f5f5;
+  border: 0;
+  padding: 20px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  border: 1px solid #eee;
+}
+
+.btn {
+  position: relative;
+  width: 100%;
+  padding: 20px;
+  border-radius: 6px;
+  border: 0;
+  background: #f26964;
+  font-size: 1.2em;
+  color: #fff;
+  text-shadow: 1px 1px 0px rgba(0, 0, 0, .1);
+  box-shadow: 0px 3px 0px #c1524e;
+}
+
+.btn:active {
+  top: 3px;
+  box-shadow: none;
+}
+
+button {
+  position: relative;
+  border-radius: 6px;
+  border: 0;
+  background: #fff;
+  font-size: 1.2em;
+  color: black;
+  text-shadow: 1px 1px 0px rgba(0, 0, 0, .1);
+  box-shadow: 0px 3px 0px gray;
 }
