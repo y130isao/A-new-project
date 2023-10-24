@@ -11,6 +11,8 @@ public class AccountBeans implements Serializable {
 	private String name;
 	private int roleId;
 	private int genId;
+	private int charaLevel;
+	private int charaPoint;
 
 	public int getAccountId() {
 		return accountId;
@@ -58,5 +60,21 @@ public class AccountBeans implements Serializable {
 
 	public void setGenId(int genId) {
 		this.genId = genId;
+	}
+
+	public int getCharaLevel() {
+		return charaLevel;
+	}
+
+	public void setCharaLevel(int charaLevel) {
+		this.charaLevel = charaLevel;
+	}
+
+	public int getCharaPoint() {
+		return charaPoint;
+	}
+
+	public void setCharaPoint(int charaPoint) {
+		this.charaPoint = charaPoint;
 	}
 }
