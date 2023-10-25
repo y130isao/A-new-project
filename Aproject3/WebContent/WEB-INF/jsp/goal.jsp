@@ -19,7 +19,7 @@ String goal3=goal==null? "":goal.getGoal3();
 	</head>
 	<body>
 		<h1>目標設定</h1>
-		<form action="/Aproject3/GoalServlet" method="post">
+		<form action="/Aproject3/GoalconfirmServlet" method="post">
 			<div class="contact-formbox">
 				<select name="goalgenre1" value="<%=goalgenre1%>" required>
 					<option value="">選択してください</option>

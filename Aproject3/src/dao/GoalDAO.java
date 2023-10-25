@@ -25,7 +25,7 @@ public class GoalDAO {
 
       // SELECT文の準備
       String sql =
-          "SELECT GOALGENRE1, GOALGENRE2, GOALGENRE3,GOAL1,GOAL2,GOAL3 FROM ACCOUNT ORDER BY ID DESC";
+          "SELECT GOALGENRE1, GOALGENRE2, GOALGENRE3,GOAL1,GOAL2,GOAL3 FROM USER_HEALTH ORDER BY ID DESC";
       PreparedStatement pStmt = conn.prepareStatement(sql);
 
       // SELECTを実行
@@ -54,7 +54,7 @@ public class GoalDAO {
           JDBC_URL, DB_USER, DB_PASS)) {
 
       // INSERT文の準備(idは自動連番なので指定しなくてよい）
-      String sql = "INSERT INTO ACCOUNT(GOALGENRE1, GOALGENRE2, GOALGENRE3, GOAL1, GOAL2, GOAL3) VALUES(?, ?, ?, ?, ?, ?)";
+      String sql = "INSERT INTO USER_HEALTH(GOALGENRE1, GOALGENRE2, GOALGENRE3, GOAL1, GOAL2, GOAL3) VALUES(?, ?, ?, ?, ?, ?)";
       PreparedStatement pStmt = conn.prepareStatement(sql);
       // INSERT文中の「?」に使用する値を設定しSQLを完成
       pStmt.setString(1, goal.getGoalgenre1());
