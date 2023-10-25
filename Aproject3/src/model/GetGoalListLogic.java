@@ -1,14 +1,12 @@
 package model;
 
-
 import java.util.List;
 
 import dao.GoalDAO;
 
 public class GetGoalListLogic {
-  public List<Goal> execute() { 
-    GoalDAO dao = new GoalDAO();
-    List<Goal> goalList = dao.findAll();
-    return goalList;
-  }
+    public List<Goal> execute(int accountId) {
+        GoalDAO goalDAO = new GoalDAO();
+        return goalDAO.getGoalsByAccountId(accountId);
+    }
 }
