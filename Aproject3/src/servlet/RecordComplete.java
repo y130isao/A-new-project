@@ -13,7 +13,7 @@ import jakarta.servlet.http.HttpSession;
 import model.RecordBeans;
 
 @WebServlet("/RecordComplete")
-public class RecordComplete extends HttpServlet {
+public class RecordComplete<Date> extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -23,6 +23,7 @@ public class RecordComplete extends HttpServlet {
 		String memo_list1 = request.getParameter("memo_list1");
 		String memo_list2 = request.getParameter("memo_list2");
 		String memo_list3 = request.getParameter("memo_list3");
+		String today = request.getParameter("today") ;
 
 		// recordcheck.jspから受け取った記録をビーンズにセット
 		RecordBeans rb = new RecordBeans();
@@ -32,6 +33,7 @@ public class RecordComplete extends HttpServlet {
 		rb.setMemo_list1(memo_list1);
 		rb.setMemo_list2(memo_list2);
 		rb.setMemo_list3(memo_list3);
+		rb.setToday(today);
 
 		// 記録の有無を検索
 		// 検索した記録情報を取得
