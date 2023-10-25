@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
 <%@ page import="model.RecordBeans" %>
-<%@ page import="model.Goal" %>
 
 <%
 // セッションスコープに保存されたDo_result/Memo_listを取得
@@ -33,7 +32,6 @@ RecordBeans rb = (RecordBeans) session.getAttribute("recordbeans");
 
 <h2>あなたの選択項目2</h2><br>
 
-
 <div class result>
 結果<br>
 【<%= rb.getDo_result2() %>】</br>
@@ -44,7 +42,6 @@ RecordBeans rb = (RecordBeans) session.getAttribute("recordbeans");
 </div>
 
 <h2>あなたの選択項目3</h2><br>
-
 
 <div class result>
 結果<br>
