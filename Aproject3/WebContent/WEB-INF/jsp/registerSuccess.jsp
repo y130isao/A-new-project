@@ -8,6 +8,6 @@
 </head>
 <body>
 新規登録が完了しました!
-<p><a href="/Aproject3/AccountCheck"><button type="button" name="aaa" >ユーザー or 管理者ページへ</button></a></p>
+<p><a href="/Aproject3/Login"><button type="button" name="aaa" >ログインへ戻る</button></a></p>
 </body>
 </html>

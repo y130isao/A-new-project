@@ -24,7 +24,7 @@
 <a href="admin.jsp">管理者ページへ</a>
 </c:when>
 <c:otherwise>
-<a href="login.jsp">ログインページへ</a>
+<a href="/Aproject3/Login">ログインページへ</a>
 </c:otherwise>
 </c:choose>
 

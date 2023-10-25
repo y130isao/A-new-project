@@ -28,9 +28,6 @@ public class TopServlet extends HttpServlet {
         RequestDispatcher dispatcher3 = request.getRequestDispatcher("/Aproject3/GoalServlet");
         dispatcher3.forward(request, response);
         
-        RequestDispatcher dispatcher4 = request.getRequestDispatcher("/Aproject3/AccountServlet");
-        dispatcher4.forward(request, response);
-        
         RequestDispatcher dispatcher5 = request.getRequestDispatcher("/Aproject3/RecordServlet");
         dispatcher5.forward(request, response);
         

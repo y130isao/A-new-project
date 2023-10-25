@@ -62,7 +62,7 @@ public class MyCalendarLogic {
 					data[i][j]=String.valueOf(date);
 					//今作業しているマイカレンダーが今月のカレンダーだったら今日の日付の先頭に*を付与する
 					if(now.get(Calendar.DATE)== date && now.get(Calendar.MONTH)==mc.getMonth()-1  && now.get(Calendar.YEAR)==mc.getYear()) {
-						data[i][j]="*"+data[i][j];
+						data[i][j]=""+data[i][j];
 					}
 				}
 			}
