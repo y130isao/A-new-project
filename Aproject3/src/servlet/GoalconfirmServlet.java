@@ -3,6 +3,7 @@ package servlet;
 import java.io.IOException;
 import java.util.List;
 
+import dao.GoalDAO;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -15,69 +16,67 @@ import model.Goal;
 import model.PostGoalLogic;
 
 @WebServlet("/GoalconfirmServlet")
-
 public class GoalconfirmServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		//ƒtƒHƒ[ƒhæ
-		String path=null;
-		
-		//ƒT[ƒuƒŒƒbƒg‚Ì“®ì‚ğŒˆ’è‚·‚éumodev‚Ì’l‚ğƒŠƒNƒGƒXƒgƒpƒ‰ƒ[ƒ^‚©‚çæ“¾
-		String mode=request.getParameter("mode");
-		if(mode == null || mode.equals("back")){
-			path="/WEB-INF/jsp/goal.jsp";
-		}else {
-			path="/WEB-INF/jsp/goalsend.jsp";
-			HttpSession session=request.getSession();
-			session.invalidate();
-		}
-		
-		//İ’è‚³‚ê‚½ƒtƒHƒ[ƒhæ‚ÉƒtƒHƒ[ƒh
-		RequestDispatcher rd=request.getRequestDispatcher(path);
-		rd.forward(request, response);		
-	}
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String path = null;
+        String mode = request.getParameter("mode");
+        if (mode == null || mode.equals("back")) {
+            path = "/WEB-INF/jsp/goal.jsp";
+        } else {
+            path = "/WEB-INF/jsp/goalsend.jsp";
+            HttpSession session = request.getSession();
+            session.invalidate();
+        }
 
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response)
-					throws ServletException, IOException {
+        RequestDispatcher rd = request.getRequestDispatcher(path);
+        rd.forward(request, response);
+    }
 
-		// ƒŠƒNƒGƒXƒgƒpƒ‰ƒ[ƒ^‚Ìæ“¾
-		request.setCharacterEncoding("UTF-8");
-		String goalgenre1=request.getParameter("goalgenre1");
-		String goalgenre2=request.getParameter("goalgenre2");
-		String goalgenre3=request.getParameter("goalgenre3");
-		String goal1=request.getParameter("goal1");
-		String goal2=request.getParameter("goal2");
-		String goal3=request.getParameter("goal3");
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        String goalgenre1 = request.getParameter("goalgenre1");
+        String goalgenre2 = request.getParameter("goalgenre2");
+        String goalgenre3 = request.getParameter("goalgenre3");
+        String goal1 = request.getParameter("goal1");
+        String goal2 = request.getParameter("goal2");
+        String goal3 = request.getParameter("goal3");
 
-		//ƒZƒbƒVƒ‡ƒ“ƒXƒR[ƒv‚É•Û‘¶‚·‚éƒCƒ“ƒXƒ^ƒ“ƒX‚Ì¶¬
-		Goal goal=new Goal(goal1,goal2,goal3,goalgenre1,goalgenre2,goalgenre3);
-		//ƒCƒ“ƒXƒ^ƒ“ƒX‚Ìæ“¾
-		HttpSession session=request.getSession();
-		//ƒZƒbƒVƒ‡ƒ“ƒXƒR[ƒv‚ÉƒCƒ“ƒXƒ^ƒ“ƒX‚ğ•Û‘¶
-		session.setAttribute("goal", goal);
+        HttpSession session = request.getSession();
+        AccountBeans account = (AccountBeans) session.getAttribute("account");
 
-		// goalconfirm.jsp‚ÉƒtƒHƒ[ƒh
-		RequestDispatcher rd=request.getRequestDispatcher("/WEB-INF/jsp/goalsend.jsp");
-		rd.forward(request, response);
+        if (account != null) {
+            int accountId = account.getAccountId();
 
-		// ‚Â‚Ô‚â‚«‚ğ‚Â‚Ô‚â‚«ƒŠƒXƒg‚É’Ç‰Á
-		Goal goal = new Goal(.getGoal(), goal);
-		PostGoalLogic postGoalLogic = new PostGoalLogic();
-		postGoalLogic.execute(goal);
+            // ã“ã“ã§ Goal ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ä½œæˆã— accountId ã‚’ã‚»ãƒƒãƒˆã—ã¦ä½¿ç”¨
+            Goal goal = new Goal(accountId, goal1, goal2, goal3, goalgenre1, goalgenre2, goalgenre3);
 
-		// ‚Â‚Ô‚â‚«ƒŠƒXƒg‚ğæ“¾‚µ‚ÄAƒŠƒNƒGƒXƒgƒXƒR[ƒv‚É•Û‘¶
-		GetGoalListLogic getGoalListLogic =
-				new GetGoalListLogic();
-		List<Goal> goalList = getGoalListLogic.execute();
-		request.setAttribute("goalList", goalList);
+            // Goal ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ä½¿ç”¨ã—ã¦ä½•ã‚‰ã‹ã®æ“ä½œã‚’è¡Œã†
+            // ä¾‹: ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã«ä¿å­˜ã™ã‚‹å ´åˆ
+            GoalDAO goalDAO = new GoalDAO();
+            boolean success = goalDAO.create(goal, accountId);
 
-		// ƒtƒHƒ[ƒh
-		RequestDispatcher dispatcher = request.getRequestDispatcher(
-				"/WEB-INF/jsp/goalsend.jsp");
-		dispatcher.forward(request, response);
-	}
+            if (success) {
+                // ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã¸ã®ä¿å­˜ãŒæˆåŠŸã—ãŸå ´åˆã®å‡¦ç†
+
+                // ç›®æ¨™ãƒªã‚¹ãƒˆã‚’å–å¾—ã—ã¦ã€ãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚¹ã‚³ãƒ¼ãƒ—ã«ä¿å­˜
+                GetGoalListLogic getGoalListLogic = new GetGoalListLogic();
+                List<Goal> goalList = getGoalListLogic.execute(accountId);
+                request.setAttribute("goalList", goalList);
+
+                // ãƒ•ã‚©ãƒ¯ãƒ¼ãƒ‰
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/goalconfirm.jsp");
+                dispatcher.forward(request, response);
+            } else {
+                // ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã¸ã®ä¿å­˜ãŒå¤±æ•—ã—ãŸå ´åˆã®ã‚¨ãƒ©ãƒ¼ãƒãƒ³ãƒ‰ãƒªãƒ³ã‚°
+            }
+        } else {
+            // ãƒ­ã‚°ã‚¤ãƒ³ã—ã¦ã„ãªã„å ´åˆã®ã‚¨ãƒ©ãƒ¼ãƒãƒ³ãƒ‰ãƒªãƒ³ã‚°
+            // ãƒªãƒ€ã‚¤ãƒ¬ã‚¯ãƒˆãªã©é©åˆ‡ãªå‡¦ç†ã‚’è¡Œã†
+        }
+    }
+
 
 }
+
