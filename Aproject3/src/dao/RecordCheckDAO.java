@@ -14,7 +14,7 @@ public class RecordCheckDAO {
 	private final String DB_USER = "sample_user";
 	private final String DB_PASS = "";
 
-	// ログインアカウントを探す
+	// 記録情報を探す
 	public RecordBeans findRecordBeans(RecordBeans rb) {
 
 		// 戻り値の用意
@@ -25,14 +25,13 @@ public class RecordCheckDAO {
 
 			String sql = "SELECT do_result1,do_result2,do_result3,memo_list1,memo_list2,memo_list3, FROM user_health";
 			PreparedStatement ps = con.prepareStatement(sql);
-
 			ResultSet rs = ps.executeQuery();
-
 			if (rs.next()) {
-				// 見つかったアカウント情報を戻り値にセット
-				returnrb.setDo_result1(rs.getString("do_result1"));
-				returnrb.setDo_result2(rs.getString("do_result1"));
-				returnrb.setDo_result3(rs.getString("do_result1"));
+				
+				// 見つかった記録情報を戻り値にセット
+				returnrb.setDo_result1(rs.getBoolean("do_result1"));
+				returnrb.setDo_result2(rs.getBoolean("do_result1"));
+				returnrb.setDo_result3(rs.getBoolean("do_result1"));
 				returnrb.setMemo_list1(rs.getString("memo_list1"));
 				returnrb.setMemo_list2(rs.getString("memo_list2"));
 				returnrb.setMemo_list3(rs.getString("memo_list3"));
@@ -46,5 +45,5 @@ public class RecordCheckDAO {
 			return null;
 		}
 		return returnrb;
-	}
+		}
 }
