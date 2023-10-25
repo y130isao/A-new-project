@@ -16,9 +16,9 @@ import model.RecordBeans;
 public class RecordCheck extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String do_result1 = request.getParameter("do_result1");
-		String do_result2 = request.getParameter("do_result2");
-		String do_result3 = request.getParameter("do_result3");
+		boolean do_result1 = request.getParameter("do_result1") != null;
+		boolean do_result2 = request.getParameter("do_result2") != null;
+		boolean do_result3 = request.getParameter("do_result3") != null;
 		String memo_list1 = request.getParameter("memo_list1");
 		String memo_list2 = request.getParameter("memo_list2");
 		String memo_list3 = request.getParameter("memo_list3");
@@ -32,16 +32,15 @@ public class RecordCheck extends HttpServlet {
 		rb.setMemo_list2(memo_list2);
 		rb.setMemo_list3(memo_list3);
 
-//		セッションにアカウント情報を保存
+//		セッションに記録情報を保存
 		HttpSession session = request.getSession();
 		session.setAttribute("Record", rb);
 
-		// アカウントをDBに登録
+		// 記録をDBに登録
 		RecordDAO rd = new RecordDAO();
 		rd.create(rb);
 
 		RequestDispatcher rdr = request.getRequestDispatcher("/WEB-INF/jsp/recordcheck.jsp");
 		rdr.forward(request, response);
-
 	}
 }
