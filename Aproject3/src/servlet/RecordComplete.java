@@ -15,12 +15,11 @@ import model.RecordBeans;
 @WebServlet("/RecordComplete")
 public class RecordComplete extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String do_result1 = request.getParameter("do_result1");
-		String do_result2 = request.getParameter("do_result2");
-		String do_result3 = request.getParameter("do_result3");
+		boolean do_result1 = request.getParameter("do_result1") != null;
+		boolean do_result2 = request.getParameter("do_result2") != null;
+		boolean do_result3 = request.getParameter("do_result3") != null;
 		String memo_list1 = request.getParameter("memo_list1");
 		String memo_list2 = request.getParameter("memo_list2");
 		String memo_list3 = request.getParameter("memo_list3");
@@ -35,7 +34,7 @@ public class RecordComplete extends HttpServlet {
 		rb.setMemo_list3(memo_list3);
 
 		// 記録の有無を検索
-		// 検索したアカウント情報を取得
+		// 検索した記録情報を取得
 		RecordCheckDAO rcd = new RecordCheckDAO();
 		RecordBeans returnrb = rcd.findRecordBeans(rb);
 
