@@ -33,9 +33,8 @@ public class RecordServlet extends HttpServlet {
 			HttpSession session = request.getSession();
 		    session.setAttribute("goal", goal);
 		    
-
 			RequestDispatcher rd =
 					request.getRequestDispatcher("/WEB-INF/jsp/record.jsp");
 					rd.forward(request, response);
-	    }
+	 }
 }
