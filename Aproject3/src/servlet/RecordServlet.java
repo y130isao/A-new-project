@@ -29,7 +29,7 @@ public class RecordServlet extends HttpServlet {
 			String goal3=request.getParameter("goal3");
 			
 		    //セッションスコープに保存
-			Goal goal=new Goal(goal1,goal2,goal3,goalgenre1,goalgenre2,goalgenre3);
+			Goal goal=new Goal(goalgenre1,goalgenre2,goalgenre3,goal1,goal2,goal3);
 			HttpSession session = request.getSession();
 		    session.setAttribute("goal", goal);
 		    
