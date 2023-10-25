@@ -11,9 +11,9 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import model.AccountBeans;
 import model.GetGoalListLogic;
 import model.Goal;
+import model.PostGoalLogic;
 
 @WebServlet("/GoalconfirmServlet")
 public class GoalconfirmServlet extends HttpServlet {
@@ -49,33 +49,34 @@ public class GoalconfirmServlet extends HttpServlet {
         if (account != null) {
             int accountId = account.getAccountId();
 
-            // ‚±‚±‚Å Goal ƒIƒuƒWƒFƒNƒg‚ğì¬‚µ accountId ‚ğƒZƒbƒg‚µ‚Äg—p
+            // ã“ã“ã§ Goal ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ä½œæˆã— accountId ã‚’ã‚»ãƒƒãƒˆã—ã¦ä½¿ç”¨
             Goal goal = new Goal(accountId, goal1, goal2, goal3, goalgenre1, goalgenre2, goalgenre3);
 
-            // Goal ƒIƒuƒWƒFƒNƒg‚ğg—p‚µ‚Ä‰½‚ç‚©‚Ì‘€ì‚ğs‚¤
-            // —á: ƒf[ƒ^ƒx[ƒX‚É•Û‘¶‚·‚éê‡
+            // Goal ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ä½¿ç”¨ã—ã¦ä½•ã‚‰ã‹ã®æ“ä½œã‚’è¡Œã†
+            // ä¾‹: ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã«ä¿å­˜ã™ã‚‹å ´åˆ
             GoalDAO goalDAO = new GoalDAO();
             boolean success = goalDAO.create(goal, accountId);
 
             if (success) {
-                // ƒf[ƒ^ƒx[ƒX‚Ö‚Ì•Û‘¶‚ª¬Œ÷‚µ‚½ê‡‚Ìˆ—
+                // ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã¸ã®ä¿å­˜ãŒæˆåŠŸã—ãŸå ´åˆã®å‡¦ç†
 
-                // –Ú•WƒŠƒXƒg‚ğæ“¾‚µ‚ÄAƒŠƒNƒGƒXƒgƒXƒR[ƒv‚É•Û‘¶
+                // ç›®æ¨™ãƒªã‚¹ãƒˆã‚’å–å¾—ã—ã¦ã€ãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚¹ã‚³ãƒ¼ãƒ—ã«ä¿å­˜
                 GetGoalListLogic getGoalListLogic = new GetGoalListLogic();
                 List<Goal> goalList = getGoalListLogic.execute(accountId);
                 request.setAttribute("goalList", goalList);
 
-                // ƒtƒHƒ[ƒh
+                // ãƒ•ã‚©ãƒ¯ãƒ¼ãƒ‰
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/goalconfirm.jsp");
                 dispatcher.forward(request, response);
             } else {
-                // ƒf[ƒ^ƒx[ƒX‚Ö‚Ì•Û‘¶‚ª¸”s‚µ‚½ê‡‚ÌƒGƒ‰[ƒnƒ“ƒhƒŠƒ“ƒO
+                // ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã¸ã®ä¿å­˜ãŒå¤±æ•—ã—ãŸå ´åˆã®ã‚¨ãƒ©ãƒ¼ãƒãƒ³ãƒ‰ãƒªãƒ³ã‚°
             }
         } else {
-            // ƒƒOƒCƒ“‚µ‚Ä‚¢‚È‚¢ê‡‚ÌƒGƒ‰[ƒnƒ“ƒhƒŠƒ“ƒO
-            // ƒŠƒ_ƒCƒŒƒNƒg‚È‚Ç“KØ‚Èˆ—‚ğs‚¤
+            // ãƒ­ã‚°ã‚¤ãƒ³ã—ã¦ã„ãªã„å ´åˆã®ã‚¨ãƒ©ãƒ¼ãƒãƒ³ãƒ‰ãƒªãƒ³ã‚°
+            // ãƒªãƒ€ã‚¤ãƒ¬ã‚¯ãƒˆãªã©é©åˆ‡ãªå‡¦ç†ã‚’è¡Œã†
         }
     }
 
 
 }
+
