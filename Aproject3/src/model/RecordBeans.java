@@ -4,30 +4,30 @@ import java.io.Serializable;
 
 public class RecordBeans implements Serializable {
 
-    private String do_result1;
-    private String do_result2;
-    private String do_result3;
+    private boolean do_result1;
+    private boolean do_result2;
+    private boolean do_result3;
     private String memo_list1;
     private String memo_list2;
     private String memo_list3;
     
 
-    public String getDo_result1() {
+    public boolean getDo_result1() {
         return do_result1;
     }
-    public void setDo_result1(String do_result1) {
+    public void setDo_result1(boolean do_result1) {
         this.do_result1 = do_result1;
     }
-    public String getDo_result2() {
+    public boolean getDo_result2() {
         return do_result2;
     }
-    public void setDo_result2(String do_result2) {
+    public void setDo_result2(boolean do_result2) {
         this.do_result2 = do_result2;
     }
-    public String getDo_result3() {
+    public boolean getDo_result3() {
         return do_result3;
     }
-    public void setDo_result3(String do_result3) {
+    public void setDo_result3(boolean do_result3) {
         this.do_result3 = do_result3;
     }
     public String getMemo_list1() {
@@ -49,7 +49,5 @@ public class RecordBeans implements Serializable {
     }
     public void setMemo_list3(String memo_list3) {
         this.memo_list3 = memo_list3;
-        
-    }
+         }
 }
-
