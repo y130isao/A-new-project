@@ -13,7 +13,7 @@ import model.Goal;
 public class GoalDAO {
 
 	private final String JDBC_URL = "jdbc:mysql://172.16.0.218:3306/health_management";
-	private final String DB_USER = "user_health";
+	private final String DB_USER = "sample_user";
 	private final String DB_PASS = "";
 
     // データベース接続を確立
