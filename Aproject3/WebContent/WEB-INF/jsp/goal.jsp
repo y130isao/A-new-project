@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
-import="model.Goal" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="model.Goal" %>
 
 <%
 Goal goal=(Goal)session.getAttribute("goal");
@@ -20,7 +19,7 @@ String goal3=goal==null? "":goal.getGoal3();
 	</head>
 	<body>
 		<h1>目標設定</h1>
-		<form action="/Aproject3/GoalconfirmServlet" method="post">
+		<form action="/Aproject3/GoalServlet" method="post">
 			<div class="contact-formbox">
 				<select name="goalgenre1" value="<%=goalgenre1%>" required>
 					<option value="">選択してください</option>
@@ -46,7 +45,7 @@ String goal3=goal==null? "":goal.getGoal3();
 				</dd>
 			</div>
 			<div class="contact-formbox">
-				<select name="goalgenre3" value="<%=goalgenre3%>" required>
+				<select name="goalgenre3" value="<%=goalgenre3%>"  required>
 					<option value="">選択してください</option>
 					<option value="運動">運動</option>
 					<option value="食事">食事</option>
