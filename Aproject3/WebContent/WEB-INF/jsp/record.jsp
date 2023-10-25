@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
 import="model.Goal" %>
 
-<%// セッションスコープに保存されたデータを取得
-Goal goal=(Goal)session.getAttribute("goal");
+<%
+List<model.Goal> goalList = (List<model.Goal>) request.getAttribute("goalList");
+if (goalList != null && !goalList.isEmpty()) {
 %>
 <%@ page import="java.util.Date, java.text.SimpleDateFormat" %>
 
@@ -25,8 +26,8 @@ String today = sdf.format(date);
 <form action="/Aproject3/RecordCheck" method="post">
 <%-- ☆修正必要☆ --%>
 <h3>あなたの選択項目1</h3>
-ジャンル【<%= goal.getGoalgenre1() %>】<br>
-目標【<%= goal.getGoal1() %>】<br>
+<p><%= goalList.get(0).getGoalgenre1() %></p>
+ <%= goalList.get(0).getGoal1() %>
 
 <%-- radioの値を渡す --%>
 <div class result>
@@ -41,8 +42,8 @@ String today = sdf.format(date);
 
 <%-- ☆修正必要☆ --%>
 <h3>あなたの選択項目2</h3>
-ジャンル【<%= goal.getGoalgenre2() %>】<br>
-目標【<%= goal.getGoal2() %>】<br>
+<p><%= goalList.get(0).getGoalgenre2() %></p>
+ <%= goalList.get(0).getGoal2() %>
 <%-- radioの値を渡す --%>
 <div class result>
 <input type="radio" name="do_result2" value="出来た" required>出来た<br>
@@ -56,8 +57,8 @@ String today = sdf.format(date);
 
 <%-- ☆修正必要☆ --%>
 <h3>あなたの選択項目3</h3>
-ジャンル【<%= goal.getGoalgenre3() %>】<br>
-目標【<%= goal.getGoal3() %>】<br>
+<p><%= goalList.get(0).getGoalgenre3() %></p>
+ <%= goalList.get(0).getGoal3() %>
 <%-- radioの値を渡す --%>
 <div class result>
 <input type="radio" name="do_result3" value="出来た" required>出来た<br>
