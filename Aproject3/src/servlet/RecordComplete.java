@@ -46,6 +46,7 @@ public class RecordComplete extends HttpServlet {
 			HttpSession session = request.getSession();
 			session.setAttribute("record",  returnrb);
 
+			
 			RequestDispatcher rdc = request.getRequestDispatcher("/WEB-INF/jsp/recordcomplete.jsp");
 			rdc.forward(request, response);
 		}

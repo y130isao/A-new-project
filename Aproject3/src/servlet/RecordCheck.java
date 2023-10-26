@@ -2,7 +2,6 @@ package servlet;
 
 import java.io.IOException;
 import java.util.Date;
-
 import dao.RecordDAO;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
