@@ -54,6 +54,7 @@ public class PointLogic {
 	/* ポイントがマイナスにならない機能
 	 * 例外処理の追記
 	 * 登録日の取得
+	 * boolean型do_result→int
 	 */
 
 }
