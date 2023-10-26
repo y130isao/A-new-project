@@ -5,6 +5,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/Aproject3/css/top.css">
+  <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+    </style>
 <title>管理者ページ</title>
 </head>
 <body>
