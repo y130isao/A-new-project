@@ -10,6 +10,7 @@ public class RecordBeans implements Serializable {
     private String memo_list1;
     private String memo_list2;
     private String memo_list3;
+    private String today;
     
 
     public boolean getDo_result1() {
@@ -50,4 +51,11 @@ public class RecordBeans implements Serializable {
     public void setMemo_list3(String memo_list3) {
         this.memo_list3 = memo_list3;
          }
+    
+    public String getToday() {
+        return today;
+    }
+    public void setToday(String today) {
+        this.today = today;
+	}
 }
