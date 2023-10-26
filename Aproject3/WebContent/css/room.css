@@ -1,0 +1,81 @@
+body {
+	height: 100vh;
+	margin: 0px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	overflow: hidden;
+    background-color: #555;
+}
+
+.card {
+	--grad-size: min(270vh, 90vw);
+	width: min(90vh, 30vw);
+	aspect-ratio: 1;
+	margin: min(5vh, 1.67vw);
+	border-radius: 10%;
+	background-image: radial-gradient(#fff 0%, #555 30%, #222 50%);
+	background-color: #222;
+	background-position: calc(var(--mouse-x) * 1px - var(--grad-size) / 2)
+		calc(var(--mouse-y) * 1px - var(--grad-size) / 2);
+	transition: background-position 2s cubic-bezier(0, 0, 0, 1);
+	background-attachment: fixed;
+	background-size: var(--grad-size) var(--grad-size);
+	background-repeat: no-repeat;
+	overflow: hidden;
+	cursor: pointer;
+}
+
+.card::before {
+	content: "";
+	width: min(90vh, 30vw);
+	aspect-ratio: 1;
+	border-radius: 10%;
+	position: absolute;
+	background-image: linear-gradient(
+		135deg,
+		#fff0 45%,
+		#fff7 48% 52%,
+		#fff0 55%
+	);
+	background-size: 300% 300%;
+	background-position: 100% 100%;
+	transition: background-position 0.3s linear;
+}
+
+.card:hover::before {
+	background-position: 0% 0%;
+}
+
+.card > img {
+	width: min(90vh, 30vw);
+	aspect-ratio: 1;
+	object-fit: cover;
+}
+
+.card > :first-child {
+	mix-blend-mode: multiply;
+	position: absolute;
+	border-radius: 10%;
+	filter: blur(min(3vh, 1vw)) brightness(0%);
+	transition: filter 0.5s ease;
+}
+
+.card:hover > :first-child {
+	filter: blur(min(4.5vh, 1.5vw)) brightness(100%);
+}
+
+.card > :nth-child(2) {
+	mix-blend-mode: plus-lighter;
+}
+
+*,
+*:after,
+*:before {
+	box-sizing: border-box;
+}
+:root {
+	--transition: 0.25s;
+	--spark: 1.8s;
+	--hue: 245;
+}

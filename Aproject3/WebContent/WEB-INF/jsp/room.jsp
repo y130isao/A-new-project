@@ -11,7 +11,7 @@
 
 <link rel="stylesheet" type="text/css"
 	href="/Aproject3/css/mobuman5.css">
-<script src="${pageContext.request.contextPath}/mobuman5.js"></script>
+<script src="${pageContext.request.contextPath}/room.js"></script>
 <title>レベルマックスモブ男子</title>
 </head>
 <body>
