@@ -1,7 +1,7 @@
 package servlet;
 
 import java.io.IOException;
-
+import java.util.Date;
 import dao.RecordDAO;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -22,9 +22,9 @@ public class RecordCheck extends HttpServlet {
 		String memo_list1 = request.getParameter("memo_list1");
 		String memo_list2 = request.getParameter("memo_list2");
 		String memo_list3 = request.getParameter("memo_list3");
-		String today = request.getParameter("today") ;
+		Date date = new Date();
 
-		// register.jspから受け取った値をビーンズにセット
+		// record.jspから受け取った値をビーンズにセット
 		RecordBeans rb = new RecordBeans();
 		rb.setDo_result1(do_result1);
 		rb.setDo_result2(do_result2);
@@ -32,7 +32,7 @@ public class RecordCheck extends HttpServlet {
 		rb.setMemo_list1(memo_list1);
 		rb.setMemo_list2(memo_list2);
 		rb.setMemo_list3(memo_list3);
-		rb.setToday(today);
+		rb.setDate(date);
 		
 
 //		セッションに記録情報を保存

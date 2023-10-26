@@ -1,0 +1,23 @@
+@charset "UTF-8";
+body {
+    background-color: lightblue;
+    
+}
+
+header {
+    margin-bottom: 50px;
+    font-size: 30px;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 0px #DC143C,
+        2px 2px 0px #DC143C,
+        3px 3px 0px #DC143C,
+        4px 4px 0px #DC143C;
+   text-align: left;
+    color: #fff;
+}
+
+div {
+    display: flex;
+    text-align: center;
+}
+
