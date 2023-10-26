@@ -10,27 +10,35 @@
 </head>
 <body>
     <header>
-        <h1>健康管理アプリ</h1>
+        <h1>HealthCareApp!</h1>
     </header>
+
+    <p>すべて入力してください</p>
     <form action="/Aproject3/AccountRegister" method="post">
-        <p>すべて入力してください</p>
+
+        
+
         <table>
             <tr>
                 <td><input type="radio" name="roleId" value="1">管理者で登録する</td>
                 <td><input type="radio" name="roleId" value="2" checked>ユーザーで登録する</td>
             </tr>
         </table>
+
         名前 : <input type="text" name="name" required maxlength="15" placeholder="15字以内">
         ユーザーID : <input type="text" name="loginId" required maxlength="15" placeholder="15字以内">
         パスワード : <input type="password" name="pass" required maxlength="8" pattern="^[a-zA-Z0-9]+$"
-            placeholder="半角英数字8文字以内">
+            placeholder="半角英数字8文字以内"><br>
+
         <table>
             <tr>
                 <td><input type="radio" name="genId" value="1">男性</td>
                 <td><input type="radio" name="genId" value="2" checked>女性</td>
             </tr>
         </table>
+
         <button class="btn">登録</button>
+
     </form>
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
