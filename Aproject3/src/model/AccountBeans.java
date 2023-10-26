@@ -67,6 +67,12 @@ public class AccountBeans implements Serializable {
 	}
 
 	public void setCharaLevel(int charaLevel) {
+		if (charaLevel < 1) {
+			charaLevel = 1;
+		}
+		if (charaLevel > 5) {
+			charaLevel = 5;
+		}
 		this.charaLevel = charaLevel;
 	}
 
@@ -75,6 +81,12 @@ public class AccountBeans implements Serializable {
 	}
 
 	public void setCharaPoint(int charaPoint) {
+		if (charaPoint < 0) {
+			charaPoint = 0;
+		}
+		if (charaPoint > 450) {
+			charaPoint = 450;
+		}
 		this.charaPoint = charaPoint;
 	}
 }
