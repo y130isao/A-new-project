@@ -35,6 +35,8 @@ public class GoalconfirmServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	
+    	//リクエストパラメータの取得
         request.setCharacterEncoding("UTF-8");
         String goalgenre1 = request.getParameter("goalgenre1");
         String goalgenre2 = request.getParameter("goalgenre2");
@@ -43,6 +45,7 @@ public class GoalconfirmServlet extends HttpServlet {
         String goal2 = request.getParameter("goal2");
         String goal3 = request.getParameter("goal3");
 
+        
         HttpSession session = request.getSession();
         AccountBeans account = (AccountBeans) session.getAttribute("account");
 

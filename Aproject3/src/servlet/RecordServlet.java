@@ -17,9 +17,8 @@ public class RecordServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 		    HttpServletResponse response)
 		    throws ServletException, IOException {
-			request.setCharacterEncoding("UTF-8");
-			
-
+		
+//			request.setCharacterEncoding("UTF-8");
 //			String goalgenre1=request.getParameter("goalgenre1");
 //			String goalgenre2=request.getParameter("goalgenre2");
 //			String goalgenre3=request.getParameter("goalgenre3");
@@ -27,10 +26,10 @@ public class RecordServlet extends HttpServlet {
 //			String goal2=request.getParameter("goal2");
 //			String goal3=request.getParameter("goal3");
 //			
-//		    //セッションスコープに保存
-//			Goal goal=new Goal(goalgenre1,goalgenre2,goalgenre3,goal1,goal2,goal3);
+//			Goal goal = new Goal(goal1, goal2, goal3, goalgenre1, goalgenre2, goalgenre3);
+//			
 //			HttpSession session = request.getSession();
-//		    session.setAttribute("goal", goal);
+//			session.setAttribute("goal", goal);
 
 		    
 			RequestDispatcher rd =
