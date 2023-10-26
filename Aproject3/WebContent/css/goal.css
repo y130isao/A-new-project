@@ -1,0 +1,63 @@
+@charset "UTF-8";
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Lato', sans-serif;
+    background: lightblue;
+    color: black;
+    text-align: center;
+}
+
+header {
+    text-align: center;
+}
+
+h1 {
+    margin: 80px 0 10px 0;
+    font-size: 52px;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 0px #DC143C,
+        2px 2px 0px #DC143C,
+        3px 3px 0px #DC143C,
+        4px 4px 0px #DC143C;
+    color: white;
+}
+
+h2 {
+    color: #000055;
+}
+
+form {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+input .submit {
+    text-align: center;
+}
+
+footer {
+    text-align: center;
+    margin-top: 50px;
+}
+a {
+    color: #000055;
+}
+
+div.btn {
+    text-align: center;
+}
+
+input[type="submit" i], 
+input[type="radio" i], 
+div.btn,  
+a {
+    cursor: pointer;
+}
+
+
+/* ------------------------------------ */
+/* レスポンシブ*/
+/* ------------------------------------ */
