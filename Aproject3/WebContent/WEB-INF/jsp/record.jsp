@@ -2,6 +2,10 @@
 <%@ page import="java.util.List" %>
 <%@ page import="model.Goal" %>
 
+<%
+List<model.Goal> goalList = (List<model.Goal>) request.getAttribute("goalList");
+if (goalList != null && !goalList.isEmpty()) {
+%>
 <%@ page import="java.util.Date, java.text.SimpleDateFormat" %>
 
 <%
@@ -27,7 +31,7 @@ String today = sdf.format(date);
 <form action="/Aproject3/RecordCheck" method="post">
 <%-- ☆修正必要☆ --%>
 <h3>あなたの選択項目1</h3>
-<p><%= goalList.get(0).getGoalgenre1()%></p>
+<p><%= goalList.get(0).getGoalgenre1() %></p>
  <%= goalList.get(0).getGoal1() %>
 
 <%-- radioの値を渡す --%>
@@ -59,7 +63,7 @@ String today = sdf.format(date);
 <%-- ☆修正必要☆ --%>
 <h3>あなたの選択項目3</h3>
 <p><%= goalList.get(0).getGoalgenre3() %></p>
- <%= goalList.get(0).getGoal1() %>
+ <%= goalList.get(0).getGoal3() %>
 <%-- radioの値を渡す --%>
 <div class result>
 <input type="radio" name="do_result3" value="出来た" required>出来た<br>

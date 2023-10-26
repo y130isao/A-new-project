@@ -5,11 +5,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/Aproject3/css/pastdata.css">
 <title>過去の記録の確認</title>
 </head>
 <body>
-    <h1>過去の記録の確認</h1>
-    <h2><c:out value="${mc.gengou}"/>年<c:out value="${mc.month}"/>月カレンダー</h2>
+    <header><h1>過去の記録の確認</h1>
+    <h2><c:out value="${mc.gengou}"/>年<c:out value="${mc.month}"/>月カレンダー</h2></header>
     <p>過去の記録を確認したい日付をクリックしてください。</p>
 
     <p>
@@ -43,6 +45,6 @@
       </c:forEach>
     </table>
 
-    <a href="${pageContext.request.contextPath}/TopServlet">TOPへ</a>
+    <footer><a href="${pageContext.request.contextPath}/TopServlet">TOPへ</a></footer>
 </body>
 </html>
