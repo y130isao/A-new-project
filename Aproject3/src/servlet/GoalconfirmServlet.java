@@ -44,10 +44,17 @@ public class GoalconfirmServlet extends HttpServlet {
         String goal1 = request.getParameter("goal1");
         String goal2 = request.getParameter("goal2");
         String goal3 = request.getParameter("goal3");
-
         
+//        Goal goal = new Goal(goalgenre1, goalgenre2, goalgenre3, goal1, goal2, goal3);
+//        HttpSession session = request.getSession();
+//        session.setAttribute("goal", goal);
+//        
+        //セッションスコープに保存されたアカウント情報を取得
         HttpSession session = request.getSession();
         AccountBeans account = (AccountBeans) session.getAttribute("account");
+        
+//        session.removeAttribute("account");
+     
 
         if (account != null) {
             int accountId = account.getAccountId();
@@ -67,6 +74,8 @@ public class GoalconfirmServlet extends HttpServlet {
                 GetGoalListLogic getGoalListLogic = new GetGoalListLogic();
                 List<Goal> goalList = getGoalListLogic.execute(accountId);
                 request.setAttribute("goalList", goalList);
+//                HttpSession session = request.getSession();
+//                session.setAttribute("goalList", goalList);
 
                 // フォワード
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/goalconfirm.jsp");

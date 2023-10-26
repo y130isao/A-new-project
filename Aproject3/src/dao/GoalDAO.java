@@ -25,6 +25,7 @@ public class GoalDAO {
     public List<Goal> getGoalsByAccountId(int accountId) {
         List<Goal> goalList = new ArrayList<>();
 
+        //データベース接続
         try (Connection conn = getConnection();
              PreparedStatement pStmt = conn.prepareStatement("SELECT goalgenre1, goalgenre2, goalgenre3, goal1, goal2, goal3 FROM user_health WHERE accountId = ?")) {
             pStmt.setInt(1, accountId);

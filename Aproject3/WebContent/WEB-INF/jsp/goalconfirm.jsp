@@ -10,10 +10,10 @@ if (goalList != null && !goalList.isEmpty()) {
     <!-- 目標情報を表示するコード -->
     <div class="contact-formbox">
         <dt>
-            <p><%= goalList.get(0).getGoalgenre1() %></p>
+            <p><%= goal.getGoalgenre1() %></p>
         </dt>
         <dd class="contact-1">
-            <%= goalList.get(0).getGoal1() %>
+            <%= goal.getGoal1() %>
         </dd>
     </div>
     <div class="contact-formbox">

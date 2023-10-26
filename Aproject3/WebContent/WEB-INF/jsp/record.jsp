@@ -6,8 +6,8 @@
 
 <%
 List<model.Goal> goalList = (List<model.Goal>) request.getAttribute("goalList");
+if (goalList != null && !goalList.isEmpty()) {
 %> 
-
 
 <%
 Date date = new Date();
@@ -27,8 +27,8 @@ String today = sdf.format(date);
 <form action="/Aproject3/RecordCheck" method="post">
 <%-- ☆修正必要☆ --%>
 <h3>あなたの選択項目1</h3>
-<p><%= goalList.get(0).getGoalgenre1()%></p>
- <%= goalList.get(0).getGoal1() %>
+<p><%= goal.getGoalgenre1()%></p>
+ <%= goal.getGoal1() %>
 
 <%-- radioの値を渡す --%>
 <div class result>
@@ -73,5 +73,16 @@ String today = sdf.format(date);
 <input type="submit" value="記録確認・登録画面へ"/><br>
 </form>
 <a href="/Aproject3/TopServlet">TOPへ</a>
+<%
+} else {
+%>
+<!-- "goalList" 属性が存在しない場合のメッセージ -->
+<p>目標情報はありません。</p>
+<div id="btBox">
+	<a href="/Aproject3/GoalconfirmServlet?mode=back" class="button2">戻る</a>
+ </div>
+<%
+}
+%>
 </body>
 </html>
