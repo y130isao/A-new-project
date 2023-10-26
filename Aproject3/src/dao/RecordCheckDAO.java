@@ -23,13 +23,13 @@ public class RecordCheckDAO {
 		// データベースへ接続
 		try (Connection con = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASS)) {
 
-			String sql = "SELECT today, do_result1,do_result2,do_result3,memo_list1,memo_list2,memo_list3, FROM user_health";
+			String sql = "SELECT date, do_result1,do_result2,do_result3,memo_list1,memo_list2,memo_list3, FROM user_health";
 			PreparedStatement ps = con.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
 			if (rs.next()) {
 				
 				// 見つかった記録情報を戻り値にセット
-				returnrb.setToday(rs.getString("today"));
+				returnrb.setDate(rs.getDate("date"));
 				returnrb.setDo_result1(rs.getBoolean("do_result1"));
 				returnrb.setDo_result2(rs.getBoolean("do_result1"));
 				returnrb.setDo_result3(rs.getBoolean("do_result1"));

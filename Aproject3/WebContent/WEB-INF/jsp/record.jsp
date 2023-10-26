@@ -12,7 +12,7 @@ List<model.Goal> goalList = (List<model.Goal>) request.getAttribute("goalList");
 <%
 Date date = new Date();
 SimpleDateFormat sdf = new SimpleDateFormat("YY年MM月dd日");
-String today = sdf.format(date);
+Date date = sdf.format();
 %>
 
 <!DOCTYPE html>
