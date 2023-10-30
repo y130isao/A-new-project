@@ -45,18 +45,19 @@ public class GoalconfirmServlet extends HttpServlet {
         String goal2 = request.getParameter("goal2");
         String goal3 = request.getParameter("goal3");
 
-        
+        //セッションスコープに保存されたアカウント情報を取得
         HttpSession session = request.getSession();
         AccountBeans account = (AccountBeans) session.getAttribute("account");
-
+        
+        //アカウントがnullでなければ
         if (account != null) {
+        	//アカウントIDを取得
             int accountId = account.getAccountId();
 
             // ここで Goal オブジェクトを作成し accountId をセットして使用
             Goal goal = new Goal(accountId, goal1, goal2, goal3, goalgenre1, goalgenre2, goalgenre3);
 
-            // Goal オブジェクトを使用して何らかの操作を行う
-            // 例: データベースに保存する場合
+            // Goal オブジェクトを使用してデータベースに保存
             GoalDAO goalDAO = new GoalDAO();
             boolean success = goalDAO.create(goal, accountId);
 
@@ -66,7 +67,7 @@ public class GoalconfirmServlet extends HttpServlet {
                 // 目標リストを取得して、リクエストスコープに保存
                 GetGoalListLogic getGoalListLogic = new GetGoalListLogic();
                 List<Goal> goalList = getGoalListLogic.execute(accountId);
-                request.setAttribute("goalList", goalList);
+                session.setAttribute("goalList", goalList);
 
                 // フォワード
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/goalconfirm.jsp");

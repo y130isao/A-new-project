@@ -59,9 +59,8 @@ String goal3=goal==null? "":goal.getGoal3();
                 name="goal3" value="<%=goal3%>" required>
             </dd>
         </div>
-        
+        <div class="btn"><input type="submit" class="button"  value="確認"></div>
     </form>
-    <div class="btn"><input type="submit" class="button"  value="確認"></div>
     <footer><a href="/Aproject3/TopServlet">TOPへ</a></footer>
 	</body>
 </html>
