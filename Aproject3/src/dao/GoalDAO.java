@@ -55,7 +55,7 @@ public class GoalDAO {
 	public boolean create(Goal goal, int accountId) {
 		try (Connection conn = getConnection()) {
 
-			// 既存の行がない場合は新規挿入
+			// 新規挿入
 			String insertQuery = "INSERT INTO user_health (accountId, goalgenre1, goalgenre2, goalgenre3, goal1, goal2, goal3) VALUES (?, ?, ?, ?, ?, ?, ?)";
 			PreparedStatement insertStmt = conn.prepareStatement(insertQuery);
 			insertStmt.setInt(1, accountId);

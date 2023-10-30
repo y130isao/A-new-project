@@ -45,7 +45,7 @@ public class GoalconfirmServlet extends HttpServlet {
         String goal2 = request.getParameter("goal2");
         String goal3 = request.getParameter("goal3");
 
-        //セッションスコープに保存されたアカウント情報を取得
+        //セッションスコープに保存されたアカウント情報を取得(AccountCheck.java)
         HttpSession session = request.getSession();
         AccountBeans account = (AccountBeans) session.getAttribute("account");
         
@@ -64,7 +64,7 @@ public class GoalconfirmServlet extends HttpServlet {
             if (success) {
                 // データベースへの保存が成功した場合の処理
 
-                // 目標リストを取得して、リクエストスコープに保存
+                // 目標リストを取得して、セッションコープに保存
                 GetGoalListLogic getGoalListLogic = new GetGoalListLogic();
                 List<Goal> goalList = getGoalListLogic.execute(accountId);
                 session.setAttribute("goalList", goalList);
