@@ -23,24 +23,34 @@ public class AccountDAO {
 		// データベースへ接続
 		try (Connection con = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASS)) {
 
-			String sql = "SELECT accountId, loginId, pass, name, roleId, genId, charaLevel, charaPoint FROM account WHERE loginId = ? AND pass = ?";
+			String sql = "SELECT account.accountId, account.loginId,account.pass, "
+					+ "account.name, account.genId, "
+					+ "account.roleId, account.charaLevel, account.charaPoint "
+//					+ "health.date_time "
+					+ "FROM account "
+//					+ "JOIN user_health "
+//					+ "ON account.accountId = health.accountId "
+					+ "WHERE account.loginId = ? AND account.pass = ? ";
+//					+ "ORDER BY dateTime DESC LIMIT 1";
 			PreparedStatement ps = con.prepareStatement(sql);
 
 			ps.setString(1, ab.getLoginId());
 			ps.setString(2, ab.getPass());
 
 			ResultSet rs = ps.executeQuery();
+			
+			
 
 			if (rs.next()) {
 				// 見つかったアカウント情報を戻り値にセット
-				returnAb.setAccountId(rs.getInt("accountId"));
-				returnAb.setLoginId(rs.getString("loginId"));
-				returnAb.setPass(rs.getString("pass"));
-				returnAb.setName(rs.getString("name"));
-				returnAb.setRoleId(rs.getInt("roleId"));
-				returnAb.setGenId(rs.getInt("genId"));
-				returnAb.setCharaLevel(rs.getInt("charaLevel"));
-				returnAb.setCharaPoint(rs.getInt("charaPoint"));
+				returnAb.setAccountId(rs.getInt("account.accountId"));
+				returnAb.setLoginId(rs.getString("account.loginId"));
+				returnAb.setPass(rs.getString("account.pass"));
+				returnAb.setName(rs.getString("account.name"));
+				returnAb.setRoleId(rs.getInt("account.roleId"));
+				returnAb.setGenId(rs.getInt("account.genId"));
+				returnAb.setCharaLevel(rs.getInt("account.charaLevel"));
+				returnAb.setCharaPoint(rs.getInt("account.charaPoint"));
 			} else {
 				// アカウントがなければnullを返す
 				return null;

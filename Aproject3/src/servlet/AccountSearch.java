@@ -1,10 +1,8 @@
 package servlet;
 
 import java.io.IOException;
-import java.time.LocalDate;
 
 import dao.AccountDAO;
-import dao.RecordCheckDAO;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -13,8 +11,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import model.AccountBeans;
-import model.PointLogic;
-import model.RecordBeans;
 
 @WebServlet("/AccountSearch")
 public class AccountSearch extends HttpServlet {
@@ -31,16 +27,16 @@ public class AccountSearch extends HttpServlet {
 		ab.setPass(pass);
 
 		// 最終登録日を取得
-		RecordBeans rBeans = new RecordBeans();
-		RecordCheckDAO dao =new RecordCheckDAO();
-		RecordBeans rb = dao.findRecordBeans(rBeans);
-		LocalDate now = LocalDate.now();
-		LocalDate recordDate = rb.getToday();
-		recordDate = now.plusDays(10);
-		if(now.isBefore(recordDate)) {
-			PointLogic pl = new PointLogic();
-			pl.decreasePoint();
-		}
+//		RecordBeans rBeans = new RecordBeans();
+//		RecordCheckDAO dao =new RecordCheckDAO();
+//		RecordBeans rb = dao.findRecordBeans(rBeans);
+//		LocalDate now = LocalDate.now();
+//		LocalDate recordDate = rb.getToday();
+//		recordDate = now.plusDays(10);
+//		if(now.isBefore(recordDate)) {
+//			PointLogic pl = new PointLogic();
+//			pl.decreasePoint();
+//		}
 		
 		// 検索したアカウント情報を取得
 		AccountDAO ad = new AccountDAO();
