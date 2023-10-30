@@ -78,6 +78,7 @@ public class GoalconfirmServlet extends HttpServlet {
         } else {
             // ログインしていない場合のエラーハンドリング
             // リダイレクトなど適切な処理を行う
+        	 // (仮)
         }
     }
 
