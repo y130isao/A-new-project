@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="java.util.List" %>
 <%@ page import="model.Goal" %>
+<%@ page import="java.util.ArrayList" %>
 
 <%
-List<model.Goal> goalList = (List<model.Goal>) request.getAttribute("goalList");
+List<Goal> goalList = (List<Goal>) session.getAttribute("goalList");
 if (goalList != null && !goalList.isEmpty()) {
 %>
 <%@ page import="java.util.Date, java.text.SimpleDateFormat" %>
