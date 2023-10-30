@@ -34,7 +34,6 @@ public class RecordComplete extends HttpServlet {
 		rb.setMemo_list1(memo_list1);
 		rb.setMemo_list2(memo_list2);
 		rb.setMemo_list3(memo_list3);
-		rb.setDate(date);
 
 		// 記録の有無を検索
 		// 検索した記録情報を取得
