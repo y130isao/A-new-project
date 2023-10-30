@@ -18,10 +18,10 @@ public class RecordDAO {
 
 		try (Connection con = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASS)) {
 
-			String sql = "INSERT INTO user_health(date, do_result1,do_result2,do_result3,memo_list1,memo_list2,memo_list3,) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
+			String sql = "INSERT INTO user_health(date, do_result1,do_result2,do_result3,memo_list1,memo_list2,memo_list3,) VALUES(?, ?, ?, ?, ?, ?, ?)";
 			PreparedStatement ps = con.prepareStatement(sql);
 
-			ps.setString(1, rb.getToday());
+			ps.setDate(1, rb.getDate());
 			ps.setBoolean(2, rb.getDo_result1());
 			ps.setBoolean(3, rb.getDo_result2());
 			ps.setBoolean(4, rb.getDo_result3());
