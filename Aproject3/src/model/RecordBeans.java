@@ -1,7 +1,6 @@
 package model;
 
 import java.io.Serializable;
-import java.util.Date;
 
 public class RecordBeans implements Serializable {
 
@@ -11,7 +10,6 @@ public class RecordBeans implements Serializable {
     private String memo_list1;
     private String memo_list2;
     private String memo_list3;
-    private Date date;
     
 
     public boolean getDo_result1() {
@@ -52,12 +50,4 @@ public class RecordBeans implements Serializable {
     public void setMemo_list3(String memo_list3) {
         this.memo_list3 = memo_list3;
          }
-    
-    public Date getDate() {
-        return date;
-    }
-    public void setDate(Date date) {
-        this.date = date;
-
-    }
 }
