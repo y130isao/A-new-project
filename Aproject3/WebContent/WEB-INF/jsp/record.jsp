@@ -2,11 +2,12 @@
 <%@ page import="java.util.List" %>
 <%@ page import="model.Goal" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.Iterator" %>
 
 <%
-List<Goal> goalList = (List<Goal>) session.getAttribute("goalList");
-if (goalList != null && !goalList.isEmpty()) {
+List<model.Goal> goalList = (List<model.Goal>) session.getAttribute("goalList");
 %>
+
 <%@ page import="java.util.Date, java.text.SimpleDateFormat" %>
 
 <%
@@ -25,6 +26,8 @@ String today = sdf.format(date);
 <h1>本日の記録</h1>
 <h2><%= sdf.format(date) %></h2>
 <form action="/Aproject3/RecordCheck" method="post">
+
+
 <%-- ☆修正必要☆ --%>
 <h3>あなたの選択項目1</h3>
 <p><%= goalList.get(0).getGoalgenre1() %></p>
