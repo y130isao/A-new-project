@@ -10,10 +10,13 @@ public class PointLogic {
 	AccountBeans ab = new AccountBeans();
 	private int nowCharaPoint = ab.getCharaPoint();
 	private int nowCharaLevel = ab.getCharaLevel();
-	
 
-	// ポイントのの計算処理
-	public List<Integer> calcPoint(RecordBeans rb) {
+		/**
+		 * Do_resultの結果に応じてPoint + Levelを増加
+		 * @param rb
+		 * @return
+		 */
+		public List<Integer> calcPoint(RecordBeans rb) {
 		List<Integer> list = new ArrayList<Integer>();
 		/* recordが正常にされていた場合の処理
 		 if(一定期間の更新処理){
@@ -59,8 +62,12 @@ public class PointLogic {
 		return list;
 	}
 
-	// ポイントの減少
-	public List<Integer> decreasePoint(RecordBeans rb) {
+	/**
+	 * ポイント減少に応じてキャラクターのレベルも減少
+	 * @param ab
+	 * @return
+	 */
+	public List<Integer> decreasePoint(AccountBeans ab) {
 		List<Integer> list = new ArrayList<Integer>();
 		nowCharaLevel -= 10;
 		if (nowCharaPoint < 90) {
@@ -76,10 +83,10 @@ public class PointLogic {
 		}
 		return list;
 	}
-	/* ポイントがマイナスにならない機能
-	 * 例外処理の追記
-	 * 登録日の取得
-	 * boolean型do_result→int
+	/* TODO ポイントがマイナスにならない機能
+	 *      例外処理の追記
+	 * 		登録日の取得
+	 * 		boolean型do_result→int
 	 */
 
 }

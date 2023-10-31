@@ -14,32 +14,30 @@ public class AccountDAO {
 	private final String DB_USER = "sample_user";
 	private final String DB_PASS = "";
 
-	// ログインアカウントを探す
+	/**
+	 * DBへ登録済みのアカウントを取得
+	 * @param ab
+	 * @return
+	 */
 	public AccountBeans findAccount(AccountBeans ab) {
 
-		// 戻り値の用意
+		/** 戻り値の用意 */
 		AccountBeans returnAb = new AccountBeans();
 
-		// データベースへ接続
+		/** データベースに接続 */
 		try (Connection con = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASS)) {
 
 			String sql = "SELECT account.accountId, account.loginId,account.pass, "
 					+ "account.name, account.genId, "
 					+ "account.roleId, account.charaLevel, account.charaPoint "
-//					+ "health.date_time "
 					+ "FROM account "
-//					+ "JOIN user_health "
-//					+ "ON account.accountId = health.accountId "
 					+ "WHERE account.loginId = ? AND account.pass = ? ";
-//					+ "ORDER BY dateTime DESC LIMIT 1";
 			PreparedStatement ps = con.prepareStatement(sql);
 
 			ps.setString(1, ab.getLoginId());
 			ps.setString(2, ab.getPass());
 
 			ResultSet rs = ps.executeQuery();
-			
-			
 
 			if (rs.next()) {
 				// 見つかったアカウント情報を戻り値にセット
@@ -60,6 +58,47 @@ public class AccountDAO {
 			return null;
 		}
 		return returnAb;
-	}	
-}
+	}
 
+	/**
+	 * アカウントの最終更新日の取得
+	 * @param accountId
+	 * @return
+	 */
+	public AccountBeans findTime(int accountId) {
+		AccountBeans returnAb = new AccountBeans();
+		try (Connection con = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASS)) {
+
+			String sql = "SELECT user_health.date_time "
+					+ "FROM user_health "
+					+ "WHERE date_time = (SELECT max(date_time) FROM user_health) "
+					+ "AND accountId = ? ";
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, accountId);
+
+			ResultSet rs = ps.executeQuery();
+
+			if (rs.next()) {
+				returnAb.setDateTime(rs.getDate("user_health.date_time"));
+				System.out.println(returnAb.getDateTime());
+			} else {
+				return null;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+		return returnAb;
+	}
+
+	/**
+	 * アカウントのポイント減少処理
+	 * @param ab
+	 * @return
+	 */
+	public AccountBeans decreasePoint(AccountBeans ab) {
+		/** TODO 一定期間更新が無かった時のポイント減少処理*/
+		return ab;
+
+	}
+}

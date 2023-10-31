@@ -12,7 +12,12 @@ public class AccountRegisterDAO {
 	private final String JDBC_URL = "jdbc:mysql://172.16.0.218:3306/health_management";
 	private final String DB_USER = "sample_user";
 	private final String DB_PASS = "";
-
+	
+	/**
+	 * DBへ新規登録するDAO
+	 * @param ab
+	 * @return
+	 */
 	public boolean create(AccountBeans ab) {
 
 		try (Connection con = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASS)) {
