@@ -25,7 +25,7 @@ public class RecordCheck extends HttpServlet {
 		if (mode == null || mode.equals("back")) {
 			path = "/WEB-INF/jsp/record.jsp";
 		} else {
-			path = "/WEB-INF/jsp/recordcheck.jsp";
+			path = "/WEB-INF/jsp/recordcompplete.jsp";
 			HttpSession session = request.getSession();
 			session.invalidate();
 		}

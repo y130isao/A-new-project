@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.Record;
+
 public class RecordDAO {
 
 	private final String JDBC_URL = "jdbc:mysql://172.16.0.218:3306/health_management";
