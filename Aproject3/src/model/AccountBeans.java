@@ -1,6 +1,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class AccountBeans implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -13,6 +14,7 @@ public class AccountBeans implements Serializable {
 	private int genId;
 	private int charaLevel;
 	private int charaPoint;
+	public Date dateTime;
 
 	public int getAccountId() {
 		return accountId;
@@ -88,5 +90,13 @@ public class AccountBeans implements Serializable {
 			charaPoint = 450;
 		}
 		this.charaPoint = charaPoint;
+	}
+	
+	public Date getDateTime() {
+		return dateTime;
+	}
+	
+	public void setDateTime(Date dateTime) {
+		this.dateTime = dateTime;
 	}
 }

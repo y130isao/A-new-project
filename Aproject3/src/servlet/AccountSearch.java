@@ -41,7 +41,8 @@ public class AccountSearch extends HttpServlet {
 		// 検索したアカウント情報を取得
 		AccountDAO ad = new AccountDAO();
 		AccountBeans returnAb = ad.findAccount(ab);
-
+//		AccountBeans aBeans = ad.findTime(ab);
+		System.out.println(ad.findTime(ab));
 		if (returnAb != null) {
 			// セッションにアカウント情報＆ロールを登録
 			HttpSession session = request.getSession();

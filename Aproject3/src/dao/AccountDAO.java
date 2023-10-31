@@ -26,20 +26,14 @@ public class AccountDAO {
 			String sql = "SELECT account.accountId, account.loginId,account.pass, "
 					+ "account.name, account.genId, "
 					+ "account.roleId, account.charaLevel, account.charaPoint "
-//					+ "health.date_time "
 					+ "FROM account "
-//					+ "JOIN user_health "
-//					+ "ON account.accountId = health.accountId "
-					+ "WHERE account.loginId = ? AND account.pass = ? ";
-//					+ "ORDER BY dateTime DESC LIMIT 1";
+					+ "WHERE account.loginId = ? AND account.pass = ? ;";
 			PreparedStatement ps = con.prepareStatement(sql);
 
 			ps.setString(1, ab.getLoginId());
 			ps.setString(2, ab.getPass());
 
 			ResultSet rs = ps.executeQuery();
-			
-			
 
 			if (rs.next()) {
 				// 見つかったアカウント情報を戻り値にセット
@@ -60,6 +54,30 @@ public class AccountDAO {
 			return null;
 		}
 		return returnAb;
-	}	
-}
+	}
 
+	public AccountBeans findTime(AccountBeans ab) {
+		AccountBeans returnAb = new AccountBeans();
+		try (Connection con = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASS)) {
+
+			String sql = "SELECT user_health.date_time "
+					+ "FROM user_health "
+					+ "WHERE date_time = (SELECT max(date_time) FROM user_health) "
+					+ "AND accountId = ? ;";
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, ab.getAccountId());
+
+			ResultSet rs = ps.executeQuery();
+
+			if (rs.next()) {
+				returnAb.setDateTime(rs.getTimestamp("date_time"));
+			} else {
+				return null;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+		return returnAb;
+	}
+}
