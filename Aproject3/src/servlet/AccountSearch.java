@@ -15,7 +15,8 @@ import model.AccountBeans;
 @WebServlet("/AccountSearch")
 public class AccountSearch extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	
+	@SuppressWarnings("unused")
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String loginId = request.getParameter("loginId");
@@ -41,10 +42,12 @@ public class AccountSearch extends HttpServlet {
 		// 検索したアカウント情報を取得
 		AccountDAO ad = new AccountDAO();
 		AccountBeans returnAb = ad.findAccount(ab);
-//		AccountBeans aBeans = ad.findTime(ab);
-		System.out.println(ad.findTime(ab));
+		int accountId = returnAb.getAccountId();
+		AccountBeans rBeans = ad.findTime(accountId);
+		System.out.println(rBeans.getDateTime());
+			
 		if (returnAb != null) {
-			// セッションにアカウント情報＆ロールを登録
+			// セッションにアカウント情報を登録
 			HttpSession session = request.getSession();
 			session.setAttribute("account", returnAb);
 

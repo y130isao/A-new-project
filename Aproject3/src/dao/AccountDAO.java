@@ -14,20 +14,24 @@ public class AccountDAO {
 	private final String DB_USER = "sample_user";
 	private final String DB_PASS = "";
 
-	// ログインアカウントを探す
+	/**
+	 * DBへ登録済みのアカウントを取得
+	 * @param ab
+	 * @return
+	 */
 	public AccountBeans findAccount(AccountBeans ab) {
 
-		// 戻り値の用意
+		/** 戻り値の用意 */
 		AccountBeans returnAb = new AccountBeans();
 
-		// データベースへ接続
+		/** データベースに接続 */
 		try (Connection con = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASS)) {
 
 			String sql = "SELECT account.accountId, account.loginId,account.pass, "
 					+ "account.name, account.genId, "
 					+ "account.roleId, account.charaLevel, account.charaPoint "
 					+ "FROM account "
-					+ "WHERE account.loginId = ? AND account.pass = ? ;";
+					+ "WHERE account.loginId = ? AND account.pass = ? ";
 			PreparedStatement ps = con.prepareStatement(sql);
 
 			ps.setString(1, ab.getLoginId());
@@ -56,21 +60,27 @@ public class AccountDAO {
 		return returnAb;
 	}
 
-	public AccountBeans findTime(AccountBeans ab) {
+	/**
+	 * アカウントの最終更新日の取得
+	 * @param accountId
+	 * @return
+	 */
+	public AccountBeans findTime(int accountId) {
 		AccountBeans returnAb = new AccountBeans();
 		try (Connection con = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASS)) {
 
 			String sql = "SELECT user_health.date_time "
 					+ "FROM user_health "
 					+ "WHERE date_time = (SELECT max(date_time) FROM user_health) "
-					+ "AND accountId = ? ;";
+					+ "AND accountId = ? ";
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setInt(1, ab.getAccountId());
+			ps.setInt(1, accountId);
 
 			ResultSet rs = ps.executeQuery();
 
 			if (rs.next()) {
-				returnAb.setDateTime(rs.getTimestamp("date_time"));
+				returnAb.setDateTime(rs.getDate("user_health.date_time"));
+				System.out.println(returnAb.getDateTime());
 			} else {
 				return null;
 			}
@@ -79,5 +89,16 @@ public class AccountDAO {
 			return null;
 		}
 		return returnAb;
+	}
+
+	/**
+	 * アカウントのポイント減少処理
+	 * @param ab
+	 * @return
+	 */
+	public AccountBeans decreasePoint(AccountBeans ab) {
+		/** TODO 一定期間更新が無かった時のポイント減少処理*/
+		return ab;
+
 	}
 }

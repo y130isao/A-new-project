@@ -1,7 +1,7 @@
 package model;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
 
 public class AccountBeans implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -91,11 +91,11 @@ public class AccountBeans implements Serializable {
 		}
 		this.charaPoint = charaPoint;
 	}
-	
+
 	public Date getDateTime() {
 		return dateTime;
 	}
-	
+
 	public void setDateTime(Date dateTime) {
 		this.dateTime = dateTime;
 	}
