@@ -3,26 +3,23 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-import dao.RecordCheckDAO;
-
 public class PointLogic {
 	// データベースからpoint+levelを取得
 	AccountBeans ab = new AccountBeans();
 	private int nowCharaPoint = ab.getCharaPoint();
 	private int nowCharaLevel = ab.getCharaLevel();
 
-		/**
-		 * Do_resultの結果に応じてPoint + Levelを増加
-		 * @param rb
-		 * @return
-		 */
-		public List<Integer> calcPoint(RecordBeans rb) {
+	/**
+	 * Do_resultの結果に応じてPoint + Levelを増加
+	 * @param rb
+	 * @return
+	 */
+	public List<Integer> calcPoint(int accountId) {
 		List<Integer> list = new ArrayList<Integer>();
 		/* recordが正常にされていた場合の処理
 		 if(一定期間の更新処理){
 		*/
-		RecordCheckDAO dao = new RecordCheckDAO();
-		RecordBeans returnRb = dao.findRecordBeans(rb);
+		Record returnRb = new Record();
 		int getPoint = 0;
 		// boolean型をintに変換
 		List<Boolean> results = new ArrayList<Boolean>();
@@ -45,20 +42,21 @@ public class PointLogic {
 			getPoint = 0;
 		}
 		nowCharaPoint += getPoint;
+		list.add(nowCharaPoint);
 
 		// キャラクターのレベルとポイントをリストに追加
 		if (nowCharaPoint < 90) {
-			list.add(1, nowCharaPoint);
-		} else if (nowCharaPoint >= 90 && nowCharaLevel < 180) {
-			list.add(2, nowCharaPoint);
+			nowCharaLevel = 1;
+		} else if (nowCharaPoint >= 90 && nowCharaPoint < 180) {
+			nowCharaLevel = 2;
 		} else if (nowCharaPoint >= 180 && nowCharaPoint < 270) {
-			list.add(3, nowCharaPoint);
+			nowCharaLevel = 3;
 		} else if (nowCharaPoint >= 270 && nowCharaPoint < 360) {
-			list.add(4, nowCharaPoint);
+			nowCharaLevel = 4;
 		} else {
-			list.add(5, nowCharaPoint);
+			nowCharaLevel = 5;
 		}
-		System.out.println(nowCharaPoint + ":" + getPoint + ":" + nowCharaLevel);
+		list.add(nowCharaLevel);
 		return list;
 	}
 
@@ -69,18 +67,20 @@ public class PointLogic {
 	 */
 	public List<Integer> decreasePoint(AccountBeans ab) {
 		List<Integer> list = new ArrayList<Integer>();
-		nowCharaLevel -= 10;
+		nowCharaPoint -= 10;
+		list.add(nowCharaPoint);
 		if (nowCharaPoint < 90) {
-			list.add(1, nowCharaPoint);
-		} else if (nowCharaPoint >= 90 && nowCharaLevel < 180) {
-			list.add(2, nowCharaPoint);
+			nowCharaLevel = 1;
+		} else if (nowCharaPoint >= 90 && nowCharaPoint < 180) {
+			nowCharaLevel = 2;
 		} else if (nowCharaPoint >= 180 && nowCharaPoint < 270) {
-			list.add(3, nowCharaPoint);
+			nowCharaLevel = 3;
 		} else if (nowCharaPoint >= 270 && nowCharaPoint < 360) {
-			list.add(4, nowCharaPoint);
+			nowCharaLevel = 4;
 		} else {
-			list.add(5, nowCharaPoint);
+			nowCharaLevel = 5;
 		}
+		list.add(nowCharaLevel);
 		return list;
 	}
 	/* TODO ポイントがマイナスにならない機能
