@@ -39,9 +39,21 @@ public class RecordCheck extends HttpServlet {
 
 		//リクエストパラメータの取得
 		request.setCharacterEncoding("UTF-8");
-		boolean do_result1 = request.getParameter("do_result1") != null;
-		boolean do_result2 = request.getParameter("do_result2") != null;
-		boolean do_result3 = request.getParameter("do_result3") != null;
+		
+		
+//		boolean do_result1 = request.getParameter("do_result1") != null;
+//		boolean do_result2 = request.getParameter("do_result2") != null;
+//		boolean do_result3 = request.getParameter("do_result3") != null;
+		
+		String doResult1Value = request.getParameter("do_result1");
+	    String doResult2Value = request.getParameter("do_result2");
+	    String doResult3Value = request.getParameter("do_result3");
+
+	    // 1がtrue、0がfalseに変換
+	    boolean do_result1 = "1".equals(doResult1Value);
+	    boolean do_result2 = "1".equals(doResult2Value);
+	    boolean do_result3 = "1".equals(doResult3Value);
+	    
 		String memo_list1 = request.getParameter("memo_list1");
 		String memo_list2 = request.getParameter("memo_list2");
 		String memo_list3 = request.getParameter("memo_list3");

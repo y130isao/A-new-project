@@ -51,12 +51,12 @@ public class RecordDAO {
 		return recordList;
 	}
 
-	// 目標情報をデータベースに保存（新規挿入）
+	// 記録情報をデータベースに保存（新規挿入）
 	public boolean create(Record record, int accountId) {
 		try (Connection conn = getConnection()) {
 
 			// 新規挿入
-			String insertQuery = "INSERT INTO user_health (accountId, do_result1, do_result1, do_result1, memo_list1, memo_list1, memo_list1) VALUES (?, ?, ?, ?, ?, ?, ?)";
+			String insertQuery = "INSERT INTO user_health (accountId, do_result1, do_result2, do_result3, memo_list1, memo_list2, memo_list3) VALUES (?, ?, ?, ?, ?, ?, ?)";
 			PreparedStatement insertStmt = conn.prepareStatement(insertQuery);
 			
 		    insertStmt.setInt(1, accountId);
