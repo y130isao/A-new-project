@@ -25,7 +25,8 @@ public class AccountDAO {
 		AccountBeans returnAb = new AccountBeans();
 
 		/** データベースに接続 */
-		try (Connection con = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASS)) {
+		try (Connection con = DriverManager.getConnection(
+				JDBC_URL, DB_USER, DB_PASS)) {
 
 			String sql = "SELECT account.accountId, account.loginId,account.pass, "
 					+ "account.name, account.genId, "
@@ -67,7 +68,8 @@ public class AccountDAO {
 	 */
 	public AccountBeans findTime(int accountId) {
 		AccountBeans returnAb = new AccountBeans();
-		try (Connection con = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASS)) {
+		try (Connection con = DriverManager.getConnection(
+				JDBC_URL, DB_USER, DB_PASS)) {
 
 			String sql = "SELECT user_health.date_time "
 					+ "FROM user_health "
@@ -79,8 +81,7 @@ public class AccountDAO {
 			ResultSet rs = ps.executeQuery();
 
 			if (rs.next()) {
-				returnAb.setDateTime(rs.getDate("user_health.date_time"));
-				System.out.println(returnAb.getDateTime());
+				returnAb.setDateTime(rs.getTimestamp("user_health.date_time"));
 			} else {
 				return null;
 			}
@@ -92,13 +93,35 @@ public class AccountDAO {
 	}
 
 	/**
-	 * アカウントのポイント減少処理
+	 * アカウントのポイントとレベルの更新処理
 	 * @param ab
 	 * @return
 	 */
-	public AccountBeans decreasePoint(AccountBeans ab) {
-		/** TODO 一定期間更新が無かった時のポイント減少処理*/
-		return ab;
+	public AccountBeans setPram(AccountBeans ab) {
+		AccountBeans returnAb = new AccountBeans();
+		try (Connection con = DriverManager.getConnection(
+				JDBC_URL, DB_USER, DB_PASS)) {
+
+			String sql = "UPDATE account SET charaLevel = ?, charaPoint = ? "
+					+ "WHERE accountId = ?";
+			PreparedStatement ps = con.prepareStatement(sql);
+
+			ps.setInt(1, ab.getCharaLevel());
+			ps.setInt(2, ab.getCharaPoint());
+			ps.setInt(3, ab.getAccountId());
+
+			ResultSet rs = ps.executeQuery();
+
+			if (rs.next()) {
+
+			} else {
+				return null;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+		return returnAb;
 
 	}
 }
