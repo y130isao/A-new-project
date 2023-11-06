@@ -12,7 +12,7 @@ public class AccountRegisterDAO {
 	private final String JDBC_URL = "jdbc:mysql://172.16.0.218:3306/health_management";
 	private final String DB_USER = "sample_user";
 	private final String DB_PASS = "";
-	
+
 	/**
 	 * DBへ新規登録するDAO
 	 * @param ab
@@ -38,7 +38,7 @@ public class AccountRegisterDAO {
 			} else {
 				System.out.println("新規登録失敗");
 			}
-
+			con.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return false;

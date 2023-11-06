@@ -13,6 +13,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import model.AccountBeans;
+import model.PointLogic;
 
 @WebServlet("/AccountSearch")
 public class AccountSearch extends HttpServlet {
@@ -37,18 +38,25 @@ public class AccountSearch extends HttpServlet {
 		/** 最終更新日時の取得*/
 		AccountBeans rBeans = ad.findTime(accountId);
 		Timestamp timeStamp = rBeans.getDateTime();
-		System.out.println("最終ログイン日時 : " + timeStamp);
-		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-		System.out.println("現在日時 : " + timestamp);
-		long diff = timestamp.getTime() - timeStamp.getTime();
-		TimeUnit time = TimeUnit.DAYS;
-		long diffrence = time.convert(diff, TimeUnit.MILLISECONDS);
-		System.out.println(diffrence);
+		System.out.println("最終更新日時 : " + timeStamp);
+		if (timeStamp != null) {
+			Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+			System.out.println("現在日時 : " + timestamp);
+			long diff = timestamp.getTime() - timeStamp.getTime();
+			TimeUnit time = TimeUnit.DAYS;
+			long diffrence = time.convert(diff, TimeUnit.MILLISECONDS);
+			System.out.println(diffrence);
 
-		if (diffrence > 10) {
-			/**
-			 * TODO ポイント減少の処理
-			 */
+			/**　更新無し時のpoint+level処理*/
+			if (diffrence >= 10) {
+				PointLogic ptLogic = new PointLogic();
+				ptLogic.decreasePoint(returnAb);
+				int charaPoint = returnAb.getCharaPoint();
+				int charaLevel = returnAb.getCharaLevel();
+				ad.setPram(returnAb);
+			}
+		} else {
+			System.out.println("更新時間は未登録です");
 		}
 
 		if (returnAb != null) {
