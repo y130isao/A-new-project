@@ -9,6 +9,8 @@ List<model.Record> recordList = (List<model.Record>) session.getAttribute("recor
 %>
 
 
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,91 +24,47 @@ List<model.Record> recordList = (List<model.Record>) session.getAttribute("recor
 <title>本日の記録確認</title>
 </head>
 <body>
+<<<<<<< HEAD
     <header>健康管理アプリ</header>
 
-    <h1>下記の内容で登録します。</h1>
-    <section>
-        <div class="kiroku1">
-            <div class result>
-                <h2>あなたの選択項目1</h2>
-                結果<br>
-                【<%= rb.getDo_result1() %>】</br>
-            </div>
-            <div class="memo">
-                メモ<br>
-                【<%= rb.getMemo_list1() %>】</br>
-                    </h2>
-            </div>
-        </div>
-        <div class="kiroku2">
-            <div class result>
-                <h2>あなたの選択項目2</h2>
-                結果<br>
-                【<%= rb.getDo_result2() %>】</br>
-            </div>
-            <div class="memo">
-                メモ<br>
-                【<%= rb.getMemo_list2() %>】</br>
-            </div>
-        </div>
-        <div class="kiroku3">
-            <div class result>
-                <h2>あなたの選択項目3</h2>
-                結果<br>
-                【<%= rb.getDo_result3() %>】</br>
-            </div>
-            <div class="memo">
-                メモ<br>
-                【<%= rb.getMemo_list3() %>】</br>
-            </div>
-        </div>
-    </section>
-    <form action="/Aproject3/RecordComplete" method="post">
-        <input type="submit" value="登録する"><br>
-    </form>
-    <a href="/Aproject3/RecordServlet">前の画面に戻る</a>
+ 	<h1>下記の内容で登録します。</h1>
+	<section>
+		<div class="kiroku1">
+			<div class result>
+				<h2>あなたの選択項目1</h2>
+				結果<br>
+				<h2>あなたの選択項目1</h2>
+				 <p>結果: <%= recordList.get(0).getDo_result1() %></p>
+			</div>
+			<div class memo>
+				メモ<br> 【<%=recordList.get(0).getMemo_list1()%>】</br>
+				</h2>
+			</div>
+		</div>
+		<div class="kiroku2">
+			<div class result>
+				<h2>あなたの選択項目2</h2>
+				 <p>結果: <%= recordList.get(0).getDo_result2 %></p>
+			</div>
+			<div class memo>
+				メモ<br> 【<%=recordList.get(0).getMemo_list2()%>】</br>
+			</div>
+		</div>
+		<div class="kiroku3">
+			<div class result>
+				<h2>あなたの選択項目3</h2>
+				 <p>結果: <%= recordList.get(0).getDo_result3 %></p>
+			</div>
+			<div class memo>
+				メモ<br> 【<%=recordList.get(0).getMemo_list3()%>】</br>
+			</div>
+		</div>
+	</section>
+	<div id="btBox">
+		<a href="/Aproject3/RecordCheck?mode=back" class="button2">戻る</a> <a
+			href="/Aproject3/RecordCheck?mode=send" class="button2">送信</a>
+	</div>
+
 </body>
 </html>
-<%--<h1>下記の内容で登録します。</h1>
 
-<h2>あなたの選択項目1</h2><br>
-
-<div class result>
-結果<br>
-【<%= rb.getDo_result1() %>】</br>
-</div>
-
-<div class memo>
-メモ<br>
-【<%= rb.getMemo_list1() %>】</br>
-</h2>
-</div>
-
-<h2>あなたの選択項目2</h2><br>
-
-<div class result>
-結果<br>
-【<%= rb.getDo_result2() %>】</br>
-</div>
-<div class memo>
-メモ<br>
-【<%= rb.getMemo_list2() %>】</br>
-</div>
-
-<h2>あなたの選択項目3</h2><br>
-
-<div class result>
-結果<br>
-【<%= rb.getDo_result3() %>】</br>
-</div>
-<div class memo>
-メモ<br>
-【<%= rb.getMemo_list3() %>】</br>
-</div>
-
-<form action="/Aproject3/RecordComplete" method="post">
-<input type="submit" value="登録する"><br>
-</form>
-<a href="/Aproject3/RecordServlet" >前の画面に戻る</a> --%>
-</body>
-</html>
