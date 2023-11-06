@@ -20,17 +20,17 @@ public class AccountDAO {
 	 * @return
 	 */
 	public AccountBeans findAccount(AccountBeans ab) {
-
-		/** 戻り値の用意 */
 		AccountBeans returnAb = new AccountBeans();
 
 		/** データベースに接続 */
 		try (Connection con = DriverManager.getConnection(
 				JDBC_URL, DB_USER, DB_PASS)) {
 
-			String sql = "SELECT account.accountId, account.loginId,account.pass, "
+			String sql = "SELECT account.accountId, "
+					+ "account.loginId,account.pass, "
 					+ "account.name, account.genId, "
-					+ "account.roleId, account.charaLevel, account.charaPoint "
+					+ "account.roleId, account.charaLevel, "
+					+ "account.charaPoint "
 					+ "FROM account "
 					+ "WHERE account.loginId = ? AND account.pass = ? ";
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -54,6 +54,7 @@ public class AccountDAO {
 				// アカウントがなければnullを返す
 				return null;
 			}
+			con.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return null;
@@ -73,7 +74,8 @@ public class AccountDAO {
 
 			String sql = "SELECT user_health.date_time "
 					+ "FROM user_health "
-					+ "WHERE date_time = (SELECT max(date_time) FROM user_health) "
+					+ "WHERE date_time = (SELECT max(date_time) "
+					+ "FROM user_health) "
 					+ "AND accountId = ? ";
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setInt(1, accountId);
@@ -81,10 +83,12 @@ public class AccountDAO {
 			ResultSet rs = ps.executeQuery();
 
 			if (rs.next()) {
-				returnAb.setDateTime(rs.getTimestamp("user_health.date_time"));
+				returnAb.setDateTime(
+						rs.getTimestamp("user_health.date_time"));
 			} else {
 				return null;
 			}
+			con.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return null;
@@ -110,17 +114,19 @@ public class AccountDAO {
 			ps.setInt(2, ab.getCharaPoint());
 			ps.setInt(3, ab.getAccountId());
 
-			ResultSet rs = ps.executeQuery();
+			int rs = ps.executeUpdate();
 
-			if (rs.next()) {
+			if (rs != 0) {
 
 			} else {
 				return null;
 			}
+			con.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return null;
 		}
+
 		return returnAb;
 
 	}
