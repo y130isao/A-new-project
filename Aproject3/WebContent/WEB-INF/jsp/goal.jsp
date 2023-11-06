@@ -21,6 +21,7 @@ String goal3=goal==null? "":goal.getGoal3();
 		<title>目標設定</title>
 	</head>
 	<body>
+	    <header>健康管理アプリ</header>
     <h1>目標設定</h1>
     <form action="/Aproject3/GoalconfirmServlet" method="post">
         <div class="contact-formbox">

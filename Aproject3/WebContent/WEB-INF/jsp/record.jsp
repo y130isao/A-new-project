@@ -30,14 +30,21 @@ String memo_list3 = record == null ? "" : record.getMemo_list3();
 <html>
 <head>
 <meta charset="UTF-8">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=BIZ+UDGothic&display=swap');
+    </style>
 <title>本日の記録</title>
 </head>
 <body>
-	<h1>本日の記録</h1>
-	<h2><%=sdf.format(date)%></h2>
-	<form action="/Aproject3/RecordCheck" method="post">
-
-
+    <header>
+        健康管理アプリ
+    </header>
+    <h1>本日の記録</h1>
+    <h2>
+        <%= sdf.format(date) %>
+    </h2>
+    <form action="/Aproject3/RecordServlet" method="post">
+     <div class="kiroku1">
 		<%-- ☆修正必要☆ --%>
 		<h3>あなたの選択項目1</h3>
 		<p><%=goalList.get(0).getGoalgenre1()%></p>
@@ -53,8 +60,9 @@ String memo_list3 = record == null ? "" : record.getMemo_list3();
 			メモ<br> <input type="text" name="memo_list1" placeholder="10文字以上"
 				minlength="10" value="<%=memo_list1%>" required><br>
 		</div>
-
-		<%-- ☆修正必要☆ --%>
+     </div>
+        <div class="kiroku2">
+           		<%-- ☆修正必要☆ --%>
 		<h3>あなたの選択項目2</h3>
 		<p><%=goalList.get(0).getGoalgenre2()%></p>
 		<%=goalList.get(0).getGoal2()%>
@@ -68,7 +76,9 @@ String memo_list3 = record == null ? "" : record.getMemo_list3();
 			メモ<br> <input type="text" name="memo_list2" placeholder="10文字以上"
 				minlength="10" value="<%=memo_list2%>" required><br>
 		</div>
-
+        </div>
+        <div class="kiroku3">
+         
 		<%-- ☆修正必要☆ --%>
 		<h3>あなたの選択項目3</h3>
 		<p><%=goalList.get(0).getGoalgenre3()%></p>
@@ -83,10 +93,13 @@ String memo_list3 = record == null ? "" : record.getMemo_list3();
 			メモ<br> <input type="text" name="memo_list3" placeholder="10文字以上"
 				minlength="10" value="<%=memo_list3%>" required><br>
 		</div>
+        </div>
 
-		<input type="submit" value="記録確認・登録画面へ" /><br>
-	</form>
+    </form>
+    <div class="btn">
+        <input type="submit" value="記録確認・登録画面へ" />
+    </div>
 
-	<a href="/Aproject3/TopServlet">TOPへ</a>
+    <footer><a href="/Aproject3/TopServlet">TOPへ</a></footer>
 </body>
 </html>

@@ -6,8 +6,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" type="text/css" href="/Aproject3/css/top.css">
-  <style>
-        @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=BIZ+UDGothic&display=swap');
     </style>
     <title>TOP</title>
 </head>
@@ -26,10 +26,10 @@
         <h2><a href="${pageContext.request.contextPath}/RoomServlet">モブルームへ</a></h2>
     </div>
 
-    <div>
-        <p>現在のレベル: ${charaLevel}</p>
-        <p>所有ポイント: ${charaPoint} point</p>
-        <p>次のレベルアップまで: ${nextLevelUpPoints} point</p>
+    <div class="point">
+        <p>現在のレベル: <b>${charaLevel}</b></p>
+        <p>所有ポイント: <b>${charaPoint}</b> point</p>
+        <p>次のレベルアップまで: <b>${nextLevelUpPoints}</b> point</p>
     </div>
 </body>
 

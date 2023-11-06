@@ -5,20 +5,17 @@ import java.util.List;
 
 public class PointLogic {
 	// データベースからpoint+levelを取得
-	AccountBeans ab = new AccountBeans();
-	private int nowCharaPoint = ab.getCharaPoint();
-	private int nowCharaLevel = ab.getCharaLevel();
-
 	/**
 	 * Do_resultの結果に応じてPoint + Levelを増加
 	 * @param rb
 	 * @return
 	 */
-	public List<Integer> calcPoint(int accountId) {
-		List<Integer> list = new ArrayList<Integer>();
+	public void calcPoint(AccountBeans ab) {
 		/* recordが正常にされていた場合の処理
 		 if(一定期間の更新処理){
 		*/
+		int nowCharaPoint = ab.getCharaPoint();
+		int nowCharaLevel = ab.getCharaLevel();
 		Record returnRb = new Record();
 		int getPoint = 0;
 		// boolean型をintに変換
@@ -42,7 +39,7 @@ public class PointLogic {
 			getPoint = 0;
 		}
 		nowCharaPoint += getPoint;
-		list.add(nowCharaPoint);
+		ab.setCharaPoint(nowCharaPoint);
 
 		// キャラクターのレベルとポイントをリストに追加
 		if (nowCharaPoint < 90) {
@@ -56,8 +53,7 @@ public class PointLogic {
 		} else {
 			nowCharaLevel = 5;
 		}
-		list.add(nowCharaLevel);
-		return list;
+		ab.setCharaLevel(nowCharaLevel);
 	}
 
 	/**
@@ -65,10 +61,11 @@ public class PointLogic {
 	 * @param ab
 	 * @return
 	 */
-	public List<Integer> decreasePoint(AccountBeans ab) {
-		List<Integer> list = new ArrayList<Integer>();
+	public void decreasePoint(AccountBeans ab) {
+		int nowCharaPoint = ab.getCharaPoint();
+		int nowCharaLevel = ab.getCharaLevel();
 		nowCharaPoint -= 10;
-		list.add(nowCharaPoint);
+		ab.setCharaPoint(nowCharaPoint);
 		if (nowCharaPoint < 90) {
 			nowCharaLevel = 1;
 		} else if (nowCharaPoint >= 90 && nowCharaPoint < 180) {
@@ -80,13 +77,10 @@ public class PointLogic {
 		} else {
 			nowCharaLevel = 5;
 		}
-		list.add(nowCharaLevel);
-		return list;
+		ab.setCharaLevel(nowCharaLevel);
 	}
 	/* TODO ポイントがマイナスにならない機能
 	 *      例外処理の追記
-	 * 		登録日の取得
-	 * 		boolean型do_result→int
 	 */
 
 }

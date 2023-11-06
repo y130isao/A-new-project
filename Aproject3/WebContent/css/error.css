@@ -1,6 +1,3 @@
-@charset "UTF-8";
-@import url('https://fonts.googleapis.com/css?family=Montserrat:700');
-
 body {
   background-color: #111;
   background-image: radial-gradient(#333, #111);
@@ -12,18 +9,18 @@ body {
   width: 100vw;
   font-weight: 700;
   overflow: hidden;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'BIZ UDGothic', sans-serif;
 }
 
 #fly-in {
   font-size: 4em;
   margin: 40vh auto;
-  height: 20vh; 
+  height: 20vh;
   text-transform: uppercase;
 }
 
 #fly-in div {
- position: fixed; 
+  position: fixed;
   margin: 2vh 0;
   opacity: 0;
   left: 10vw;
@@ -31,17 +28,66 @@ body {
   animation: switch 32s linear infinite;
 }
 
-#fly-in div:nth-child(2) { animation-delay: 4s}
+#fly-in div:nth-child(2) {
+  animation-delay: 4s
+}
 
 @keyframes switch {
-    0% { opacity: 0;filter: blur(20px); transform:scale(12)}
-    3% { opacity: 1;filter: blur(0); transform:scale(1)}
-    10% { opacity: 1;filter: blur(0); transform:scale(.9)}
-    13% { opacity: 0;filter: blur(10px); transform:scale(.1)}
-    80% { opacity: 0}
-    100% { opacity: 0}
+  0% {
+    opacity: 0;
+    filter: blur(20px);
+    transform: scale(12)
+  }
+
+  3% {
+    opacity: 1;
+    filter: blur(0);
+    transform: scale(1)
+  }
+
+  10% {
+    opacity: 1;
+    filter: blur(0);
+    transform: scale(.9)
+  }
+
+  13% {
+    opacity: 0;
+    filter: blur(10px);
+    transform: scale(.1)
+  }
+
+  80% {
+    opacity: 0
+  }
+
+  100% {
+    opacity: 0
+  }
 }
 
 button {
   margin-top: 200px;
+}
+
+/* PC用のCSSはメディアクエリの外に記述する */
+
+/* 959px以下に適用されるCSS（タブレット用） */
+@media screen and (max-width: 959px) {
+  #fly-in {
+    font-size: 3em;
+    margin: 40vh auto;
+    height: 20vh;
+    text-transform: uppercase;
+  }
+}
+
+/* 480px以下に適用されるCSS（スマホ用） */
+@media screen and (max-width: 480px) {
+  #fly-in {
+    font-size: 1.2em;
+    margin: 40vh auto;
+    height: 20vh;
+    text-transform: uppercase;
+  }
 }
