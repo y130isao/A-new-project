@@ -9,6 +9,7 @@
 <title>ログイン画面</title>
 </head>
 <body>
+     <header>健康管理アプリ</header>
     <form action="/Aproject3/AccountSearch" method="post">
         <h1>Welcome!</h1>
         <!--<input placeholder="Username" type="text"/>
@@ -18,6 +19,10 @@
         <input type="password" name="pass" placeholder="パスワード" required>
         <button class="btn">ログイン</button>
         <!--<input type="submit" value="ログイン">-->
+
+
+
+
 
     </form>
 

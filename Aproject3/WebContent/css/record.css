@@ -1,30 +1,35 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Lato', sans-serif;
+    font-family: 'BIZ UDGothic', sans-serif;
     background: lightblue;
     color: black;
-}
-
-header {
     text-align: center;
 }
 
-h1 {
-    margin: 80px 0 10px 0;
-    font-size: 52px;
+header {
+    font-size: 30px;
     text-transform: uppercase;
     text-shadow: 1px 1px 0px #DC143C,
         2px 2px 0px #DC143C,
         3px 3px 0px #DC143C,
         4px 4px 0px #DC143C;
     color: white;
-    text-align: center;
+    text-align: left;
+}
+
+h1 {
+    margin: 100px 0 10px 0;
+    font-size: 30px;
+    color: #000055
 }
 
 h2 {
-    color: #000055;
+    margin: 30px 0 30px 0;
+    font-size: 20px;
+    color: #000055
 }
+
 
 form {
     display: flex;
@@ -38,8 +43,12 @@ input .submit {
 
 footer {
     text-align: center;
-    margin-top: 30px;
+    margin-top: 50px;
+    color: #DC143C;
+    font-size: 20px;
+    font-weight: bold;
 }
+
 a {
     color: #000055;
 }
@@ -48,9 +57,9 @@ div.btn {
     text-align: center;
 }
 
-input[type="submit" i], 
-input[type="radio" i], 
-div.btn,  
+input[type="submit" i],
+input[type="radio" i],
+div.btn,
 a {
     cursor: pointer;
 }
@@ -59,3 +68,42 @@ a {
 /* ------------------------------------ */
 /* レスポンシブ*/
 /* ------------------------------------ */
+
+/* PC用のCSSはメディアクエリの外に記述する */
+
+/* 959px以下に適用されるCSS（タブレット用） */
+@media screen and (max-width: 959px) {}
+
+
+/* 480px以下に適用されるCSS（スマホ用） */
+@media screen and (max-width: 480px) {
+    header {
+        font-size: 20px;
+    }
+
+    form {
+        display: block;
+        font-size: small;
+        margin-bottom: 10px;
+    }
+
+    h1 {
+        margin: 20px 0 10px 0;
+        font-size: 18px;
+    }
+
+    h2 {
+        margin: 10px 0 10px 0;
+        font-size: 15px;
+    }
+
+    h3 {
+        font-size: small;
+        margin-top: 10px;
+    }
+
+    footer {
+        margin-top: 10px;
+        font-size: 15px;
+    }
+}

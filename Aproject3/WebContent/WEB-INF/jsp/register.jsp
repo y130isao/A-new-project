@@ -6,11 +6,14 @@
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="/Aproject3/css/register.css">
+        <style>
+        @import url('https://fonts.googleapis.com/css2?family=BIZ+UDGothic&display=swap');
+    </style>
 <title>新規登録</title>
 </head>
 <body>
-    <header>
-        <h1>HealthCareApp!</h1>
+       <header>
+        健康管理アプリ
     </header>
 
     <p>すべて入力してください</p>
@@ -48,7 +51,6 @@
                 $('.social').stop().slideToggle();
             });
         });
-    </script>
-    
+    </script>    
 </body>
 </html>
