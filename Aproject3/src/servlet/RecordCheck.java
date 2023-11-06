@@ -40,11 +40,6 @@ public class RecordCheck extends HttpServlet {
 		//リクエストパラメータの取得
 		request.setCharacterEncoding("UTF-8");
 		
-		
-//		boolean do_result1 = request.getParameter("do_result1") != null;
-//		boolean do_result2 = request.getParameter("do_result2") != null;
-//		boolean do_result3 = request.getParameter("do_result3") != null;
-		
 		String doResult1Value = request.getParameter("do_result1");
 	    String doResult2Value = request.getParameter("do_result2");
 	    String doResult3Value = request.getParameter("do_result3");
@@ -83,7 +78,7 @@ public class RecordCheck extends HttpServlet {
 				session.setAttribute("recordList", recordList);
 
 				// フォワード
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/recordcheck.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/recordcomplete.jsp");
 				dispatcher.forward(request, response);
 			}
 			else {
