@@ -5,8 +5,8 @@ import java.util.List;
 import dao.CalRecordDAO;
 
 public class GetCalRecordListLogic {
-    public List<CalRecord> execute(int accountId) {
+    public List<Record> execute(int recordId) {
         CalRecordDAO calrecordDAO = new CalRecordDAO();
-        return calrecordDAO.getCalRecordsByAccountId(accountId);
+        return calrecordDAO.getCalRecordsByAccountId(recordId);
     }
 }
