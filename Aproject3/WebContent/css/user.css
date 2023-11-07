@@ -8,9 +8,11 @@ h2 {
     margin-top: 70px;
     color: #000055;
 }
+
 h3 {
     color: #000055
 }
+
 header {
     margin-bottom: 50px;
     font-size: 30px;
@@ -43,20 +45,9 @@ a {
     color: #DC143C;
     font-weight: bold;
 }
-/*div {
-    display: flex;
-    text-align: center;
-}*/
-
-/* ------------------------------------ */
-/* レスポンシブ*/
-/* ------------------------------------ */
-
-/* PC用のCSSはメディアクエリの外に記述する */
 
 /* 959px以下に適用されるCSS（タブレット用） */
 @media screen and (max-width: 959px) {}
-
 
 /* 480px以下に適用されるCSS（スマホ用） */
 @media screen and (max-width: 480px) {
