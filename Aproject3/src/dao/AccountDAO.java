@@ -67,24 +67,22 @@ public class AccountDAO {
 	 * @param accountId
 	 * @return
 	 */
-	public AccountBeans findTime(int accountId) {
-		AccountBeans returnAb = new AccountBeans();
+	public AccountBeans findTime(AccountBeans ab) {
+		AccountBeans returnBeans = new AccountBeans();
 		try (Connection con = DriverManager.getConnection(
 				JDBC_URL, DB_USER, DB_PASS)) {
 
-			String sql = "SELECT user_health.date_time "
+			String sql = "SELECT max(date_time) "
 					+ "FROM user_health "
-					+ "WHERE date_time = (SELECT max(date_time) "
-					+ "FROM user_health) "
-					+ "AND accountId = ? ";
+					+ "WHERE accountId = ?;";
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setInt(1, accountId);
+			ps.setInt(1, ab.getAccountId());
 
 			ResultSet rs = ps.executeQuery();
 
 			if (rs.next()) {
-				returnAb.setDateTime(
-						rs.getTimestamp("user_health.date_time"));
+				returnBeans.setDateTime(
+						rs.getTimestamp("max(date_time)"));
 			} else {
 				return null;
 			}
@@ -93,7 +91,7 @@ public class AccountDAO {
 			e.printStackTrace();
 			return null;
 		}
-		return returnAb;
+		return returnBeans;
 	}
 
 	/**

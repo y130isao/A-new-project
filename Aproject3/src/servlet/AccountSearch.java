@@ -33,18 +33,18 @@ public class AccountSearch extends HttpServlet {
 		// 検索したアカウント情報を取得
 		AccountDAO ad = new AccountDAO();
 		AccountBeans returnAb = ad.findAccount(ab);
-		int accountId = returnAb.getAccountId();
 
 		/** 最終更新日時の取得*/
-		AccountBeans rBeans = ad.findTime(accountId);
+		AccountBeans rBeans = ad.findTime(returnAb);
 		Timestamp timeStamp = rBeans.getDateTime();
-		System.out.println("最終更新日時 : " + timeStamp);
 		if (timeStamp != null) {
 			Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-			System.out.println("現在日時 : " + timestamp);
 			long diff = timestamp.getTime() - timeStamp.getTime();
 			TimeUnit time = TimeUnit.DAYS;
 			long diffrence = time.convert(diff, TimeUnit.MILLISECONDS);
+
+			System.out.println("現在日時 : " + timestamp);
+			System.out.println("最終更新日時 : " + timeStamp);
 			System.out.println(diffrence);
 
 			/**　更新無し時のpoint+level処理*/
@@ -59,7 +59,7 @@ public class AccountSearch extends HttpServlet {
 			System.out.println("更新時間は未登録です");
 		}
 
-		if (returnAb != null) {
+		if (returnAb.getName() != null) {
 			// セッションにアカウント情報を登録
 			HttpSession session = request.getSession();
 			session.setAttribute("account", returnAb);
