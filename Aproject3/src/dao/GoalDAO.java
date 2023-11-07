@@ -50,30 +50,30 @@ public class GoalDAO {
 
 		return goalList;
 	}
-
+	
 	// 目標情報をデータベースに保存（新規挿入）
-	public boolean create(Goal goal, int accountId) {
-		try (Connection conn = getConnection()) {
+		public boolean create(Goal goal, int accountId) {
+			try (Connection conn = getConnection()) {
 
-			// 新規挿入
-			String insertQuery = "INSERT INTO user_health (accountId, goalgenre1, goalgenre2, goalgenre3, goal1, goal2, goal3) VALUES (?, ?, ?, ?, ?, ?, ?)";
-			PreparedStatement insertStmt = conn.prepareStatement(insertQuery);
-			insertStmt.setInt(1, accountId);
-			insertStmt.setString(2, goal.getGoalgenre1());
-			insertStmt.setString(3, goal.getGoalgenre2());
-			insertStmt.setString(4, goal.getGoalgenre3());
-			insertStmt.setString(5, goal.getGoal1());
-			insertStmt.setString(6, goal.getGoal2());
-			insertStmt.setString(7, goal.getGoal3());
+				// 新規挿入
+				String insertQuery = "INSERT INTO user_health (accountId, goalgenre1, goalgenre2, goalgenre3, goal1, goal2, goal3) VALUES (?, ?, ?, ?, ?, ?, ?)";
+				PreparedStatement insertStmt = conn.prepareStatement(insertQuery);
+				insertStmt.setInt(1, accountId);
+				insertStmt.setString(2, goal.getGoalgenre1());
+				insertStmt.setString(3, goal.getGoalgenre2());
+				insertStmt.setString(4, goal.getGoalgenre3());
+				insertStmt.setString(5, goal.getGoal1());
+				insertStmt.setString(6, goal.getGoal2());
+				insertStmt.setString(7, goal.getGoal3());
 
-			int result = insertStmt.executeUpdate();
-			return result == 1;
+				int result = insertStmt.executeUpdate();
+				return result == 1;
 
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return false;
+			}catch (SQLException e) {
+				e.printStackTrace();
+				return false;
+			}
 		}
+
+
 	}
-
-
-}

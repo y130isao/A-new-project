@@ -43,7 +43,7 @@ String memo_list3 = record == null ? "" : record.getMemo_list3();
     <h2>
         <%= sdf.format(date) %>
     </h2>
-    <form action="/Aproject3/RecordServlet" method="post">
+    <form action="/Aproject3/RecordCheck" method="post">
      <div class="kiroku1">
 		<%-- ☆修正必要☆ --%>
 		<h3>あなたの選択項目1</h3>
@@ -94,11 +94,11 @@ String memo_list3 = record == null ? "" : record.getMemo_list3();
 				minlength="10" value="<%=memo_list3%>" required><br>
 		</div>
         </div>
-
-    </form>
-    <div class="btn">
-        <input type="submit" value="記録確認・登録画面へ" />
+<div class="btn">
+        <input type="submit" value="送信" />
     </div>
+    </form>
+    
 
     <footer><a href="/Aproject3/TopServlet">TOPへ</a></footer>
 </body>

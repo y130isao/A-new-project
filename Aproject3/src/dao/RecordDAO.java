@@ -51,65 +51,70 @@ public class RecordDAO {
 		return recordList;
 	}
 
-	// 記録情報をデータベースに保存（新規挿入）
+
+	//記録情報をデータベースに保存（新規挿入）
 	public boolean create(Record record, int accountId) {
 		try (Connection conn = getConnection()) {
 
 			// 新規挿入
-			String insertQuery = "INSERT INTO user_health (accountId, do_result1, do_result2, do_result3, memo_list1, memo_list2, memo_list3) VALUES (?, ?, ?, ?, ?, ?, ?)";
-			PreparedStatement insertStmt = conn.prepareStatement(insertQuery);
-			
-		    insertStmt.setInt(1, accountId);
-		    insertStmt.setBoolean(2, record.getDo_result1());
-		    insertStmt.setBoolean(3, record.getDo_result2());
-		    insertStmt.setBoolean(4, record.getDo_result3());
-		    insertStmt.setString(5, record.getMemo_list1());
-		    insertStmt.setString(6, record.getMemo_list2());
-		    insertStmt.setString(7, record.getMemo_list3());
+			String insertQuery = "INSERT INTO user_health (accountId, do_result1, do_result2, "
+					+ "do_result3, memo_list1, memo_list2, memo_list3) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
-			
+			PreparedStatement insertStmt = conn.prepareStatement(insertQuery);
+
+			insertStmt.setInt(1, accountId);
+			insertStmt.setBoolean(2, record.getDo_result1());
+			insertStmt.setBoolean(3, record.getDo_result2());
+			insertStmt.setBoolean(4, record.getDo_result3());
+			insertStmt.setString(5, record.getMemo_list1());
+			insertStmt.setString(6, record.getMemo_list2());
+			insertStmt.setString(7, record.getMemo_list3());
+
+
 			int result = insertStmt.executeUpdate();
 			return result == 1;
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return false;
+
 		}
+
 	}
 
 
 }
+			
 
-
-//public class RecordDAO {
-//	// データベース接続に使用する情報
-//	private final String JDBC_URL = "jdbc:mysql://172.16.0.218:3306/health_management";
-//	private final String DB_USER = "sample_user";
-//	private final String DB_PASS = "";
+//	public boolean create(Record record, int accountId) {
+//		try (Connection conn = getConnection()) {
+//			String checkQuery = "SELECT COUNT(*) AS count FROM user_health WHERE accountId = ?";
+//			PreparedStatement checkStmt = conn.prepareStatement(checkQuery);
+//			checkStmt.setInt(1, accountId);
+//			ResultSet rs = checkStmt.executeQuery();
 //
-//	public boolean create(RecordBeans rb) {
+//			if (rs.next() && rs.getInt("count") > 0) {
+//				String updateQuery = "UPDATE user_health SET do_result1 = ?, do_result2 = ?, "
+//						+ "do_result3 = ?, memo_list1 = ?, memo_list2 = ?, memo_list3 = ? WHERE accountId = ?";
+//				PreparedStatement updateStmt = conn.prepareStatement(updateQuery);
+//				updateStmt.setBoolean(1, record.getDo_result1());
+//				updateStmt.setBoolean(2, record.getDo_result2());
+//				updateStmt.setBoolean(3, record.getDo_result3());
+//				updateStmt.setString(4, record.getMemo_list1());
+//				updateStmt.setString(5, record.getMemo_list2());
+//				updateStmt.setString(6, record.getMemo_list3());
+//				updateStmt.setInt(7, accountId);
 //
-//		try (Connection con = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASS)) {
-//
-//			String sql = "INSERT INTO user_health(do_result1,do_result2,do_result3,memo_list1,memo_list2,memo_list3,) VALUES(?, ?, ?, ?, ?, ?)";
-//			PreparedStatement ps = con.prepareStatement(sql);
-//
-//			ps.setBoolean(2, rb.getDo_result1());
-//			ps.setBoolean(3, rb.getDo_result2());
-//			ps.setBoolean(4, rb.getDo_result3());
-//			ps.setString(5, rb.getMemo_list1());
-//			ps.setString(6, rb.getMemo_list2());
-//			ps.setString(7, rb.getMemo_list3());
-//
-//			int r = ps.executeUpdate();
-//
-//			if (r != 0) {
+//				int result = updateStmt.executeUpdate();
+//				return result == 1;
 //			} else {
-//		}
+//				// データが見つからなかった場合の処理
+//				// 新規挿入ロジックをここに記述
+//			}
 //		} catch (SQLException e) {
 //			e.printStackTrace();
 //			return false;
 //		}
-//		return true;
+//		return false;
 //	}
 //}

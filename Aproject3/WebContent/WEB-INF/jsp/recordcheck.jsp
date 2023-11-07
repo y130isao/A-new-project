@@ -6,6 +6,16 @@
 <%
 // セッションスコープに保存されたDo_result/Memo_listを取得
 List<model.Record> recordList = (List<model.Record>) session.getAttribute("recordList");
+
+//リストからBoolean値を取得
+boolean do_result1 = recordList.get(0).getDo_result1(); 
+boolean do_result2 = recordList.get(0).getDo_result2();
+boolean do_result3 = recordList.get(0).getDo_result3();
+
+//リストからString値を取得
+String memo_list1 = recordList.get(0).getMemo_list1(); 
+String memo_list2 = recordList.get(0).getMemo_list2();
+String memo_list3 = recordList.get(0).getMemo_list3();
 %>
 
 
@@ -30,32 +40,31 @@ List<model.Record> recordList = (List<model.Record>) session.getAttribute("recor
  	<h1>下記の内容で登録します。</h1>
 	<section>
 		<div class="kiroku1">
-			<div class result>
+			<div>
 				<h2>あなたの選択項目1</h2>
 				結果<br>
 				<h2>あなたの選択項目1</h2>
-				 <p>結果: <%= recordList.get(0).getDo_result1() %></p>
+				 <p>結果: <%= do_result1 %></p>
 			</div>
-			<div class memo>
-				メモ<br> 【<%=recordList.get(0).getMemo_list1()%>】</br>
-				</h2>
+			<div>
+				メモ<br> 【<%= memo_list1 %>】</br>
 			</div>
 		</div>
 		<div class="kiroku2">
-			<div class result>
+			<div>
 				<h2>あなたの選択項目2</h2>
-				 <p>結果: <%= recordList.get(0).getDo_result2 %></p>
+				 <p>結果: <%= recordList.get(0).getDo_result2() %></p>
 			</div>
-			<div class memo>
+			<div>
 				メモ<br> 【<%=recordList.get(0).getMemo_list2()%>】</br>
 			</div>
 		</div>
 		<div class="kiroku3">
-			<div class result>
+			<div>
 				<h2>あなたの選択項目3</h2>
-				 <p>結果: <%= recordList.get(0).getDo_result3 %></p>
+				 <p>結果: <%= recordList.get(0).getDo_result3() %></p>
 			</div>
-			<div class memo>
+			<div>
 				メモ<br> 【<%=recordList.get(0).getMemo_list3()%>】</br>
 			</div>
 		</div>
