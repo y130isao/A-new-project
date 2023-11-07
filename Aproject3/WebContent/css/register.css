@@ -1,3 +1,17 @@
+* {
+    font-size: 100%;
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    font-family: "Helvetica Neue", Helvetica, Arial;
+}
+
+body {
+    background: lightblue;
+}
+
 article,
 aside,
 details,
@@ -13,8 +27,6 @@ section {
 
 html {
     font-size: 100%;
-   /* -webkit-text-size-adjust: 100%;
-    -ms-text-size-adjust: 100%;*/
 }
 
 header {
@@ -62,20 +74,6 @@ a:hover {
 ::-moz-selection {
     background: #ed327b;
     color: #fff;
-}
-
-* {
-    font-size: 100%;
-    margin: 0;
-    padding: 0;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    font-family: "Helvetica Neue", Helvetica, Arial;
-}
-
-body {
-    background: lightblue;
 }
 
 h5 {
@@ -159,11 +157,6 @@ button {
 table {
     margin: auto;
 }
-/* ------------------------------------ */
-/* レスポンシブ*/
-/* ------------------------------------ */
-
-/* PC用のCSSはメディアクエリの外に記述する */
 
 /* 959px以下に適用されるCSS（タブレット用） */
 @media screen and (max-width: 959px) {
