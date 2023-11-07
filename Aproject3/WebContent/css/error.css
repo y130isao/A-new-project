@@ -70,8 +70,6 @@ button {
   margin-top: 200px;
 }
 
-/* PC用のCSSはメディアクエリの外に記述する */
-
 /* 959px以下に適用されるCSS（タブレット用） */
 @media screen and (max-width: 959px) {
   #fly-in {
@@ -82,7 +80,7 @@ button {
   }
 }
 
-/* 480px以下に適用されるCSS（スマホ用） */
+/* 480px以下に適用されるCSS（スマートフォン用） */
 @media screen and (max-width: 480px) {
   #fly-in {
     font-size: 1.2em;
