@@ -22,17 +22,24 @@ public class CalRecordDAO {
 	}
 
 	// アカウントIDを使用してカレンダー記録情報を取得
-	public List<Record> getCalRecordsByAccountId(int recordId) {
+	public List<Record> getCalRecordsByAccountId(int accountId) {
 		List<Record> calrecordList = new ArrayList<>();
 
 		try (Connection conn = getConnection();
-				PreparedStatement pStmt = conn.prepareStatement("SELECT do_result1, do_result2, do_result3, memo_list1, memo_list2, memo_list3 FROM user_health WHERE recordId = ?")) {
-			pStmt.setInt(1, recordId);
+				PreparedStatement pStmt = conn.prepareStatement(
+						"SELECT do_result1, do_result2, do_result3, "
+						+ "memo_list1, memo_list2, memo_list3 "
+						+ "FROM user_health "
+						+ "WHERE date_time  BETWEEN ? AND ?"
+						+ "AND accountId = ?")) {
+			pStmt.setTimestamp(1, null);
+			pStmt.setTimestamp(2, null);
+			pStmt.setInt(1, accountId);
 
 			try (ResultSet rs = pStmt.executeQuery()) {
 				while (rs.next()) {
 					Record record = new Record(
-							recordId,  // recordId を引数として追加
+							accountId,  // recordId を引数として追加
 							rs.getBoolean("do_result1"),
 							rs.getBoolean("do_result2"),
 							rs.getBoolean("do_result3"),
