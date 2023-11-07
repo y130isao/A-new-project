@@ -95,7 +95,7 @@ String memo_list3 = record == null ? "" : record.getMemo_list3();
 		</div>
         </div>
 <div class="btn">
-        <input type="submit" value="記録確認・登録画面へ" />
+        <input type="submit" value="送信" />
     </div>
     </form>
     
