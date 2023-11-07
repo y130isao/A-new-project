@@ -43,17 +43,9 @@ a {
     cursor: pointer;
 }
 
-
-
 td.today {
     background: #ffff80;
 }
-
-/* ------------------------------------ */
-/* レスポンシブ*/
-/* ------------------------------------ */
-
-/* PC用のCSSはメディアクエリの外に記述する */
 
 /* 959px以下に適用されるCSS（タブレット用） */
 @media screen and (max-width: 959px) {
@@ -75,7 +67,6 @@ td.today {
         font-size: small;
     }
 }
-
 
 /* 480px以下に適用されるCSS（スマホ用） */
 @media screen and (max-width: 480px) {
