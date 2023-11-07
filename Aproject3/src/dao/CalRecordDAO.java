@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.Record;
+
 public class CalRecordDAO {
 
 	private final String JDBC_URL = "jdbc:mysql://172.16.0.218:3306/health_management";
@@ -20,23 +22,17 @@ public class CalRecordDAO {
 	}
 
 	// アカウントIDを使用してカレンダー記録情報を取得
-	public List<CalRecord> getCalRecordsByAccountId(int accountId) {
-		List<CalRecord> calrecordList = new ArrayList<>();
+	public List<Record> getCalRecordsByAccountId(int recordId) {
+		List<Record> calrecordList = new ArrayList<>();
 
 		try (Connection conn = getConnection();
-				PreparedStatement pStmt = conn.prepareStatement("SELECT goalgenre1, goalgenre2, goalgenre3, goal1, goal2, goal3, do_result1, do_result2, do_result3, memo_list1, memo_list2, memo_list3 FROM user_health WHERE accountId = ?")) {
-			pStmt.setInt(1, accountId);
+				PreparedStatement pStmt = conn.prepareStatement("SELECT do_result1, do_result2, do_result3, memo_list1, memo_list2, memo_list3 FROM user_health WHERE recordId = ?")) {
+			pStmt.setInt(1, recordId);
 
 			try (ResultSet rs = pStmt.executeQuery()) {
 				while (rs.next()) {
-					CalRecord calrecord = new CalRecord()
-							accountId,  // accountId を引数として追加
-							rs.getString("goal1"),
-							rs.getString("goal2"),
-							rs.getString("goal3"),
-							rs.getString("goalgenre1"),
-							rs.getString("goalgenre2"),
-							rs.getString("goalgenre3"),
+					Record record = new Record(
+							recordId,  // recordId を引数として追加
 							rs.getBoolean("do_result1"),
 							rs.getBoolean("do_result2"),
 							rs.getBoolean("do_result3"),
@@ -45,7 +41,7 @@ public class CalRecordDAO {
 							rs.getString("memo_list3")
 							);
 
-					calrecordList.add(calrecord);
+					calrecordList.add(record);
 				}
 			}
 		} catch (SQLException e) {
