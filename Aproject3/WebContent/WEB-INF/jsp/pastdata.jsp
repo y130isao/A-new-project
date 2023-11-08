@@ -138,6 +138,28 @@
 		</c:forEach>
 	</table>
 
+
+	<c:forEach var="str" items="${list}">
+		<p>
+			<c:out value="${str.do_result1 ? 'できた' : 'できなかった'}" />
+			：
+			<c:out value="${str.memo_list1}" />
+		</p>
+
+		<p>
+			<c:out value="${str.do_result2 ? 'できた' : 'できなかった'}" />
+			：
+			<c:out value="${str.memo_list2}" />
+		</p>
+
+		<p>
+			<c:out value="${str.do_result3 ? 'できた' : 'できなかった'}" />
+			：
+			<c:out value="${str.memo_list3}" />
+		</p>
+	</c:forEach>
+
+
 	<footer>
 		<a href="${pageContext.request.contextPath}/TopServlet">TOPへ</a>
 	</footer>
