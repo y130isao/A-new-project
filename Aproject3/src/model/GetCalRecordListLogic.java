@@ -5,8 +5,8 @@ import java.util.List;
 import dao.CalRecordDAO;
 
 public class GetCalRecordListLogic {
-    public List<Record> execute(int recordId) {
+    public List<Record> execute(String dayString, AccountBeans ab) {
         CalRecordDAO calrecordDAO = new CalRecordDAO();
-        return calrecordDAO.getCalRecordsByAccountId(recordId);
+        return calrecordDAO.getCalRecordsByAccountId(dayString , ab);
     }
 }
