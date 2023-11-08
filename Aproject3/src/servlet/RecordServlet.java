@@ -37,8 +37,8 @@ public class RecordServlet extends HttpServlet {
 			GetGoalListLogic getGoalListLogic = new GetGoalListLogic();
 			List<Goal> goalList = getGoalListLogic.execute(accountId);
 			
-			//セッションコープに保存
-			session.setAttribute("goalList", goalList);
+			//リクエストスコープに保存
+			request.setAttribute("goalList", goalList);
 
 			//			// データベースからデータを取得
 			//			GoalDAO goalDAO = new GoalDAO();

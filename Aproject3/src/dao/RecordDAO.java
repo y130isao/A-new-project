@@ -26,7 +26,7 @@ public class RecordDAO {
 		List<Record> recordList = new ArrayList<>();
 
 		try (Connection conn = getConnection();
-				PreparedStatement pStmt = conn.prepareStatement("SELECT do_result1, do_result1, do_result1, memo_list1, memo_list1, memo_list1 FROM user_health WHERE accountId = ?")) {
+				PreparedStatement pStmt = conn.prepareStatement("SELECT do_result1, do_result1, do_result1, memo_list1, memo_list1, memo_list1, goalgenre1, goalgenre2, goalgenre3, goal1, goal2, goal3, FROM user_health WHERE accountId = ?")) {
 			pStmt.setInt(1, accountId);
 
 			try (ResultSet rs = pStmt.executeQuery()) {
@@ -38,7 +38,13 @@ public class RecordDAO {
 							rs.getBoolean("do_result3"),
 							rs.getString("memo_list1"),
 							rs.getString("memo_list2"),
-							rs.getString("memo_list3")
+							rs.getString("memo_list3"),
+							rs.getString("goalgenre1"),
+							rs.getString("goalgenre2"),
+							rs.getString("goalgenre3"),
+							rs.getString("goal1"),
+							rs.getString("goal2"),
+							rs.getString("goal3")
 							);
 
 					recordList.add(record);
@@ -58,7 +64,7 @@ public class RecordDAO {
 
 			// 新規挿入
 			String insertQuery = "INSERT INTO user_health (accountId, do_result1, do_result2, "
-					+ "do_result3, memo_list1, memo_list2, memo_list3) VALUES (?, ?, ?, ?, ?, ?, ?)";
+					+ "do_result3, memo_list1, memo_list2, memo_list3, goalgenre1, goalgenre2, goalgenre3, goal1, goal2, goal3) VALUES (?, ?, ?, ?, ?, ?, ? ?, ?, ?, ?, ?, ?)";
 
 			PreparedStatement insertStmt = conn.prepareStatement(insertQuery);
 
@@ -69,7 +75,12 @@ public class RecordDAO {
 			insertStmt.setString(5, record.getMemo_list1());
 			insertStmt.setString(6, record.getMemo_list2());
 			insertStmt.setString(7, record.getMemo_list3());
-
+			insertStmt.setString(8, record.getGoalgenre1());
+			insertStmt.setString(9, record.getGoalgenre2());
+			insertStmt.setString(10, record.getGoalgenre3());
+			insertStmt.setString(11, record.getGoal1());
+			insertStmt.setString(12, record.getGoal2());
+			insertStmt.setString(13, record.getGoal3());
 
 			int result = insertStmt.executeUpdate();
 			return result == 1;
@@ -84,6 +95,38 @@ public class RecordDAO {
 
 
 }
+
+//public boolean create(Record record, int accountId) {
+//	try (Connection conn = getConnection()) {
+//
+//		// 新規挿入
+//		String insertQuery = "INSERT INTO user_health (accountId, do_result1, do_result2, "
+//				+ "do_result3, memo_list1, memo_list2, memo_list3) VALUES (?, ?, ?, ?, ?, ?, ?)";
+//
+//		PreparedStatement insertStmt = conn.prepareStatement(insertQuery);
+//
+//		insertStmt.setInt(1, accountId);
+//		insertStmt.setBoolean(2, record.getDo_result1());
+//		insertStmt.setBoolean(3, record.getDo_result2());
+//		insertStmt.setBoolean(4, record.getDo_result3());
+//		insertStmt.setString(5, record.getMemo_list1());
+//		insertStmt.setString(6, record.getMemo_list2());
+//		insertStmt.setString(7, record.getMemo_list3());
+//
+//
+//		int result = insertStmt.executeUpdate();
+//		return result == 1;
+//
+//	} catch (SQLException e) {
+//		e.printStackTrace();
+//		return false;
+//
+//	}
+//
+//}
+//
+//
+//}
 			
 
 //	public boolean create(Record record, int accountId) {

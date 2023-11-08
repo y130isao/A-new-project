@@ -26,7 +26,7 @@ public class GoalDAO {
 		List<Goal> goalList = new ArrayList<>();
 
 		try (Connection conn = getConnection();
-				PreparedStatement pStmt = conn.prepareStatement("SELECT goalgenre1, goalgenre2, goalgenre3, goal1, goal2, goal3 FROM user_health WHERE accountId = ?")) {
+				PreparedStatement pStmt = conn.prepareStatement("SELECT goalgenre1, goalgenre2, goalgenre3, goal1, goal2, goal3 FROM user_health WHERE accountId = ? AND recordid = (SELECT MAX(recordid)")) {
 			pStmt.setInt(1, accountId);
 
 			try (ResultSet rs = pStmt.executeQuery()) {

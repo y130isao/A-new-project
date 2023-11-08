@@ -5,7 +5,7 @@
 
 <%-- "goalList" 属性が存在するかチェック --%>
 <%
-List<model.Goal> goalList = (List<model.Goal>) session.getAttribute("goalList");
+List<model.Goal> goalList = (List<model.Goal>) request.getAttribute("goalList");
 %>
 <!-- 目標情報を表示するコード -->
 <!DOCTYPE html>
@@ -33,27 +33,27 @@ List<model.Goal> goalList = (List<model.Goal>) session.getAttribute("goalList");
                 </p>
             </dt>
             <dd class="contact-1">
-                <%=goalList.get(0).getGoal1() %>
+                <%=goal.getGoal1() %>
             </dd>
         </div>
         <div class="contact-formbox">
             <dt>
                 <p>
-                    <%=goalList.get(0).getGoalgenre2()%>
+                    <%=goal.getGoalgenre2()%>
                 </p>
             </dt>
             <dd class="contact-1">
-                <%=goalList.get(0).getGoal2()%>
+                <%=goal.getGoal2()%>
             </dd>
         </div>
         <div class="contact-formbox">
             <dt>
                 <p>
-                    <%=goalList.get(0).getGoalgenre3()%>
+                    <%=goal.getGoalgenre3()%>
                 </p>
             </dt>
             <dd class="contact-1">
-                <%=goalList.get(0).getGoal3() %>
+                <%=goal.getGoal3() %>
             </dd>
         </div>
     </div>
