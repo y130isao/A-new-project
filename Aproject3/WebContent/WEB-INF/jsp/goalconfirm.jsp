@@ -29,31 +29,31 @@ List<model.Goal> goalList = (List<model.Goal>) session.getAttribute("goalList");
         <div class="contact-formbox">
             <dt>
                 <p>
-                    <%=goal.getGoalgenre1()%>
+                    <%=goalList.get(0).getGoalgenre1()%>
                 </p>
             </dt>
             <dd class="contact-1">
-                <%=goal.getGoal1() %>
+                <%=goalList.get(0).getGoal1() %>
             </dd>
         </div>
         <div class="contact-formbox">
             <dt>
                 <p>
-                    <%=goal.getGoalgenre2()%>
+                    <%=goalList.get(0).getGoalgenre2()%>
                 </p>
             </dt>
             <dd class="contact-1">
-                <%=goal.getGoal2() %>
+                <%=goalList.get(0).getGoal2()%>
             </dd>
         </div>
         <div class="contact-formbox">
             <dt>
                 <p>
-                    <%=goal.getGoalgenre3()%>
+                    <%=goalList.get(0).getGoalgenre3()%>
                 </p>
             </dt>
             <dd class="contact-1">
-                <%=goal.getGoal3() %>
+                <%=goalList.get(0).getGoal3() %>
             </dd>
         </div>
     </div>

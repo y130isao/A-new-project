@@ -64,7 +64,7 @@ public class GoalconfirmServlet extends HttpServlet {
             if (success) {
                 // データベースへの保存が成功した場合の処理
 
-                // 目標リストを取得して、セッションコープに保存
+                //目標リストを取得して、セッションコープに保存
                 GetGoalListLogic getGoalListLogic = new GetGoalListLogic();
                 List<Goal> goalList = getGoalListLogic.execute(accountId);
                 session.setAttribute("goalList", goalList);
