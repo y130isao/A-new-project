@@ -12,6 +12,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import model.AccountBeans;
 import model.GetCalRecordListLogic;
+import model.Goal;
 import model.MyCalendar;
 import model.MyCalendarLogic;
 import model.Record;
@@ -50,9 +51,15 @@ public class PastdataServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		AccountBeans account = (AccountBeans) session.getAttribute("account");
 		GetCalRecordListLogic grl = new GetCalRecordListLogic();
-		List<Record> list = grl.execute(str, account);
-		session.setAttribute("list", list);
+		List<Record> listR = grl.executeR(str, account);
+		List<Goal> listG = grl.executeG(str, account);
 
+		//		Record record = (Record) list.set(0, list);
+		//		Goal goal = (Goal) list.get(1);
+		//		session.setAttribute("record", record);
+		//		request.setAttribute("goal", goal);
+		session.setAttribute("listG", listG);
+		session.setAttribute("listR", listR);
 		request.setAttribute("mc", mc);
 
 		// Retrieve the past data

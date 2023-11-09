@@ -90,8 +90,6 @@
 
 
 
-
-
 	<header>
 		<h1>過去の記録の確認</h1>
 		<h2>
@@ -138,28 +136,45 @@
 		</c:forEach>
 	</table>
 
-
-	<c:forEach var="str" items="${list}">
+	<c:forEach var="listG" items="${listG}">
 		<p>
-			<c:out value="${str.do_result1 ? 'できた' : 'できなかった'}" />
+			<c:out value="${listG.goal1}" />
 			：
-			<c:out value="${str.memo_list1}" />
+			<c:out value="${listG.goalgenre1}" />
 		</p>
 
 		<p>
-			<c:out value="${str.do_result2 ? 'できた' : 'できなかった'}" />
+			<c:out value="${listG.goal2}" />
 			：
-			<c:out value="${str.memo_list2}" />
+			<c:out value="${listG.goalgenre2}" />
 		</p>
-
+		
 		<p>
-			<c:out value="${str.do_result3 ? 'できた' : 'できなかった'}" />
+			<c:out value="${listG.goal2}" />
 			：
-			<c:out value="${str.memo_list3}" />
+			<c:out value="${listG.goalgenre2}" />
 		</p>
 	</c:forEach>
 
+	<c:forEach var="list" items="${listR}">
+		<p>
+			<c:out value="${list.do_result1 ? 'できた' : 'できなかった'}" />
+			：
+			<c:out value="${list.memo_list1}" />
+		</p>
 
+		<p>
+			<c:out value="${list.do_result2 ? 'できた' : 'できなかった'}" />
+			：
+			<c:out value="${list.memo_list2}" />
+		</p>
+
+		<p>
+			<c:out value="${list.do_result3 ? 'できた' : 'できなかった'}" />
+			：
+			<c:out value="${list.memo_list3}" />
+		</p>
+	</c:forEach>
 	<footer>
 		<a href="${pageContext.request.contextPath}/TopServlet">TOPへ</a>
 	</footer>
