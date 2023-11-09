@@ -32,7 +32,8 @@ String goal3=goal==null? "":goal.getGoal3();
                 <option value="睡眠">睡眠</option>
             </select>
             <dd class="contact-1">
-                <input type="text" placeholder="必須" name="goal1" value="<%=goal1%>" required>
+                <input type="text" placeholder="必須" 
+                name="goal1" value="<%=goal1%>" required>
             </dd>
         </div>
         <div class="contact-formbox">
@@ -43,7 +44,8 @@ String goal3=goal==null? "":goal.getGoal3();
                 <option value="睡眠">睡眠</option>
             </select>
             <dd class="contact-1">
-                <input type="text" placeholder="必須" name="goal2" value="<%=goal2%>" required>
+                <input type="text" placeholder="必須" 
+                name="goal2" value="<%=goal2%>" required>
             </dd>
         </div>
         <div class="contact-formbox">
@@ -54,7 +56,8 @@ String goal3=goal==null? "":goal.getGoal3();
                 <option value="睡眠">睡眠</option>
             </select>
             <dd class="contact-1">
-                <input type="text" placeholder="必須" name="goal3" value="<%=goal3%>" required>
+                <input type="text" placeholder="必須" 
+                name="goal3" value="<%=goal3%>" required>
             </dd>
         </div>
         <div class="btn"><input type="submit" class="button"  value="送信"></div>
