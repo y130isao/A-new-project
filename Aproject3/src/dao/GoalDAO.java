@@ -25,12 +25,15 @@ public class GoalDAO {
 	public List<Goal> getGoalsByAccountId(int accountId) {
 		List<Goal> goalList = new ArrayList<>();
 
+		//データベースへ接続
 		try (Connection conn = getConnection();
 				PreparedStatement pStmt = conn.prepareStatement("SELECT goalgenre1, goalgenre2, goalgenre3, goal1, goal2, goal3 FROM user_health WHERE accountId = ?")) {
 			pStmt.setInt(1, accountId);
 
+			//select文を実行し、結果表を取得
 			try (ResultSet rs = pStmt.executeQuery()) {
 				while (rs.next()) {
+					//goalインスタンスに格納
 					Goal goal = new Goal(
 							accountId,  // accountId を引数として追加
 							rs.getString("goal1"),
@@ -40,7 +43,8 @@ public class GoalDAO {
 							rs.getString("goalgenre2"),
 							rs.getString("goalgenre3")
 							);
-
+					
+					//goalListインスタンスにgoalインスタンスを格納
 					goalList.add(goal);
 				}
 			}
@@ -51,7 +55,7 @@ public class GoalDAO {
 		return goalList;
 	}
 	
-	// 目標情報をデータベースに保存（新規挿入）
+	// 目標情報をデータベースに保存
 		public boolean create(Goal goal, int accountId) {
 			try (Connection conn = getConnection()) {
 

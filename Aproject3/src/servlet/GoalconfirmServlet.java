@@ -36,7 +36,7 @@ public class GoalconfirmServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	
-    	//ƒŠƒNƒGƒXƒgƒpƒ‰ƒ[ƒ^‚Ìæ“¾
+    	//ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®å–å¾—
         request.setCharacterEncoding("UTF-8");
         String goalgenre1 = request.getParameter("goalgenre1");
         String goalgenre2 = request.getParameter("goalgenre2");
@@ -45,42 +45,42 @@ public class GoalconfirmServlet extends HttpServlet {
         String goal2 = request.getParameter("goal2");
         String goal3 = request.getParameter("goal3");
 
-        //ƒZƒbƒVƒ‡ƒ“ƒXƒR[ƒv‚É•Û‘¶‚³‚ê‚½ƒAƒJƒEƒ“ƒgî•ñ‚ğæ“¾(AccountCheck.java)
+        //ã‚»ãƒƒã‚·ãƒ§ãƒ³ã‚¹ã‚³ãƒ¼ãƒ—ã«ä¿å­˜ã•ã‚ŒãŸã‚¢ã‚«ã‚¦ãƒ³ãƒˆæƒ…å ±ã‚’å–å¾—(AccountCheck.java)
         HttpSession session = request.getSession();
         AccountBeans account = (AccountBeans) session.getAttribute("account");
         
-        //ƒAƒJƒEƒ“ƒg‚ªnull‚Å‚È‚¯‚ê‚Î
+        //ã‚¢ã‚«ã‚¦ãƒ³ãƒˆãŒnullã§ãªã‘ã‚Œã°
         if (account != null) {
-        	//ƒAƒJƒEƒ“ƒgID‚ğæ“¾
+        	//ã‚¢ã‚«ã‚¦ãƒ³ãƒˆIDã‚’å–å¾—
             int accountId = account.getAccountId();
             
 			
-			// ‚±‚±‚Å Goal ƒIƒuƒWƒFƒNƒg‚ğì¬‚µ accountId ‚ğƒZƒbƒg‚µ‚Äg—p
+			// ã“ã“ã§ Goal ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ä½œæˆã— accountId ã‚’ã‚»ãƒƒãƒˆã—ã¦ä½¿ç”¨
             Goal goal = new Goal(accountId, goal1, goal2, goal3, goalgenre1, goalgenre2, goalgenre3);           
 
-            // Goal ƒIƒuƒWƒFƒNƒg‚ğg—p‚µ‚Äƒf[ƒ^ƒx[ƒX‚É•Û‘¶
+            // Goal ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ä½¿ç”¨ã—ã¦ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã«ä¿å­˜
             GoalDAO goalDAO = new GoalDAO();
-            boolean success = goalDAO.create(goal,accountId);
-            
           
+            boolean success = goalDAO.create(goal, accountId);
+            
             if (success) {
-                // ƒf[ƒ^ƒx[ƒX‚Ö‚Ì•Û‘¶‚ª¬Œ÷‚µ‚½ê‡‚Ìˆ—
+                // ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã¸ã®ä¿å­˜ãŒæˆåŠŸã—ãŸå ´åˆã®å‡¦ç†
 
-                //–Ú•WƒŠƒXƒg‚ğæ“¾‚µ‚ÄAƒZƒbƒVƒ‡ƒ“ƒR[ƒv‚É•Û‘¶
+                //ç›®æ¨™ãƒªã‚¹ãƒˆã‚’å–å¾—ã—ã¦ã€ã‚»ãƒƒã‚·ãƒ§ãƒ³ã‚³ãƒ¼ãƒ—ã«ä¿å­˜
                 GetGoalListLogic getGoalListLogic = new GetGoalListLogic();
                 List<Goal> goalList = getGoalListLogic.execute(accountId);
                 session.setAttribute("goalList", goalList);
 
-                // ƒtƒHƒ[ƒh
+                // ãƒ•ã‚©ãƒ¯ãƒ¼ãƒ‰
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/goalsend.jsp");
                 dispatcher.forward(request, response);
+                
             } else {
-                // ƒf[ƒ^ƒx[ƒX‚Ö‚Ì•Û‘¶‚ª¸”s‚µ‚½ê‡‚ÌƒGƒ‰[ƒnƒ“ƒhƒŠƒ“ƒO
+                // ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã¸ã®ä¿å­˜ãŒå¤±æ•—ã—ãŸå ´åˆã®ã‚¨ãƒ©ãƒ¼ãƒãƒ³ãƒ‰ãƒªãƒ³ã‚°
             }
         } else {
-            // ƒƒOƒCƒ“‚µ‚Ä‚¢‚È‚¢ê‡‚ÌƒGƒ‰[ƒnƒ“ƒhƒŠƒ“ƒO
-            // ƒŠƒ_ƒCƒŒƒNƒg‚È‚Ç“KØ‚Èˆ—‚ğs‚¤
-        	 // (‰¼)
+           
+        	 // (ä»®)
         }
     }
 

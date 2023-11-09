@@ -1,7 +1,7 @@
 package model;
 
 public class Goal {
-    private int accountId;  // accountId フィールドを追加
+    private int accountId;  
     private String goal1;
     private String goal2;
     private String goal3;

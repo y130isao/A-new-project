@@ -33,21 +33,13 @@ public class RecordServlet extends HttpServlet {
 			//アカウントIDを取得
 			int accountId = account.getAccountId();
 
-			//データベースから目標リストを取得
-			GetGoalListLogic getGoalListLogic = new GetGoalListLogic();
-			List<Goal> goalList = getGoalListLogic.execute(accountId);
-			
-			//セッションコープに保存
-			session.setAttribute("goalList", goalList);
+						//データベースから目標リストを取得
+						GetGoalListLogic getGoalListLogic = new GetGoalListLogic();
+						List<Goal> goalList = getGoalListLogic.execute(accountId);
+						
+						//セッションコープに保存
+						session.setAttribute("goalList", goalList);
 
-			//			// データベースからデータを取得
-			//			GoalDAO goalDAO = new GoalDAO();
-			//			
-			//			// getGoalsByAccountIdメソッドを呼び出す
-			//			List<Goal> goalData = goalDAO.getGoalsByAccountId(accountId); 
-			//
-			//			// データをセッションスコープに登録
-			//			session.setAttribute("goalData", goalData);
 
 			//フォワード
 			RequestDispatcher rd =
@@ -55,7 +47,6 @@ public class RecordServlet extends HttpServlet {
 			rd.forward(request, response);
 
 		}else {
-			// データベースへの保存が失敗した場合のエラーハンドリング
 
 		}
 	}

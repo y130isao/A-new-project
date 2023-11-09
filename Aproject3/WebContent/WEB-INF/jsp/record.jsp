@@ -3,12 +3,12 @@
 <%@ page import="java.util.List"%>
 <%@ page import="model.Record"%>
 <%@ page import="java.util.ArrayList"%>
+<%@ page import="model.Goal"%>
+<%@ page import="java.util.Date, java.text.SimpleDateFormat"%>
 
 <%
 List<model.Goal> goalList = (List<model.Goal>) session.getAttribute("goalList");
 %>
-
-<%@ page import="java.util.Date, java.text.SimpleDateFormat"%>
 
 <%
 Date date = new Date();
@@ -30,76 +30,66 @@ String memo_list3 = record == null ? "" : record.getMemo_list3();
 <html>
 <head>
 <meta charset="UTF-8">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=BIZ+UDGothic&display=swap');
-    </style>
+<style>
+@import
+	url('https://fonts.googleapis.com/css2?family=BIZ+UDGothic&display=swap')
+	;
+</style>
 <title>本日の記録</title>
 </head>
 <body>
-    <header>
-        健康管理アプリ
-    </header>
-    <h1>本日の記録</h1>
-    <h2>
-        <%= sdf.format(date) %>
-    </h2>
-    <form action="/Aproject3/RecordCheck" method="post">
-     <div class="kiroku1">
-		<%-- ☆修正必要☆ --%>
-		<h3>あなたの選択項目1</h3>
-		<p><%=goalList.get(0).getGoalgenre1()%></p>
-		<%=goalList.get(0).getGoal1()%>
-
-		<%-- radioの値を渡す --%>
-		<input type="radio" name="do_result1" value="1" <%= do_result1 ? "checked" : "" %>>出来た 
-		<input type="radio" name="do_result1" value="0" <%= !do_result1 ? "checked" : "" %>>出来てない
-
-
-		<%-- textboxの値を渡す --%>
-		<div class memo>
-			メモ<br> <input type="text" name="memo_list1" placeholder="10文字以上"
-				minlength="10" value="<%=memo_list1%>" required><br>
-		</div>
-     </div>
-        <div class="kiroku2">
-           		<%-- ☆修正必要☆ --%>
-		<h3>あなたの選択項目2</h3>
-		<p><%=goalList.get(0).getGoalgenre2()%></p>
-		<%=goalList.get(0).getGoal2()%>
-
-		<%-- radioの値を渡す --%>
-		<input type="radio" name="do_result2" value="1" <%= do_result2 ? "checked" : "" %>>出来た 
-		<input type="radio" name="do_result2" value="0" <%= !do_result2 ? "checked" : "" %>>出来てない
+	<header> 健康管理アプリ </header>
+	<h1>本日の記録</h1>
+	<h2>
+		<%= sdf.format(date) %>
+	</h2>
+	<form action="/Aproject3/RecordCheck" method="post">
 		
-		<%-- textboxの値を渡す --%>
-		<div class memo>
-			メモ<br> <input type="text" name="memo_list2" placeholder="10文字以上"
-				minlength="10" value="<%=memo_list2%>" required><br>
+		<div class="kiroku1">
+			<h3>あなたの選択項目1</h3>
+			<p><%=goalList.get(0).getGoalgenre1()%></p>
+			<%=goalList.get(0).getGoal1()%>
+
+			<input type="radio" name="do_result1" value="1" <%= do_result1 ? "checked" : "" %>>出来た 
+			<input type="radio" name="do_result1" value="0" <%= !do_result1 ? "checked" : "" %>>出来てない
+
+
+			<div>
+				メモ<br> <input type="text" name="memo_list1" placeholder="10文字以上" minlength="10" value="<%=memo_list1%>" required><br>
+			</div>
 		</div>
-        </div>
-        <div class="kiroku3">
-         
-		<%-- ☆修正必要☆ --%>
-		<h3>あなたの選択項目3</h3>
-		<p><%=goalList.get(0).getGoalgenre3()%></p>
-		<%=goalList.get(0).getGoal3()%>
+		
+		<div class="kiroku2">
+			<h3>あなたの選択項目2</h3>
+			<p><%=goalList.get(0).getGoalgenre2()%></p>
+			<%=goalList.get(0).getGoal2()%>
 
-		<%-- radioの値を渡す --%>
-		<input type="radio" name="do_result3" value="1" <%= do_result3 ? "checked" : "" %>>出来た 
-		<input type="radio" name="do_result3" value="0" <%= !do_result3 ? "checked" : "" %>>出来てない
+			<input type="radio" name="do_result2" value="1" <%= do_result2 ? "checked" : "" %>>出来た 
+			<input type="radio" name="do_result2" value="0" <%= !do_result2 ? "checked" : "" %>>出来てない
 
-		<%-- textboxの値を渡す --%>
-		<div class memo>
-			メモ<br> <input type="text" name="memo_list3" placeholder="10文字以上"
-				minlength="10" value="<%=memo_list3%>" required><br>
+			<div>
+				メモ<br> <input type="text" name="memo_list2" placeholder="10文字以上" minlength="10" value="<%=memo_list2%>" required><br>
+			</div>
 		</div>
-        </div>
-<div class="btn">
-        <input type="submit" value="送信" />
-    </div>
-    </form>
-    
+		<div class="kiroku3">
 
-    <footer><a href="/Aproject3/TopServlet">TOPへ</a></footer>
+			<h3>あなたの選択項目3</h3>
+			<p><%=goalList.get(0).getGoalgenre3()%></p>
+			<%=goalList.get(0).getGoal3()%>
+
+			<input type="radio" name="do_result3" value="1" <%= do_result3 ? "checked" : "" %>>出来た 
+			<input type="radio" name="do_result3" value="0" <%= !do_result3 ? "checked" : "" %>>出来てない
+
+			<div>
+				メモ<br> <input type="text" name="memo_list3" placeholder="10文字以上" minlength="10" value="<%=memo_list3%>" required><br>
+			</div>
+		</div>
+		<div class="btn">
+			<input type="submit" value="送信" />
+		</div>
+	</form>
+	<footer>
+		<a href="/Aproject3/TopServlet">TOPへ</a>
+	</footer>
 </body>
 </html>
