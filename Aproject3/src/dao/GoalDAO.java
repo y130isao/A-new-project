@@ -36,12 +36,12 @@ public class GoalDAO {
 					//goalインスタンスに格納
 					Goal goal = new Goal(
 							accountId,  // accountId を引数として追加
-							rs.getString("goal1"),
-							rs.getString("goal2"),
-							rs.getString("goal3"),
 							rs.getString("goalgenre1"),
 							rs.getString("goalgenre2"),
-							rs.getString("goalgenre3")
+							rs.getString("goalgenre3"),
+							rs.getString("goal1"),
+							rs.getString("goal2"),
+							rs.getString("goal3")
 							);
 					
 					//goalListインスタンスにgoalインスタンスを格納
