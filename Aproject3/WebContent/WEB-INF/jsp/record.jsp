@@ -26,6 +26,8 @@ String memo_list2 = record == null ? "" : record.getMemo_list2();
 String memo_list3 = record == null ? "" : record.getMemo_list3();
 %>
 
+<link rel="stylesheet" type="text/css" href="/Aproject3/css/record.css">
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -47,8 +49,8 @@ String memo_list3 = record == null ? "" : record.getMemo_list3();
 		
 		<div class="kiroku1">
 			<h3>あなたの選択項目1</h3>
-			<p><%=goalList.get(0).getGoalgenre1()%></p>
-			<%=goalList.get(0).getGoal1()%>
+			【<%=goalList.get(0).getGoalgenre1()%>】</br>
+			<%=goalList.get(0).getGoal1()%></br>
 
 			<input type="radio" name="do_result1" value="1" <%= do_result1 ? "checked" : "" %>>出来た 
 			<input type="radio" name="do_result1" value="0" <%= !do_result1 ? "checked" : "" %>>出来てない
@@ -61,8 +63,8 @@ String memo_list3 = record == null ? "" : record.getMemo_list3();
 		
 		<div class="kiroku2">
 			<h3>あなたの選択項目2</h3>
-			<p><%=goalList.get(0).getGoalgenre2()%></p>
-			<%=goalList.get(0).getGoal2()%>
+			【<%=goalList.get(0).getGoalgenre2()%>】</br>
+			<%=goalList.get(0).getGoal2()%></br>
 
 			<input type="radio" name="do_result2" value="1" <%= do_result2 ? "checked" : "" %>>出来た 
 			<input type="radio" name="do_result2" value="0" <%= !do_result2 ? "checked" : "" %>>出来てない
@@ -74,8 +76,8 @@ String memo_list3 = record == null ? "" : record.getMemo_list3();
 		<div class="kiroku3">
 
 			<h3>あなたの選択項目3</h3>
-			<p><%=goalList.get(0).getGoalgenre3()%></p>
-			<%=goalList.get(0).getGoal3()%>
+			【<%=goalList.get(0).getGoalgenre3()%>】</br>
+			<%=goalList.get(0).getGoal3()%></br>
 
 			<input type="radio" name="do_result3" value="1" <%= do_result3 ? "checked" : "" %>>出来た 
 			<input type="radio" name="do_result3" value="0" <%= !do_result3 ? "checked" : "" %>>出来てない
