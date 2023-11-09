@@ -19,20 +19,20 @@ import model.Goal;
 public class GoalconfirmServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-//    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        String path = null;
-//        String mode = request.getParameter("mode");
-//        if (mode == null || mode.equals("back")) {
-//            path = "/WEB-INF/jsp/goal.jsp";
-//        } else {
-//            path = "/WEB-INF/jsp/goalsend.jsp";
-//            HttpSession session = request.getSession();
-//            session.invalidate();
-//        }
-//
-//        RequestDispatcher rd = request.getRequestDispatcher(path);
-//        rd.forward(request, response);
-//    }
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String path = null;
+        String mode = request.getParameter("mode");
+        if (mode == null || mode.equals("back")) {
+            path = "/WEB-INF/jsp/goal.jsp";
+        } else {
+            path = "/WEB-INF/jsp/goalsend.jsp";
+            HttpSession session = request.getSession();
+            session.invalidate();
+        }
+
+        RequestDispatcher rd = request.getRequestDispatcher(path);
+        rd.forward(request, response);
+    }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	
@@ -51,6 +51,7 @@ public class GoalconfirmServlet extends HttpServlet {
         
         //アカウントがnullでなければ
         if (account != null) {
+        	
         	//アカウントIDを取得
             int accountId = account.getAccountId();
             
@@ -77,9 +78,10 @@ public class GoalconfirmServlet extends HttpServlet {
                 
             } else {
                 // データベースへの保存が失敗した場合のエラーハンドリング
+            	System.out.println("保存に失敗しました");
             }
         } else {
-           
+        	System.out.println("アカウントが見つかりませんでした");
         	 // (仮)
         }
     }
