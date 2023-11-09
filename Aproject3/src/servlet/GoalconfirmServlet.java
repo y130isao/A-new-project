@@ -19,25 +19,26 @@ import model.Goal;
 public class GoalconfirmServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String path = null;
-        String mode = request.getParameter("mode");
-        if (mode == null || mode.equals("back")) {
-            path = "/WEB-INF/jsp/goal.jsp";
-        } else {
-            path = "/WEB-INF/jsp/goalsend.jsp";
-            HttpSession session = request.getSession();
-            session.invalidate();
-        }
-
-        RequestDispatcher rd = request.getRequestDispatcher(path);
-        rd.forward(request, response);
-    }
+//    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//        String path = null;
+//        String mode = request.getParameter("mode");
+//        if (mode == null || mode.equals("back")) {
+//            path = "/WEB-INF/jsp/goal.jsp";
+//        } else {
+//            path = "/WEB-INF/jsp/goalsend.jsp";
+//            HttpSession session = request.getSession();
+//            session.invalidate();
+//        }
+//
+//        RequestDispatcher rd = request.getRequestDispatcher(path);
+//        rd.forward(request, response);
+//    }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	
     	//リクエストパラメータの取得
         request.setCharacterEncoding("UTF-8");
+        
         String goalgenre1 = request.getParameter("goalgenre1");
         String goalgenre2 = request.getParameter("goalgenre2");
         String goalgenre3 = request.getParameter("goalgenre3");
@@ -57,11 +58,11 @@ public class GoalconfirmServlet extends HttpServlet {
             
 			
 			// ここで Goal オブジェクトを作成し accountId をセットして使用
-            Goal goal = new Goal(accountId, goal1, goal2, goal3, goalgenre1, goalgenre2, goalgenre3);           
+            Goal goal = new Goal(accountId, goalgenre1, goalgenre2, goalgenre3, goal1, goal2, goal3);           
 
             // Goal オブジェクトを使用してデータベースに保存
             GoalDAO goalDAO = new GoalDAO();
-          
+            
             boolean success = goalDAO.create(goal, accountId);
             
             if (success) {
