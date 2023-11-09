@@ -19,26 +19,25 @@ import model.Goal;
 public class GoalconfirmServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-//    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        String path = null;
-//        String mode = request.getParameter("mode");
-//        if (mode == null || mode.equals("back")) {
-//            path = "/WEB-INF/jsp/goal.jsp";
-//        } else {
-//            path = "/WEB-INF/jsp/goalsend.jsp";
-//            HttpSession session = request.getSession();
-//            session.invalidate();
-//        }
-//
-//        RequestDispatcher rd = request.getRequestDispatcher(path);
-//        rd.forward(request, response);
-//    }
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String path = null;
+        String mode = request.getParameter("mode");
+        if (mode == null || mode.equals("back")) {
+            path = "/WEB-INF/jsp/goal.jsp";
+        } else {
+            path = "/WEB-INF/jsp/goalsend.jsp";
+            HttpSession session = request.getSession();
+            session.invalidate();
+        }
+
+        RequestDispatcher rd = request.getRequestDispatcher(path);
+        rd.forward(request, response);
+    }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	
-    	//ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®å–å¾—
+    	//ƒŠƒNƒGƒXƒgƒpƒ‰ƒ[ƒ^‚Ìæ“¾
         request.setCharacterEncoding("UTF-8");
-        
         String goalgenre1 = request.getParameter("goalgenre1");
         String goalgenre2 = request.getParameter("goalgenre2");
         String goalgenre3 = request.getParameter("goalgenre3");
@@ -46,44 +45,41 @@ public class GoalconfirmServlet extends HttpServlet {
         String goal2 = request.getParameter("goal2");
         String goal3 = request.getParameter("goal3");
 
-        //ã‚»ãƒƒã‚·ãƒ§ãƒ³ã‚¹ã‚³ãƒ¼ãƒ—ã«ä¿å­˜ã•ã‚ŒãŸã‚¢ã‚«ã‚¦ãƒ³ãƒˆæƒ…å ±ã‚’å–å¾—(AccountCheck.java)
+        //ƒZƒbƒVƒ‡ƒ“ƒXƒR[ƒv‚É•Û‘¶‚³‚ê‚½ƒAƒJƒEƒ“ƒgî•ñ‚ğæ“¾(AccountCheck.java)
         HttpSession session = request.getSession();
         AccountBeans account = (AccountBeans) session.getAttribute("account");
         
-        //ã‚¢ã‚«ã‚¦ãƒ³ãƒˆãŒnullã§ãªã‘ã‚Œã°
+        //ƒAƒJƒEƒ“ƒg‚ªnull‚Å‚È‚¯‚ê‚Î
         if (account != null) {
-        	
-        	//ã‚¢ã‚«ã‚¦ãƒ³ãƒˆIDã‚’å–å¾—
+        	//ƒAƒJƒEƒ“ƒgID‚ğæ“¾
             int accountId = account.getAccountId();
-            
-			
-			// ã“ã“ã§ Goal ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ä½œæˆã— accountId ã‚’ã‚»ãƒƒãƒˆã—ã¦ä½¿ç”¨
-            Goal goal = new Goal(accountId, goalgenre1, goalgenre2, goalgenre3, goal1, goal2, goal3);           
 
-            // Goal ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ä½¿ç”¨ã—ã¦ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã«ä¿å­˜
+            // ‚±‚±‚Å Goal ƒIƒuƒWƒFƒNƒg‚ğì¬‚µ accountId ‚ğƒZƒbƒg‚µ‚Äg—p
+            Goal goal = new Goal(accountId, goal1, goal2, goal3, goalgenre1, goalgenre2, goalgenre3);
+
+            // Goal ƒIƒuƒWƒFƒNƒg‚ğg—p‚µ‚Äƒf[ƒ^ƒx[ƒX‚É•Û‘¶
             GoalDAO goalDAO = new GoalDAO();
-            
             boolean success = goalDAO.create(goal, accountId);
             
+           
             if (success) {
-                // ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã¸ã®ä¿å­˜ãŒæˆåŠŸã—ãŸå ´åˆã®å‡¦ç†
+                // ƒf[ƒ^ƒx[ƒX‚Ö‚Ì•Û‘¶‚ª¬Œ÷‚µ‚½ê‡‚Ìˆ—
 
-                //ç›®æ¨™ãƒªã‚¹ãƒˆã‚’å–å¾—ã—ã¦ã€ã‚»ãƒƒã‚·ãƒ§ãƒ³ã‚³ãƒ¼ãƒ—ã«ä¿å­˜
+                //–Ú•WƒŠƒXƒg‚ğæ“¾‚µ‚ÄAƒZƒbƒVƒ‡ƒ“ƒR[ƒv‚É•Û‘¶
                 GetGoalListLogic getGoalListLogic = new GetGoalListLogic();
                 List<Goal> goalList = getGoalListLogic.execute(accountId);
                 session.setAttribute("goalList", goalList);
 
-                // ãƒ•ã‚©ãƒ¯ãƒ¼ãƒ‰
+                // ƒtƒHƒ[ƒh
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/goalsend.jsp");
                 dispatcher.forward(request, response);
                 
             } else {
-                // ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã¸ã®ä¿å­˜ãŒå¤±æ•—ã—ãŸå ´åˆã®ã‚¨ãƒ©ãƒ¼ãƒãƒ³ãƒ‰ãƒªãƒ³ã‚°
-            	System.out.println("ä¿å­˜ã«å¤±æ•—ã—ã¾ã—ãŸ");
+                // ƒf[ƒ^ƒx[ƒX‚Ö‚Ì•Û‘¶‚ª¸”s‚µ‚½ê‡‚ÌƒGƒ‰[ƒnƒ“ƒhƒŠƒ“ƒO
             }
         } else {
-        	System.out.println("ã‚¢ã‚«ã‚¦ãƒ³ãƒˆãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“ã§ã—ãŸ");
-        	 // (ä»®)
+           
+        	 // (‰¼)
         }
     }
 

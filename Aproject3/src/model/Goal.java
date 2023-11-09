@@ -74,6 +74,4 @@ public class Goal {
     public void setAccountId(int accountId) {
         this.accountId = accountId;
     }
-
-
 }
