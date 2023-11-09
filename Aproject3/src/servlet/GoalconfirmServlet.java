@@ -53,13 +53,14 @@ public class GoalconfirmServlet extends HttpServlet {
         if (account != null) {
         	//アカウントIDを取得
             int accountId = account.getAccountId();
-
-            // ここで Goal オブジェクトを作成し accountId をセットして使用
-            Goal goal = new Goal(accountId, goal1, goal2, goal3, goalgenre1, goalgenre2, goalgenre3);
+            
+			
+			// ここで Goal オブジェクトを作成し accountId をセットして使用
+            Goal goal = new Goal(accountId, goal1, goal2, goal3, goalgenre1, goalgenre2, goalgenre3);           
 
             // Goal オブジェクトを使用してデータベースに保存
             GoalDAO goalDAO = new GoalDAO();
-            boolean success = goalDAO.create(goal, accountId);
+            boolean success = goalDAO.create(goal,accountId);
 
             if (success) {
                 // データベースへの保存が成功した場合の処理
@@ -70,7 +71,7 @@ public class GoalconfirmServlet extends HttpServlet {
                 session.setAttribute("goalList", goalList);
 
                 // フォワード
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/goalconfirm.jsp");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/goalsend.jsp");
                 dispatcher.forward(request, response);
             } else {
                 // データベースへの保存が失敗した場合のエラーハンドリング

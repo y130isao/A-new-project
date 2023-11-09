@@ -21,7 +21,7 @@ public class GoalDAO {
 		return DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASS);
 	}
 
-	// アカウントIDを使用して目標情報を取得
+	// アカウントIDを使用して目標情報を取
 	public List<Goal> getGoalsByAccountId(int accountId) {
 		List<Goal> goalList = new ArrayList<>();
 
@@ -59,12 +59,12 @@ public class GoalDAO {
 				String insertQuery = "INSERT INTO user_health (accountId, goalgenre1, goalgenre2, goalgenre3, goal1, goal2, goal3) VALUES (?, ?, ?, ?, ?, ?, ?)";
 				PreparedStatement insertStmt = conn.prepareStatement(insertQuery);
 				insertStmt.setInt(1, accountId);
-				insertStmt.setString(2, goal.getGoalgenre1());
-				insertStmt.setString(3, goal.getGoalgenre2());
-				insertStmt.setString(4, goal.getGoalgenre3());
-				insertStmt.setString(5, goal.getGoal1());
-				insertStmt.setString(6, goal.getGoal2());
-				insertStmt.setString(7, goal.getGoal3());
+				insertStmt.setString(3, goal.getGoalgenre1());
+				insertStmt.setString(4, goal.getGoalgenre2());
+				insertStmt.setString(5, goal.getGoalgenre3());
+				insertStmt.setString(6, goal.getGoal1());
+				insertStmt.setString(7, goal.getGoal2());
+				insertStmt.setString(8, goal.getGoal3());
 
 				int result = insertStmt.executeUpdate();
 				return result == 1;
