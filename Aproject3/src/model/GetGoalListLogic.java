@@ -13,7 +13,6 @@ import dao.GoalDAO;
 //	}
 //}
 
-
 public class GetGoalListLogic {
     public List<Goal> execute(int accountId, String data_time) {
         GoalDAO goalDAO = new GoalDAO();

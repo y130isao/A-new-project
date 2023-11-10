@@ -26,24 +26,20 @@ public class RecordDAO {
 		List<Record> recordList = new ArrayList<>();
 
 		try (Connection conn = getConnection();
-
-				PreparedStatement pStmt = conn.prepareStatement("SELECT do_result1, do_result2, do_result3,"
-						+ " memo_list1, memo_list2, memo_list3 FROM user_health "
-						+ "WHERE accountId = ?AND date_time = (SELECT MAX(date_time) FROM user_health WHERE accountId = ?")) {
-
+				PreparedStatement pStmt = conn.prepareStatement("SELECT do_result1, do_result1, do_result1, memo_list1, memo_list1, memo_list1 FROM user_health WHERE accountId = ?")) {
 			pStmt.setInt(1, accountId);
 
 			try (ResultSet rs = pStmt.executeQuery()) {
 				while (rs.next()) {
 					Record record = new Record(
-							accountId, // accountId を引数として追加
+							accountId,  // accountId を引数として追加
 							rs.getBoolean("do_result1"),
 							rs.getBoolean("do_result2"),
 							rs.getBoolean("do_result3"),
 							rs.getString("memo_list1"),
 							rs.getString("memo_list2"),
-							rs.getString("memo_list3"));
-
+							rs.getString("memo_list3")
+							);
 					recordList.add(record);
 				}
 			}
@@ -54,20 +50,20 @@ public class RecordDAO {
 		return recordList;
 	}
 
+
 	//記録情報をデータベースに保存（新規挿入）
 	public boolean create(Record record, int accountId) {
 		try (Connection conn = getConnection()) {
 
 			// 新規挿入
-			String insertQuery = "INSERT INTO health (accountId, "
-					+ "goalgenre1, goalgenre2, goalgenre3, "
-					+ "goal1, goal2, goal3, "
-					+ "do_result1, do_result2, do_result3, "
-					+ "memo_list1, memo_list2, memo_list3) "
+			String insertQuery = "INSERT INTO user_health "
+					+ "(accountId, goalgenre1, goalgenre2, goalgenre3, "
+					+ "goal1, goal2, goal3, do_result1, do_result2, "
+					+ "do_result3, memo_list1, memo_list2, memo_list3) "
 					+ "SELECT accountId, goalgenre1, goalgenre2, goalgenre3, "
-					+ "goal1, goal2, goal3, ?, ?, ?, ?, ?, ?"
-					+ "FROM user_health "
-					+ "WHERE accountId = ? "
+					+ "goal1, goal2, goal3, "
+					+ "?, ?, ?, ?, ?, ? "
+					+ "FROM user_health WHERE accountId = ? "
 					+ "AND date_time = (SELECT max(date_time) FROM user_health)";
 
 			PreparedStatement insertStmt = conn.prepareStatement(insertQuery);
@@ -80,6 +76,7 @@ public class RecordDAO {
 			insertStmt.setString(6, record.getMemo_list3());
 			insertStmt.setInt(7, accountId);
 
+
 			int result = insertStmt.executeUpdate();
 			return result == 1;
 
@@ -91,7 +88,9 @@ public class RecordDAO {
 
 	}
 
+
 }
+			
 
 //	public boolean create(Record record, int accountId) {
 //		try (Connection conn = getConnection()) {
@@ -124,11 +123,4 @@ public class RecordDAO {
 //		}
 //		return false;
 //	}
-/**
- * TODO 同日付のレコードがないかチェックする
- * 		目標 = null なら insert
- * 		目標 = not null, result = null なら update
- * 		目標とresult = not null なら 実行しない
- * 		同アカウントのレコードに同日付のレコードは存在しない 
- */
 //}

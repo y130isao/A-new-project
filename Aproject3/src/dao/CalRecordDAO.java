@@ -96,5 +96,4 @@ public class CalRecordDAO {
 		}
 		return goalList;
 	}
-
 }
