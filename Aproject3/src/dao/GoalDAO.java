@@ -27,7 +27,9 @@ public class GoalDAO {
 
 			//データベースへ接続
 			try (Connection conn = getConnection();
-					PreparedStatement pStmt = conn.prepareStatement("SELECT goalgenre1, goalgenre2, goalgenre3, goal1, goal2, goal3 FROM user_health WHERE accountId = ? AND date_time = (SELECT MAX(date_time) FROM user_health WHERE accountId = ?")) {
+					PreparedStatement pStmt = conn.prepareStatement("SELECT goalgenre1, goalgenre2, goalgenre3, goal1, goal2, goal3"
+							+ " FROM user_health WHERE accountId = ? AND date_time = "
+							+ "(SELECT MAX(date_time) FROM user_health WHERE accountId = ?")) {
 				pStmt.setInt(1, accountId);
 				pStmt.setString(2, data_time);
 

@@ -26,7 +26,9 @@ public class RecordDAO {
 		List<Record> recordList = new ArrayList<>();
 
 		try (Connection conn = getConnection();
-				PreparedStatement pStmt = conn.prepareStatement("SELECT do_result1, do_result2, do_result3, memo_list1, memo_list2, memo_list3 FROM user_health WHERE accountId = ?")) {
+				PreparedStatement pStmt = conn.prepareStatement("SELECT do_result1, do_result2, do_result3,"
+						+ " memo_list1, memo_list2, memo_list3 FROM user_health "
+						+ "WHERE accountId = ?AND date_time = (SELECT MAX(date_time) FROM user_health WHERE accountId = ?")) {
 			pStmt.setInt(1, accountId);
 
 			try (ResultSet rs = pStmt.executeQuery()) {
