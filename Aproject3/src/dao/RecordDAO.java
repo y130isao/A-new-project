@@ -40,7 +40,6 @@ public class RecordDAO {
 							rs.getString("memo_list2"),
 							rs.getString("memo_list3")
 							);
-
 					recordList.add(record);
 				}
 			}

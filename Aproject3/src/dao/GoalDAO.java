@@ -45,7 +45,6 @@ public class GoalDAO {
 						rs.getString("goalgenre1"),
 						rs.getString("goalgenre2"),
 						rs.getString("goalgenre3"));
-
 				//goalListインスタンスにgoalインスタンスを格納
 				goalList.add(goal);
 			}

@@ -10,4 +10,3 @@ public class GetRecordListLogic {
         return recordDAO.getRecordsByAccountId(accountId);
     }
 }
-

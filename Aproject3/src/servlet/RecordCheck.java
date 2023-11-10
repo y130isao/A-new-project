@@ -76,7 +76,6 @@ public class RecordCheck extends HttpServlet {
 				GetRecordListLogic getRecordListLogic = new GetRecordListLogic();
 				List<Record> recordList = getRecordListLogic.execute(accountId);
 				session.setAttribute("recordList", recordList);
-
 				// フォワード
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/recordcomplete.jsp");
 				dispatcher.forward(request, response);

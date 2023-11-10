@@ -10,7 +10,6 @@ public class GetCalRecordListLogic {
 		CalRecordDAO calrecordDAO = new CalRecordDAO();
 		return calrecordDAO.getCalRecordsByAccountId(dayString, ab);
 	}
-
 	public List<Goal> executeG(String dayString, AccountBeans ab) {
 		CalRecordDAO calrecordDAO = new CalRecordDAO();
 		return calrecordDAO.getGoalByAccountId(dayString, ab);

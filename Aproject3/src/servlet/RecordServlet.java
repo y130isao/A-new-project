@@ -25,7 +25,6 @@ public class RecordServlet extends HttpServlet {
 		//セッションスコープに保存されたアカウント情報を取得(AccountCheck.java)
 		HttpSession session = request.getSession();
 		AccountBeans account = (AccountBeans) session.getAttribute("account");
-
 		//アカウントがnullでなければ
 		if (account != null) {
 
