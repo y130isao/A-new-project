@@ -20,40 +20,77 @@ public class GoalDAO {
 	private Connection getConnection() throws SQLException {
 		return DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASS);
 	}
+	
+	// アカウントIDを使用して目標情報を取得
+		public List<Goal> getGoalsByAccountId(int accountId, String data_time) {
+			List<Goal> goalList = new ArrayList<>();
 
-	// アカウントIDを使用して目標情報を取
-	public List<Goal> getGoalsByAccountId(int accountId) {
-		List<Goal> goalList = new ArrayList<>();
+			//データベースへ接続
+			try (Connection conn = getConnection();
+					PreparedStatement pStmt = conn.prepareStatement("SELECT goalgenre1, goalgenre2, goalgenre3, goal1, goal2, goal3"
+							+ " FROM user_health WHERE accountId = ? AND date_time = "
+							+ "(SELECT MAX(date_time) FROM user_health WHERE accountId = ?")) {
+				pStmt.setInt(1, accountId);
+				pStmt.setString(2, data_time);
 
-		//データベースへ接続
-		try (Connection conn = getConnection();
-				PreparedStatement pStmt = conn.prepareStatement("SELECT goalgenre1, goalgenre2, goalgenre3, goal1, goal2, goal3 FROM user_health WHERE accountId = ?")) {
-			pStmt.setInt(1, accountId);
-
-			//select文を実行し、結果表を取得
-			try (ResultSet rs = pStmt.executeQuery()) {
-				while (rs.next()) {
-					//goalインスタンスに格納
-					Goal goal = new Goal(
-							accountId,  // accountId を引数として追加
-							rs.getString("goal1"),
-							rs.getString("goal2"),
-							rs.getString("goal3"),
-							rs.getString("goalgenre1"),
-							rs.getString("goalgenre2"),
-							rs.getString("goalgenre3")
-							);
-					
-					//goalListインスタンスにgoalインスタンスを格納
-					goalList.add(goal);
+				//select文を実行し、結果表を取得
+				try (ResultSet rs = pStmt.executeQuery()) {
+					while (rs.next()) {
+						//goalインスタンスに格納
+						Goal goal = new Goal(
+								accountId,  // accountId を引数として追加
+								rs.getString("goal1"),
+								rs.getString("goal2"),
+								rs.getString("goal3"),
+								rs.getString("goalgenre1"),
+								rs.getString("goalgenre2"),
+								rs.getString("goalgenre3")
+								);
+						
+						//goalListインスタンスにgoalインスタンスを格納
+						goalList.add(goal);
+					}
 				}
+			} catch (SQLException e) {
+				e.printStackTrace();
 			}
-		} catch (SQLException e) {
-			e.printStackTrace();
+
+			return goalList;
 		}
 
-		return goalList;
-	}
+//	// アカウントIDを使用して目標情報を取得
+//	public List<Goal> getGoalsByAccountId(int accountId) {
+//		List<Goal> goalList = new ArrayList<>();
+//
+//		//データベースへ接続
+//		try (Connection conn = getConnection();
+//				PreparedStatement pStmt = conn.prepareStatement("SELECT goalgenre1, goalgenre2, goalgenre3, goal1, goal2, goal3 FROM user_health WHERE accountId = ?")) {
+//			pStmt.setInt(1, accountId);
+//
+//			//select文を実行し、結果表を取得
+//			try (ResultSet rs = pStmt.executeQuery()) {
+//				while (rs.next()) {
+//					//goalインスタンスに格納
+//					Goal goal = new Goal(
+//							accountId,  // accountId を引数として追加
+//							rs.getString("goal1"),
+//							rs.getString("goal2"),
+//							rs.getString("goal3"),
+//							rs.getString("goalgenre1"),
+//							rs.getString("goalgenre2"),
+//							rs.getString("goalgenre3")
+//							);
+//					
+//					//goalListインスタンスにgoalインスタンスを格納
+//					goalList.add(goal);
+//				}
+//			}
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}
+//
+//		return goalList;
+//	}
 	
 	// 目標情報をデータベースに保存
 		public boolean create(Goal goal, int accountId) {
@@ -63,12 +100,12 @@ public class GoalDAO {
 				String insertQuery = "INSERT INTO user_health (accountId, goalgenre1, goalgenre2, goalgenre3, goal1, goal2, goal3) VALUES (?, ?, ?, ?, ?, ?, ?)";
 				PreparedStatement insertStmt = conn.prepareStatement(insertQuery);
 				insertStmt.setInt(1, accountId);
-				insertStmt.setString(3, goal.getGoalgenre1());
-				insertStmt.setString(4, goal.getGoalgenre2());
-				insertStmt.setString(5, goal.getGoalgenre3());
-				insertStmt.setString(6, goal.getGoal1());
-				insertStmt.setString(7, goal.getGoal2());
-				insertStmt.setString(8, goal.getGoal3());
+				insertStmt.setString(2, goal.getGoalgenre1());
+				insertStmt.setString(3, goal.getGoalgenre2());
+				insertStmt.setString(4, goal.getGoalgenre3());
+				insertStmt.setString(5, goal.getGoal1());
+				insertStmt.setString(6, goal.getGoal2());
+				insertStmt.setString(7, goal.getGoal3());
 
 				int result = insertStmt.executeUpdate();
 				return result == 1;
