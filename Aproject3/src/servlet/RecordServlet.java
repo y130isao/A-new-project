@@ -14,14 +14,13 @@ import model.AccountBeans;
 import model.GetGoalListLogic;
 import model.Goal;
 
-
 @WebServlet("/RecordServlet")
 public class RecordServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response)
-					throws ServletException, IOException {
+			throws ServletException, IOException {
 
 		//セッションスコープに保存されたアカウント情報を取得(AccountCheck.java)
 		HttpSession session = request.getSession();
@@ -33,23 +32,20 @@ public class RecordServlet extends HttpServlet {
 			//アカウントIDを取得
 			int accountId = account.getAccountId();
 
-						//データベースから目標リストを取得
-						GetGoalListLogic getGoalListLogic = new GetGoalListLogic();
-						List<Goal> goalList = getGoalListLogic.execute(accountId);
-						
-						//セッションコープに保存
-						session.setAttribute("goalList", goalList);
+			//データベースから目標リストを取得
+			GetGoalListLogic getGoalListLogic = new GetGoalListLogic();
+			List<Goal> goalList = getGoalListLogic.execute(accountId);
 
+			//セッションコープに保存
+			session.setAttribute("goalList", goalList);
 
 			//フォワード
-			RequestDispatcher rd =
-					request.getRequestDispatcher("/WEB-INF/jsp/record.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/record.jsp");
 			rd.forward(request, response);
 
-		}else {
+		} else {
 
 		}
 	}
 
 }
-
