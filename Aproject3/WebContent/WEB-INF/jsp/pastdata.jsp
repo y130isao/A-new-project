@@ -87,6 +87,7 @@
 			目標1
 			：
 			<c:out value="${list.do_result1 ? 'できた' : 'できなかった'}" />
+			：
 			<c:out value="${list.memo_list1}" />
 			
 		</p>
@@ -95,6 +96,7 @@
 			目標2
 			：
 			<c:out value="${list.do_result2 ? 'できた' : 'できなかった'}" />
+			：
 			<c:out value="${list.memo_list2}" />
 		</p>
 
@@ -102,6 +104,7 @@
 			目標3
 			：
 			<c:out value="${list.do_result3 ? 'できた' : 'できなかった'}" />
+			：
 			<c:out value="${list.memo_list3}" />
 		</p>
 	</c:forEach>
