@@ -1,8 +1,5 @@
 package model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class PointLogic {
 	// データベースからpoint+levelを取得
 	/**
@@ -10,19 +7,15 @@ public class PointLogic {
 	 * @param rb
 	 * @return
 	 */
-	public void calcPoint(AccountBeans ab) {
+	public AccountBeans calcPoint(AccountBeans ab, boolean do_result1, boolean do_result2, boolean do_result3) {
 		/* recordが正常にされていた場合の処理
 		 if(一定期間の更新処理){
 		*/
 		int nowCharaPoint = ab.getCharaPoint();
 		int nowCharaLevel = ab.getCharaLevel();
-		Record returnRb = new Record();
 		int getPoint = 0;
 		// boolean型をintに変換
-		List<Boolean> results = new ArrayList<Boolean>();
-		results.add(returnRb.getDo_result1());
-		results.add(returnRb.getDo_result2());
-		results.add(returnRb.getDo_result3());
+		boolean results[] = {do_result1, do_result2, do_result3};
 		for (boolean result : results) {
 			if (result)
 				getPoint++;
@@ -54,6 +47,7 @@ public class PointLogic {
 			nowCharaLevel = 5;
 		}
 		ab.setCharaLevel(nowCharaLevel);
+		return ab;
 	}
 
 	/**

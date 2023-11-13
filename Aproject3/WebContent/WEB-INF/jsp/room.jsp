@@ -21,41 +21,67 @@
 		<c:when test="${account.genId == 1 }">
 			<c:choose>
 				<c:when test="${account.charaLevel == 1 }">
-					<!-- 男性のキャラクターLV1 -->男性1
+					<!-- 男性のキャラクターLV1 -->
+					<div class="card">
+						<img src="images/mobuman1.jpg">
+					</div>
 				</c:when>
 				<c:when test="${account.charaLevel == 2 }">
-					<!-- 男性のキャラクターLV2 -->男性2
+					<!-- 男性のキャラクターLV2 -->
+					<div class="card">
+						<img src="images/mobuman2.jpg">
+					</div>
 				</c:when>
 				<c:when test="${account.charaLevel == 3 }">
-					<!-- 男性のキャラクターLV3 -->男性3
+					<!-- 男性のキャラクターLV3 -->
+					<div class="card">
+						<img src="images/mobuman3.jpg">
+					</div>
 				</c:when>
 				<c:when test="${account.charaLevel == 4 }">
-					<!-- 男性のキャラクターLV4 -->男性4
+					<!-- 男性のキャラクターLV4 -->
+					<div class="card">
+						<img src="images/mobuman4.jpg">
+					</div>
 				</c:when>
 				<c:when test="${account.charaLevel == 5 }">
-					<!-- 男性のキャラクターLV5 -->男性5
+					<!-- 男性のキャラクターLV5 -->
+					<div class="card">
+						<img src="images/mobuman5.jpg">
+					</div>
 				</c:when>
 			</c:choose>
 		</c:when>
 		<c:when test="${account.genId == 2 }">
 			<c:choose>
 				<c:when test="${account.charaLevel == 1 }">
-					<!-- 女性のキャラクターLV1 -->女性1
+					<!-- 女性のキャラクターLV1 -->
+					<div class="card">
+						<img src="images/mobugirl1.jpg">
+					</div>
 				</c:when>
 				<c:when test="${account.charaLevel == 2 }">
-					<!-- 女性のキャラクターLV2 -->女性2
+					<!-- 女性のキャラクターLV2 -->
+					<div class="card">
+						<img src="images/mobugirl2.jpg">
+					</div>
 				</c:when>
 				<c:when test="${account.charaLevel == 3 }">
-					<!-- 女性のキャラクターLV3 -->女性3
+					<!-- 女性のキャラクターLV3 -->
+					<div class="card">
+						<img src="images/mobugirl3.jpg">
+					</div>
 				</c:when>
 				<c:when test="${account.charaLevel == 4 }">
-					<!-- 女性のキャラクターLV4 -->女性4
+					<!-- 女性のキャラクターLV4 -->
+					<div class="card">
+						<img src="images/mobugirl4.jpg">
+					</div>
 				</c:when>
 				<c:when test="${account.charaLevel == 5 }">
-					<!-- 女性のキャラクターLV5 -->女性5
+					<!-- 女性のキャラクターLV5 -->
 					<div class="card">
-						<img src="images/mobuman5.jpg"> <img
-							src="images/mobuman5.jpg">
+						<img src="images/mobugirl5.jpg">
 					</div>
 				</c:when>
 			</c:choose>

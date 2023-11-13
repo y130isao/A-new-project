@@ -114,4 +114,38 @@ public class GoalDAO {
 		}
 	}
 
+	public boolean update(Goal goal, int accountId) {
+		try (Connection con = DriverManager.getConnection(
+				JDBC_URL, DB_USER, DB_PASS)) {
+
+			String sql = "UPDATE user_health SET "
+					+ "goalgenre1 = ?, goalgenre2 = ?, goalgenre3 = ?,  "
+					+ "goal1 = ?, goal2 = ?, goal3 = ? "
+					+ "WHERE accountId = ? "
+					+ "AND CAST(date_time AS DATE) = CURRENT_DATE";
+			PreparedStatement ps = con.prepareStatement(sql);
+
+			ps.setString(1, goal.getGoalgenre1());
+			ps.setString(2, goal.getGoalgenre2());
+			ps.setString(3, goal.getGoalgenre3());
+			ps.setString(4, goal.getGoal1());
+			ps.setString(5, goal.getGoal2());
+			ps.setString(6, goal.getGoal3());
+			ps.setInt(7, accountId);
+
+			int rs = ps.executeUpdate();
+
+			if (rs != 0) {
+
+			} else {
+				return false;
+			}
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
+
 }

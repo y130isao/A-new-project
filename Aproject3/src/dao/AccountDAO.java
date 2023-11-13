@@ -99,8 +99,7 @@ public class AccountDAO {
 	 * @param ab
 	 * @return
 	 */
-	public AccountBeans setPram(AccountBeans ab) {
-		AccountBeans returnAb = new AccountBeans();
+	public boolean setPram(AccountBeans ab) {
 		try (Connection con = DriverManager.getConnection(
 				JDBC_URL, DB_USER, DB_PASS)) {
 
@@ -117,15 +116,15 @@ public class AccountDAO {
 			if (rs != 0) {
 
 			} else {
-				return null;
+				return false;
 			}
 			con.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
-			return null;
+			return false;
 		}
 
-		return returnAb;
+		return true;
 
 	}
 }

@@ -26,20 +26,20 @@ public class RecordDAO {
 		List<Record> recordList = new ArrayList<>();
 
 		try (Connection conn = getConnection();
-				PreparedStatement pStmt = conn.prepareStatement("SELECT do_result1, do_result1, do_result1, memo_list1, memo_list1, memo_list1 FROM user_health WHERE accountId = ?")) {
+				PreparedStatement pStmt = conn.prepareStatement(
+						"SELECT do_result1, do_result1, do_result1, memo_list1, memo_list1, memo_list1 FROM user_health WHERE accountId = ?")) {
 			pStmt.setInt(1, accountId);
 
 			try (ResultSet rs = pStmt.executeQuery()) {
 				while (rs.next()) {
 					Record record = new Record(
-							accountId,  // accountId を引数として追加
+							accountId, // accountId を引数として追加
 							rs.getBoolean("do_result1"),
 							rs.getBoolean("do_result2"),
 							rs.getBoolean("do_result3"),
 							rs.getString("memo_list1"),
 							rs.getString("memo_list2"),
-							rs.getString("memo_list3")
-							);
+							rs.getString("memo_list3"));
 					recordList.add(record);
 				}
 			}
@@ -49,7 +49,6 @@ public class RecordDAO {
 
 		return recordList;
 	}
-
 
 	//記録情報をデータベースに保存（新規挿入）
 	public boolean create(Record record, int accountId) {
@@ -76,7 +75,6 @@ public class RecordDAO {
 			insertStmt.setString(6, record.getMemo_list3());
 			insertStmt.setInt(7, accountId);
 
-
 			int result = insertStmt.executeUpdate();
 			return result == 1;
 
@@ -88,39 +86,65 @@ public class RecordDAO {
 
 	}
 
+	public boolean update(Record record, int accountId) {
+		try (Connection con = DriverManager.getConnection(
+				JDBC_URL, DB_USER, DB_PASS)) {
 
+			String sql = "UPDATE user_health SET "
+					+ "do_result1 = ?, do_result2 = ?, do_result3 = ?,  "
+					+ "memo_list1 = ?, memo_list2 = ?, memo_list3 = ? "
+					+ "WHERE accountId = ? "
+					+ "AND CAST(date_time AS DATE) = CURRENT_DATE";
+			PreparedStatement ps = con.prepareStatement(sql);
+
+			ps.setBoolean(1, record.getDo_result1());
+			ps.setBoolean(2, record.getDo_result2());
+			ps.setBoolean(3, record.getDo_result3());
+			ps.setString(4, record.getMemo_list1());
+			ps.setString(5, record.getMemo_list2());
+			ps.setString(6, record.getMemo_list3());
+			ps.setInt(7, accountId);
+
+			int rs = ps.executeUpdate();
+
+			if (rs != 0) {
+
+			} else {
+				return false;
+			}
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
+
+	public boolean existence(int accountId) {
+		int count = 0;
+		try (Connection con = DriverManager.getConnection(
+				JDBC_URL, DB_USER, DB_PASS)) {
+
+			String sql = "SELECT count(*) cnt FROM user_health "
+					+ "WHERE accountId = ? "
+					+ "AND CAST(date_time AS DATE) = CURRENT_DATE";
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, accountId);
+
+			ResultSet rs = ps.executeQuery();
+			rs.next();
+			count = rs.getInt("cnt");
+			System.out.println(count);
+			if(count != 0) {
+				return true;
+			} else {
+				return false;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+		
+	}
 }
-			
 
-//	public boolean create(Record record, int accountId) {
-//		try (Connection conn = getConnection()) {
-//			String checkQuery = "SELECT COUNT(*) AS count FROM user_health WHERE accountId = ?";
-//			PreparedStatement checkStmt = conn.prepareStatement(checkQuery);
-//			checkStmt.setInt(1, accountId);
-//			ResultSet rs = checkStmt.executeQuery();
-//
-//			if (rs.next() && rs.getInt("count") > 0) {
-//				String updateQuery = "UPDATE user_health SET do_result1 = ?, do_result2 = ?, "
-//						+ "do_result3 = ?, memo_list1 = ?, memo_list2 = ?, memo_list3 = ? WHERE accountId = ?";
-//				PreparedStatement updateStmt = conn.prepareStatement(updateQuery);
-//				updateStmt.setBoolean(1, record.getDo_result1());
-//				updateStmt.setBoolean(2, record.getDo_result2());
-//				updateStmt.setBoolean(3, record.getDo_result3());
-//				updateStmt.setString(4, record.getMemo_list1());
-//				updateStmt.setString(5, record.getMemo_list2());
-//				updateStmt.setString(6, record.getMemo_list3());
-//				updateStmt.setInt(7, accountId);
-//
-//				int result = updateStmt.executeUpdate();
-//				return result == 1;
-//			} else {
-//				// データが見つからなかった場合の処理
-//				// 新規挿入ロジックをここに記述
-//			}
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//			return false;
-//		}
-//		return false;
-//	}
-//}

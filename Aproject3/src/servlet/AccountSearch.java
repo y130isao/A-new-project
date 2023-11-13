@@ -19,7 +19,6 @@ import model.PointLogic;
 public class AccountSearch extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	@SuppressWarnings("unused")
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String loginId = request.getParameter("loginId");
@@ -35,34 +34,29 @@ public class AccountSearch extends HttpServlet {
 		AccountBeans returnAb = ad.findAccount(ab);
 
 		/** 最終更新日時の取得*/
-		AccountBeans rBeans = ad.findTime(returnAb);
-		Timestamp timeStamp = rBeans.getDateTime();
-		if (timeStamp != null) {
-			Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-			long diff = timestamp.getTime() - timeStamp.getTime();
-			TimeUnit time = TimeUnit.DAYS;
-			long diffrence = time.convert(diff, TimeUnit.MILLISECONDS);
 
-			System.out.println("現在日時 : " + timestamp);
-			System.out.println("最終更新日時 : " + timeStamp);
-			System.out.println(diffrence);
-
-			/**　更新無し時のpoint+level処理*/
-			if (diffrence >= 10) {
-				PointLogic ptLogic = new PointLogic();
-				ptLogic.decreasePoint(returnAb);
-				int charaPoint = returnAb.getCharaPoint();
-				int charaLevel = returnAb.getCharaLevel();
-				ad.setPram(returnAb);
-			}
-		} else {
-			System.out.println("更新時間は未登録です");
-		}
-
-		if (returnAb.getName() != null) {
+		if (returnAb != null) {
 			// セッションにアカウント情報を登録
 			HttpSession session = request.getSession();
 			session.setAttribute("account", returnAb);
+
+			AccountBeans rBeans = ad.findTime(returnAb);
+			Timestamp timeStamp = rBeans.getDateTime();
+			if (timeStamp != null) {
+				Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+				long diff = timestamp.getTime() - timeStamp.getTime();
+				TimeUnit time = TimeUnit.DAYS;
+				long diffrence = time.convert(diff, TimeUnit.MILLISECONDS);
+
+				/**　更新無し時のpoint+level処理*/
+				if (diffrence >= 10) {
+					PointLogic ptLogic = new PointLogic();
+					ptLogic.decreasePoint(returnAb);
+					ad.setPram(returnAb);
+				}
+			} else {
+				System.out.println("更新時間は未登録です");
+			}
 
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/top.jsp");
 			rd.forward(request, response);

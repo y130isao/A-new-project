@@ -30,7 +30,8 @@ public class RecordServlet extends HttpServlet {
 
 			//アカウントIDを取得
 			int accountId = account.getAccountId();
-
+			
+			
 			//データベースから目標リストを取得
 			GetGoalListLogic getGoalListLogic = new GetGoalListLogic();
 			List<Goal> goalList = getGoalListLogic.execute(accountId);

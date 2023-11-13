@@ -50,9 +50,6 @@ public class CalRecordDAO {
 						rs.getString("memo_list3"));
 				calrecordList.add(record);
 
-				System.out.println(record.getDo_result1()
-						+ ":" + record.getMemo_list1());
-
 			}
 			con.close();
 		} catch (SQLException e) {
@@ -85,9 +82,6 @@ public class CalRecordDAO {
 						rs.getString("goalgenre2"),
 						rs.getString("goalgenre3"));
 				goalList.add(goal);
-
-				System.out.println(goal.getGoal1()
-						+ ":" + goal.getGoalgenre1());
 
 			}
 			con.close();

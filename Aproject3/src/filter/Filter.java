@@ -16,7 +16,6 @@ public class Filter implements jakarta.servlet.Filter {
 
 	public void doFilter(ServletRequest request, ServletResponse response,
 			FilterChain chain) throws IOException, ServletException {
-		System.out.println("フィルター");
 		request.setCharacterEncoding("UTF-8");
 		chain.doFilter(request, response);
 	}

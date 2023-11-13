@@ -19,7 +19,7 @@
         <div class="button" is="wtc-barfy-stars" data-config='{"numParticles": 50, "gravity": 0.3}'>新規登録が完了しました!
         </div>
 
-        <p><a href="/java3/AccountCheck"><button type="button" name="aaa" >ユーザー or 管理者ページへ</button></a></p>
+        <p><a href="/Aproject3/Login"><button type="button" name="aaa" >ユーザー or 管理者ページへ</button></a></p>
 
     </section>
 

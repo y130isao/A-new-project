@@ -14,9 +14,9 @@ import dao.GoalDAO;
 //}
 
 public class GetGoalListLogic {
-    public List<Goal> execute(int accountId, String data_time) {
+    public List<Goal> execute(int accountId) {
         GoalDAO goalDAO = new GoalDAO();
-        List<Goal> goalList = goalDAO.getGoalsByAccountId(accountId, data_time);
+        List<Goal> goalList = goalDAO.getGoalsByAccountId(accountId);
         return goalList; 
 	}
 }
