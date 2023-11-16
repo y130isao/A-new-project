@@ -35,19 +35,19 @@
 				<c:when test="${account.charaLevel == 3 }">
 					<!-- 男性のキャラクターLV3 -->
 					<div class="card">
-						<img src="images/mobuman3.png">
+						<img src="images/mobuman3.jpg">
 					</div>
 				</c:when>
 				<c:when test="${account.charaLevel == 4 }">
 					<!-- 男性のキャラクターLV4 -->
 					<div class="card">
-						<img src="images/mobuman4.png">
+						<img src="images/mobuman4.jpg">
 					</div>
 				</c:when>
 				<c:when test="${account.charaLevel == 5 }">
 					<!-- 男性のキャラクターLV5 -->
 					<div class="card">
-						<img src="images/mobuman5.png">
+						<img src="images/mobuman5.jpg">
 					</div>
 				</c:when>
 			</c:choose>
@@ -75,7 +75,7 @@
 				<c:when test="${account.charaLevel == 4 }">
 					<!-- 女性のキャラクターLV4 -->
 					<div class="card">
-						<img src="images/mobugirl4.jpg">
+						<img src="images/mobugirl4.png">
 					</div>
 				</c:when>
 				<c:when test="${account.charaLevel == 5 }">
