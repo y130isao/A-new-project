@@ -16,11 +16,12 @@
 </head>
 
 <body>
-	<c:choose>
-		<c:when test="${goal == 0 }">
-			<p>※目標の登録がされていません。目標設定のリンクから登録を行い、１日の達成を記録画面にて記録しましょう</p>
-		</c:when>
-	</c:choose>
+    <c:choose>
+        <c:when test="${goal == 0 }">
+            <div class="mokuhyou">🌴 目標の登録がされていません。目標設定のリンクから登録しましょう。</div>
+            <div class="kiroku">🌴 記録画面で今日の達成を記録しましょう。</div>
+        </c:when>
+    </c:choose>
 	<h1>健康管理アプリ</h1>
 	<nav>
 		<ul>
