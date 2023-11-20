@@ -122,12 +122,25 @@ String memo_list3 = record == null ? "" : record.getMemo_list3();
 					required><br>
 			</div>
 		</div>
-		<div class="btn">
-			<input type="submit" value="送信" />
-		</div>
+
+
 	</form>
 
 	<footer>
+
+		<%
+		if (goalList == null || goalList.isEmpty()) {
+		%>
+		<h3>TOPに戻り目標の設定をしてください。</h3>
+		<%
+		} else {
+		%>
+		<div class="btn">
+			<input type="submit" value="送信" />
+		</div>
+		<%
+		}
+		%>
 		<a href="/Aproject3/TopServlet">TOPへ</a>
 	</footer>
 </body>

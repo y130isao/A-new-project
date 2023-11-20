@@ -12,16 +12,18 @@
 	url('https://fonts.googleapis.com/css2?family=BIZ+UDGothic&display=swap')
 	;
 </style>
+<style>
+.mokuhyou,
+.kiroku {
+  color: green;
+  text-align: center;
+}
+</style>
 <title>TOP</title>
 </head>
 
 <body>
-    <c:choose>
-        <c:when test="${bool == 0 }">
-            <div class="mokuhyou">🌴 目標の登録がされていません。目標設定のリンクから登録しましょう。</div>
-            <div class="kiroku">🌴 記録画面で今日の達成を記録しましょう。</div>
-        </c:when>
-    </c:choose>
+
 	<h1>健康管理アプリ</h1>
 	<nav>
 		<ul>
@@ -31,7 +33,12 @@
 			<li class="slider"></li>
 		</ul>
 	</nav>
-
+	<c:choose>
+		<c:when test="${bool == 0 }">
+			<div class="mokuhyou">🌴 目標の登録がされていません。目標設定のリンクから登録しましょう。<br></div>
+			<div class="kiroku">🌴 記録画面で今日の達成を記録しましょう。</div>
+		</c:when>
+	</c:choose>
 	<div>
 		<h2>
 			<a href="${pageContext.request.contextPath}/RoomServlet">モブルームへ</a>
