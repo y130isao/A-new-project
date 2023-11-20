@@ -17,7 +17,7 @@
 
 <body>
     <c:choose>
-        <c:when test="${goal == 0 }">
+        <c:when test="${bool == 0 }">
             <div class="mokuhyou">🌴 目標の登録がされていません。目標設定のリンクから登録しましょう。</div>
             <div class="kiroku">🌴 記録画面で今日の達成を記録しましょう。</div>
         </c:when>

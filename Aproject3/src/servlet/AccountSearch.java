@@ -68,7 +68,7 @@ public class AccountSearch extends HttpServlet {
 			List<Goal> goalList = getGoalListLogic.execute(accountId);
 			int bool = goalList.size();
 			System.out.println(bool);
-			session.setAttribute("goal", bool);
+			session.setAttribute("bool", bool);
 
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/top.jsp");
 			rd.forward(request, response);
