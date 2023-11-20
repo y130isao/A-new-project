@@ -34,6 +34,7 @@ public class RecordServlet extends HttpServlet {
 			//データベースから目標リストを取得
 			GetGoalListLogic getGoalListLogic = new GetGoalListLogic();
 			List<Goal> goalList = getGoalListLogic.execute(accountId);
+			if(goalList.isEmpty())
 			session.setAttribute("goalList", goalList);
 			//フォワード
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/record.jsp");

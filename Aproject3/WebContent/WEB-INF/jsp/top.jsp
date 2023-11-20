@@ -16,6 +16,11 @@
 </head>
 
 <body>
+	<c:choose>
+		<c:when test="${goal == 0 }">
+			<p>※目標の登録がされていません。目標設定のリンクから登録を行い、１日の達成を記録画面にて記録しましょう</p>
+		</c:when>
+	</c:choose>
 	<h1>健康管理アプリ</h1>
 	<nav>
 		<ul>
@@ -25,6 +30,7 @@
 			<li class="slider"></li>
 		</ul>
 	</nav>
+
 	<div>
 		<h2>
 			<a href="${pageContext.request.contextPath}/RoomServlet">モブルームへ</a>

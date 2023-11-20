@@ -2,6 +2,7 @@ package servlet;
 
 import java.io.IOException;
 import java.sql.Timestamp;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import dao.AccountDAO;
@@ -13,6 +14,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import model.AccountBeans;
+import model.GetGoalListLogic;
+import model.Goal;
 import model.PointLogic;
 
 @WebServlet("/AccountSearch")
@@ -57,6 +60,15 @@ public class AccountSearch extends HttpServlet {
 			} else {
 				System.out.println("更新時間は未登録です");
 			}
+
+			int accountId = returnAb.getAccountId();
+
+			//データベースから目標リストを取得
+			GetGoalListLogic getGoalListLogic = new GetGoalListLogic();
+			List<Goal> goalList = getGoalListLogic.execute(accountId);
+			int bool = goalList.size();
+			System.out.println(bool);
+			session.setAttribute("goal", bool);
 
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/top.jsp");
 			rd.forward(request, response);
