@@ -8,6 +8,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 
 
@@ -20,7 +21,8 @@ public class TopServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 		HttpServletResponse response)
 		throws ServletException, IOException {
-		
+		HttpSession session = request.getSession();
+		session.removeAttribute("bool");
 		
 		
 		RequestDispatcher rd=request.getRequestDispatcher("/WEB-INF/jsp/top.jsp");
@@ -37,5 +39,7 @@ public class TopServlet extends HttpServlet {
         
         RequestDispatcher dispatcher6 = request.getRequestDispatcher("/Aproject3/RoomServlet");
         dispatcher6.forward(request, response);
+        
+        session.removeAttribute("bool");
 	}
 }
