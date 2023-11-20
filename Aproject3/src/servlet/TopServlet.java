@@ -40,6 +40,5 @@ public class TopServlet extends HttpServlet {
         RequestDispatcher dispatcher6 = request.getRequestDispatcher("/Aproject3/RoomServlet");
         dispatcher6.forward(request, response);
         
-        session.removeAttribute("bool");
 	}
 }
