@@ -45,31 +45,52 @@ String memo_list3 = record == null ? "" : record.getMemo_list3();
 	<h2>
 		<%=sdf.format(date)%>
 	</h2>
+
 	<form action="/Aproject3/RecordCheck" method="post">
 
 		<div class="kiroku1">
+			<%
+			if (goalList == null || goalList.isEmpty()) {
+			%>
+			<h3>目標の登録はありません</h3>
+			<%
+			} else {
+			%>
 			<h3>あなたの選択項目1</h3>
-			【<%=goalList.get(0).getGoalgenre1()%>】</br>
-			<%=goalList.get(0).getGoal1()%></br> <input type="radio"
-				name="do_result1" value="1" <%=do_result1 ? "checked" : ""%>>出来た
-			<input type="radio" name="do_result1" value="0"
-				<%=!do_result1 ? "checked" : ""%>>出来てない
-
-
+			【<%=goalList.get(0).getGoalgenre1()%>】<br>
+			<%=goalList.get(0).getGoal1()%><br>
+			<%
+			}
+			%>
+			<input type="radio" name="do_result1" value="1"
+				<%=do_result1 ? "checked" : ""%>>出来た <input type="radio"
+				name="do_result1" value="0" <%=!do_result1 ? "checked" : ""%>>出来てない
 			<div>
 				メモ<br> <input type="text" name="memo_list1"
 					placeholder="10文字以上" minlength="10" value="<%=memo_list1%>"
 					required><br>
 			</div>
+
 		</div>
 
 		<div class="kiroku2">
+			<%
+			if (goalList == null || goalList.isEmpty()) {
+			%>
+			<h3>目標の登録はありません</h3>
+			<%
+			} else {
+			%>
+
 			<h3>あなたの選択項目2</h3>
-			【<%=goalList.get(0).getGoalgenre2()%>】</br>
-			<%=goalList.get(0).getGoal2()%></br> <input type="radio"
-				name="do_result2" value="1" <%=do_result2 ? "checked" : ""%>>出来た
-			<input type="radio" name="do_result2" value="0"
-				<%=!do_result2 ? "checked" : ""%>>出来てない
+			【<%=goalList.get(0).getGoalgenre2()%>】<br>
+			<%=goalList.get(0).getGoal2()%><br>
+			<%
+			}
+			%>
+			<input type="radio" name="do_result2" value="1"
+				<%=do_result2 ? "checked" : ""%>>出来た <input type="radio"
+				name="do_result2" value="0" <%=!do_result2 ? "checked" : ""%>>出来てない
 
 			<div>
 				メモ<br> <input type="text" name="memo_list2"
@@ -78,13 +99,22 @@ String memo_list3 = record == null ? "" : record.getMemo_list3();
 			</div>
 		</div>
 		<div class="kiroku3">
-
+			<%
+			if (goalList == null || goalList.isEmpty()) {
+			%>
+			<h3>目標の登録はありません</h3>
+			<%
+			} else {
+			%>
 			<h3>あなたの選択項目3</h3>
-			【<%=goalList.get(0).getGoalgenre3()%>】</br>
-			<%=goalList.get(0).getGoal3()%></br> <input type="radio"
-				name="do_result3" value="1" <%=do_result3 ? "checked" : ""%>>出来た
-			<input type="radio" name="do_result3" value="0"
-				<%=!do_result3 ? "checked" : ""%>>出来てない
+			【<%=goalList.get(0).getGoalgenre3()%>】<br>
+			<%=goalList.get(0).getGoal3()%><br>
+			<%
+			}
+			%>
+			<input type="radio" name="do_result3" value="1"
+				<%=do_result3 ? "checked" : ""%>>出来た <input type="radio"
+				name="do_result3" value="0" <%=!do_result3 ? "checked" : ""%>>出来てない
 
 			<div>
 				メモ<br> <input type="text" name="memo_list3"
@@ -96,6 +126,7 @@ String memo_list3 = record == null ? "" : record.getMemo_list3();
 			<input type="submit" value="送信" />
 		</div>
 	</form>
+
 	<footer>
 		<a href="/Aproject3/TopServlet">TOPへ</a>
 	</footer>
