@@ -39,7 +39,7 @@ public class RecordServlet extends HttpServlet {
 			//フォワード
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/record.jsp");
 			rd.forward(request, response);
-
+			session.removeAttribute("goalList");
 		} else {
 
 		}

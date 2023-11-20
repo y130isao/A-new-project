@@ -17,7 +17,7 @@
 
 <body>
 	<c:choose>
-		<c:when test="${goal == 0 }">
+		<c:when test="${bool == 0 }">
 			<p>※目標の登録がされていません。目標設定のリンクから登録を行い、１日の達成を記録画面にて記録しましょう</p>
 		</c:when>
 	</c:choose>
